@@ -1,357 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content="eleventy" />
-    <title>Modern CSS Solutions</title>
-    <meta name="description" content="A series examining modern CSS solutions to problems Stephanie Eckles (@5t3ph), a seasoned frontend developer, has been solving for 15+ years."/>
-    <link rel="author" href="https://moderncss.dev/humans.txt" />
-    <link
-      rel="icon"
-      href="/favicon.png"
-    />
-    <link rel="preload" href="/fonts/baloo-2-v1-latin-500.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/baloo-2-v1-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/kanit-v5-latin-800.woff2" as="font" type="font/woff2" crossorigin>
-    <link
-      href="/css/style.css"
-      rel="stylesheet" 
-    />
-    
-    <link rel="preconnect" href="https://cdn.carbonads.com">
-    <link rel="dns-prefetch" href="https://cdn.carbonads.com">
-    <link rel="preconnect" href="https://srv.carbonads.net">
-    <link rel="dns-prefetch" href="https://srv.carbonads.net">
-    <link rel="preconnect" href="https://cdn4.buysellads.net">
-    <link rel="dns-prefetch" href="https://cdn4.buysellads.net">
-    <link rel="preconnect" href="https://static.codepen.io">
-    <link rel="dns-prefetch" href="https://static.codepen.io">
-    <link rel="preconnect" href="https://plausible.io">
-    <link rel="dns-prefetch" href="https://plausible.io">
-    
-    <script async defer data-domain="moderncss.dev" src="https://plausible.io/js/plausible.outbound-links.js"></script>
-    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
-    
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@5t3ph" />
-    <meta property="og:url" content="https://moderncss.dev/" />
-    <meta property="og:title" content="Modern CSS Solutions" />
-    <meta property="og:description" content="A series examining modern CSS solutions to problems Stephanie Eckles (@5t3ph), a seasoned frontend developer, has been solving for 15+ years." />
-    <meta property="og:image" content="https://moderncss.dev/img/social/home.jpeg" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Modern CSS Solutions" />
-    <link rel="canonical" href="https://moderncss.dev/">
-    <link rel="alternate" type="application/rss+xml" title="RSS Feed for ModernCSS.dev" href="/feed/" />
-  </head>
-  <body class="page- ">  <header class="hero hero--home">
-      <div class="mx-auto">
-        <h1 class="color-primary" translate="no">Modern CSS Solutions
-          <em class="color-secondary">for Old CSS Problems</em>
-        </h1>
-        
-        <p class="lead">
-        <span class="row">
-          <span>A series by <a href="https://thinkdobecreate.com/">Stephanie&nbsp;Eckles</a></span> <a href="https://front-end.social/@5t3ph" class="button button-icon" aria-label="Follow 5t3ph on Mastodon"><svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-mastodon"></use></svg></a>
-        </span>
-        </p>
 
-        <a href="/topics/" class="button">Browse By Topic</a>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steven Tse - IT Professional</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1em 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    main {
+      padding: 2em;
+      background-color: #fff;
+      margin: 1em auto;
+      max-width: 800px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1em 0;
+      background-color: #333;
+      color: #fff;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Steven Tse</h1>
+    <p>IT Professional | Computer Science Student | CTF Player</p>
   </header>
-  <aside class="promo promo--wide">
-    <h2 class="color-primary">Learn and Practice Modern&nbsp;CSS</h2>
-    <p><strong class="pill">New</strong> &mdash; Guided practice is coming soon! Check out <a href="https://challenges.moderncss.dev" translate="no">Modern&nbsp;CSS&nbsp;Challenges</a></p>
-  </aside>
-  <main aria-label="Articles Table of Contents" class="container"> 
-    <ul role="list" class="column-container"><li class="card card--episode index1">
-        <div class="card__content" data-episode="35">
-          <a href="/providing-type-definitions-for-css-with-at-property/" class="card__title"><span>Providing Type Definitions for CSS with @property</span></a>
-          <p>Write safer CSS using `@property`, which enables defining types for custom properties. Learn why traditional fallback values can fail, and how `@property` features improve the resilience of custom property definitions.</p>
-        </div>
-      </li><li class="card card--episode index2">
-        <div class="card__content" data-episode="34">
-          <a href="/12-modern-css-one-line-upgrades/" class="card__title"><span>12 Modern CSS One-Line Upgrades</span></a>
-          <p>Sometimes, improving your application CSS just takes a one-line upgrade or enhancement! Learn about 12 properties to start incorporating into your projects, and enjoy reducing technical debt, removing JavaScript, and scoring easy wins for user experience.</p>
-        </div>
-      </li><li class="card card--episode index3">
-        <div class="card__content" data-episode="33">
-          <a href="/how-custom-property-values-are-computed/" class="card__title"><span>How Custom Property Values are Computed</span></a>
-          <p>Review behaviors to be aware of regarding how the browser computes final custom property values. A misunderstanding of this process may lead to an unexpected or missing value and difficulty troubleshooting and resolving the issue.</p>
-        </div>
-      </li><li class="card card--episode index4">
-        <div class="card__content" data-episode="32">
-          <a href="/modern-css-for-dynamic-component-based-architecture/" class="card__title"><span>Modern CSS For Dynamic Component-Based Architecture</span></a>
-          <p>Explore modern project architecture, theming, responsive layouts, and component design. Learn to improve code organization, dig into layout techniques, and review real-world, context-aware components that use cutting-edge CSS techniques.</p>
-        </div>
-      </li><li class="card card--episode index5">
-        <div class="card__content" data-episode="31">
-          <a href="/testing-feature-support-for-modern-css/" class="card__title"><span>Testing Feature Support for Modern CSS</span></a>
-          <p>How do you know using a new CSS features is "safe" to use? Review how to find information on new features, test for support, determine when to use a feature, and manage support with fallbacks and build tools.</p>
-        </div>
-      </li>
-      <li class="card card--teaser">
-        <div class="card__content text-align-center">
-          <div class="carbon-ad">
-		<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CE7I52QE&placement=moderncssdev" id="_carbonads_js"></script>
-	</div>
-        </div>
-      </li>
-      <li class="card card--episode index6">
-        <div class="card__content" data-episode="30">
-          <a href="/container-query-units-and-fluid-typography/" class="card__title"><span>Container Query Units and Fluid Typography</span></a>
-          <p>To learn more about the behaviors of container query units, we'll explore three fluid typography techniques applied via a "mixin" using custom properties. These upgraded methods will produce truly responsive typography, regardless of context.</p>
-        </div>
-      </li><li class="card card--episode index7">
-        <div class="card__content" data-episode="29">
-          <a href="/contextual-spacing-for-intrinsic-web-design/" class="card__title"><span>Contextual Spacing For Intrinsic Web Design</span></a>
-          <p>Learn how to coexist with that unpredictability by using adaptive, contextual spacing techniques. We'll construct a starter set of custom properties for gap, margin, and padding.</p>
-        </div>
-      </li>
-        <li class="card card--text">
-          <div class="card__content text-align-center my-auto">
-            <a href="https://smolcss.dev" class="color-secondary card__title">SmolCSS</a>
-            <p>Check out the ModernCSS companion site <strong>SmolCSS</strong> and demo minimal snippets for modern CSS layouts and components</p>
-            <a href="https://smolcss.dev">Visit SmolCSS.dev</a>
-          </div>
-        </li>
-      <li class="card card--episode index8">
-        <div class="card__content" data-episode="28">
-          <a href="/practical-uses-of-css-math-functions-calc-clamp-min-max/" class="card__title"><span>Practical Uses of CSS Math Functions: calc, clamp, min, max</span></a>
-          <p>Review the four best supported CSS math functions, and see how they can be used in both practical and unexpected ways, such as within gradients and color functions and in combination with CSS custom properties.</p>
-        </div>
-      </li><li class="card card--episode index9">
-        <div class="card__content" data-episode="27">
-          <a href="/modern-css-upgrades-to-improve-accessibility/" class="card__title"><span>Modern CSS Upgrades To Improve Accessibility</span></a>
-          <p>Accessibility is a critical skill for developers doing work at any point in the stack. For front-end tasks, modern CSS provides capabilities we can leverage to make layouts more accessibly inclusive for users of all abilities across any device.</p>
-        </div>
-      </li><li class="card card--episode index10">
-        <div class="card__content" data-episode="26">
-          <a href="/developing-for-imperfect-future-proofing-css-styles/" class="card__title"><span>Developing For Imperfect: Future Proofing CSS Styles</span></a>
-          <p>How do we plan future-proof styles in a world with an infinite degree of device and user ability variance? Let's explore how things can break and how modern CSS provides solutions.</p>
-        </div>
-      </li><li class="card card--episode index11">
-        <div class="card__content" data-episode="25">
-          <a href="/guide-to-advanced-css-selectors-part-two/" class="card__title"><span>Guide to Advanced CSS Selectors - Part Two</span></a>
-          <p>Continuing from part one, this episode will focus on the advanced CSS selectors categorized as pseudo classes and pseudo elements and practical applications for each.</p>
-        </div>
-      </li><li class="card card--episode index12">
-        <div class="card__content" data-episode="24">
-          <a href="/guide-to-advanced-css-selectors-part-one/" class="card__title"><span>Guide to Advanced CSS Selectors - Part One</span></a>
-          <p>Whether you choose to completely write your own CSS, or use a framework, understanding selectors, the cascade, and specificity are critical to developing CSS and modifying existing style rules.</p>
-        </div>
-      </li>
-        <li class="card card--text">
-          <div class="card__content text-align-center my-auto">
-            <a href="/newsletter/" class="color-secondary card__title">CSS Tips in Your Inbox</a>
-            <p>Join my newsletter for article updates, CSS tips, and front-end resources!</p>
-            <a class="button button--small" href="/newsletter/">Newsletter Signup</a>
-          </div>
-        </li>
-      <li class="card card--episode index13">
-        <div class="card__content" data-episode="23">
-          <a href="/the-3-css-methods-for-adding-element-borders/" class="card__title"><span>The 3 CSS Methods for Adding Element Borders</span></a>
-          <p>In CSS, sometimes a `border` is not really a `border`. In this episode, we'll cover the differences between `border`, `outline`, and `box-shadow` and when to choose each.</p>
-        </div>
-      </li>
-        <li class="card card--text">
-          <div class="card__content text-align-center my-auto">
-            <a href="https://www.buymeacoffee.com/moderncss" class="color-secondary card__title">Support this Series</a>
-            <p>Enjoying the series? I would appreciate a coffee to help me keep writing and coding!</p>
-            <a class="button button-outlined button-outlined--inverse button--small" target="_blank" rel="noopener" href="https://www.buymeacoffee.com/moderncss"><svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-buymeacoffee"></use></svg> Buy me a coffee</a>
-          </div>
-        </li>
-      <li class="card card--episode index14">
-        <div class="card__content" data-episode="22">
-          <a href="/pure-css-shapes-3-ways/" class="card__title"><span>Pure CSS Shapes 3 Ways</span></a>
-          <p>Modern CSS and modern browser support provides us three excellent methods to create pure, basic CSS shapes. We'll look at making CSS triangles with borders, linear gradients, and `clip-path`.</p>
-        </div>
-      </li><li class="card card--episode index15">
-        <div class="card__content" data-episode="21">
-          <a href="/custom-css-styles-for-form-inputs-and-textareas/" class="card__title"><span>Custom CSS Styles for Form Inputs and Textareas</span></a>
-          <p>Create custom form input and textarea styles that have a near-identical appearance across the top browsers, and ensure all states meet contrast requirements.</p>
-        </div>
-      </li><li class="card card--episode index16">
-        <div class="card__content" data-episode="20">
-          <a href="/custom-select-styles-with-pure-css/" class="card__title"><span>Custom Select Styles with Pure CSS</span></a>
-          <p>Modern CSS gives us a range of properties to achieve custom select styles that have a near-identical initial appearance. This solution uses CSS grid, `clip-path`, and CSS custom properties.</p>
-        </div>
-      </li><li class="card card--episode index17">
-        <div class="card__content" data-episode="19">
-          <a href="/pure-css-custom-checkbox-style/" class="card__title"><span>Pure CSS Custom Checkbox Style</span></a>
-          <p>We'll create custom, cross-browser, theme-able, scalable checkboxes in pure CSS. We'll use `currentColor`, the `em` unit, SVG, and CSS grid layout.</p>
-        </div>
-      </li>
-        <li class="card card--text">
-      <blockquote class="card__content text-align-center">
-        <img src="/img/avatars/chris-c.jpg" alt="Chris Coyier" />
-        <p class="color-secondary">This is a hell of a series by Stephanie Eckles.</p>
-        <footer>
-          <cite>&mdash; <a href="https://css-tricks.com/modern-css-solutions-for-old-css-problems/">Chris Coyier</a></cite>
-        </footer>
-      </blockquote>
-    </li>
-      <li class="card card--episode index18">
-        <div class="card__content" data-episode="18">
-          <a href="/pure-css-custom-styled-radio-buttons/" class="card__title"><span>Pure CSS Custom Styled Radio Buttons</span></a>
-          <p>Learn to create custom, cross-browser, theme-able, scalable radio buttons in pure CSS and ensuring styles remain accessible across states.</p>
-        </div>
-      </li><li class="card card--episode index19">
-        <div class="card__content" data-episode="17">
-          <a href="/announcing-style-stage-a-community-css-showcase/" class="card__title"><span>Announcing Style Stage: A Community CSS Showcase</span></a>
-          <p>Learn about Style Stage - an opportunity to challenge both your CSS and web design skills while learning in public. A CSS playground open to contributors of all skill levels!</p>
-        </div>
-      </li><li class="card card--episode index20">
-        <div class="card__content" data-episode="16">
-          <a href="/3-popular-website-heroes-created-with-css-grid-layout/" class="card__title"><span>3 Popular Website Heroes Created With CSS Grid Layout</span></a>
-          <p>This episode explores creating website heroes - aka  'headers' - by using CSS grid and a unique way to apply grid template areas that you can use to replace older methods that used absolute positioning.</p>
-        </div>
-      </li><li class="card card--episode index21">
-        <div class="card__content" data-episode="15">
-          <a href="/3-css-grid-techniques-to-make-you-a-grid-convert/" class="card__title"><span>3 CSS Grid Techniques to Make You a Grid Convert</span></a>
-          <p>Learn three powerful techniques for using grid that don't involve counting columns, including changing the default axis, centering, and responsive layout without media queries.</p>
-        </div>
-      </li><li class="card card--episode index22">
-        <div class="card__content" data-episode="14">
-          <a href="/expanded-use-of-box-shadow-and-border-radius/" class="card__title"><span>Expanded Use of `box-shadow` and `border-radius`</span></a>
-          <p>This episode will explore expanded usage of `box-shadow` and `border-radius` and conclude with a landing page demo using these properties to enhance the image presentation.</p>
-        </div>
-      </li><li class="card card--episode index23">
-        <div class="card__content" data-episode="13">
-          <a href="/container-query-solutions-with-css-grid-and-flexbox/" class="card__title"><span>Container Query Solutions with CSS Grid and Flexbox</span></a>
-          <p>Using grid and flexbox, we can create styles that respond to container and content widths and overcome some of the pain points that container queries are proposed to resolve.</p>
-        </div>
-      </li><li class="card card--episode index24">
-        <div class="card__content" data-episode="12">
-          <a href="/generating-font-size-css-rules-and-creating-a-fluid-type-scale/" class="card__title"><span>Generating `font-size` CSS Rules and Creating a Fluid Type Scale</span></a>
-          <p>Let's take the mystery out of sizing type. Learn recommended units for `font-size`, how to generate ratio-based fluid sizes with Sass, and how to handle overflow.</p>
-        </div>
-      </li><li class="card card--episode index25">
-        <div class="card__content" data-episode="11">
-          <a href="/resource-the-complete-guide-to-centering-in-css/" class="card__title"><span>Resource: The Complete Guide to Centering in CSS</span></a>
-          <p>This resource covers the classic CSS question: "How do I center a div?" You'll learn a solution for every variation of how you may want to center something using grid, flexbox, and block element layout.</p>
-        </div>
-      </li><li class="card card--episode index26">
-        <div class="card__content" data-episode="10">
-          <a href="/icon-button-css-styling-guide/" class="card__title"><span>Icon Button CSS Styling Guide</span></a>
-          <p>This guide will build on the previous episode 'CSS Button Styling Guide' to explore the use case of icon buttons. We'll cover icon + text as well as icon-only buttons.</p>
-        </div>
-      </li><li class="card card--episode index27">
-        <div class="card__content" data-episode="9">
-          <a href="/css-button-styling-guide/" class="card__title"><span>CSS Button Styling Guide</span></a>
-          <p>This guide will explore the ins and outs of styling an accessible, extensible button appearance for both link and button elements.</p>
-        </div>
-      </li><li class="card card--episode index28">
-        <div class="card__content" data-episode="8">
-          <a href="/solutions-to-replace-the-12-column-grid/" class="card__title"><span>Solutions to Replace the 12-Column Grid</span></a>
-          <p>Create simplified responsive grid systems using both CSS grid and flexbox. Using both, we'll create just two classes to handle from 1-4 columns of content that responsively resizes.</p>
-        </div>
-      </li><li class="card card--episode index29">
-        <div class="card__content" data-episode="7">
-          <a href="/css-only-accessible-dropdown-navigation-menu/" class="card__title"><span>CSS-Only Accessible Dropdown Navigation Menu</span></a>
-          <p>This technique explores using: animation with CSS `transition` and `transform`, using the `:focus-within` pseudo-class, CSS grid, and accessibility considerations for dropdown menus.</p>
-        </div>
-      </li><li class="card card--episode index30">
-        <div class="card__content" data-episode="6">
-          <a href="/responsive-image-gallery-with-animated-captions/" class="card__title"><span>Responsive Image Gallery With Animated Captions</span></a>
-          <p>This technique explores using: `object-fit` for responsive image scaling,  `aspect-ratio` for consistent image sizes, a CSS Grid trick to replace absolute positioning, and CSS transforms for animated effects.</p>
-        </div>
-      </li><li class="card card--episode index31">
-        <div class="card__content" data-episode="5">
-          <a href="/totally-custom-list-styles/" class="card__title"><span>Totally Custom List Styles</span></a>
-          <p>This tutorial will show how to use CSS grid layout for easy custom list styling. We'll cover CSS counters, CSS custom properties, and responsive multi-column lists, as well as the new `::marker` pseudo selector.</p>
-        </div>
-      </li><li class="card card--episode index32">
-        <div class="card__content" data-episode="4">
-          <a href="/pure-css-smooth-scroll-back-to-top/" class="card__title"><span>Pure CSS Smooth-Scroll  &quot;Back to Top &quot;</span></a>
-          <p>"Back to top" links may not be in use often these days, but there are two modern CSS features that the technique demonstrates well: `position: sticky` and `scroll-behavior: smooth`.</p>
-        </div>
-      </li><li class="card card--episode index33">
-        <div class="card__content" data-episode="3">
-          <a href="/css-only-full-width-responsive-images-2-ways/" class="card__title"><span>CSS-Only Full-Width Responsive Images 2 Ways</span></a>
-          <p>Let's look at how to use `background-size` and `object-fit` for similar full-width image effects, and learn when to select one over the other.</p>
-        </div>
-      </li><li class="card card--episode index34">
-        <div class="card__content" data-episode="2">
-          <a href="/equal-height-elements-flexbox-vs-grid/" class="card__title"><span>Equal Height Elements: Flexbox vs. Grid</span></a>
-          <p>Review solutions using both Flexbox and CSS grid and learn when you might choose one over the other.</p>
-        </div>
-      </li><li class="card card--episode index35">
-        <div class="card__content" data-episode="1">
-          <a href="/keep-the-footer-at-the-bottom-flexbox-vs-grid/" class="card__title"><span>Keep the Footer at the Bottom: Flexbox vs. Grid</span></a>
-          <p>Floating footers can occur for many reasons, but modern CSS methods using either flexbox or CSS grid let us plan a future-proof solution for any size layout.</p>
-        </div>
-      </li></ul> 
+  <main>
+    <section>
+      <h2>About Me</h2>
+      <p>My name is Steven and I am an IT professional currently studying Computing & AI at The Hong Kong Polytechnic
+        University. I have experience in Java, databases, Linux administration, and networking technologies. I am
+        passionate about using my skills to engineer unique and efficient solutions for businesses across technology
+        platforms.</p>
+    </section>
+    <section>
+      <h2>Experience</h2>
+      <ul>
+        <li><strong>Software Tester (Intern)</strong> - Code Free Soft Limited (Jul 2023 - Aug 2023)</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Education</h2>
+      <ul>
+        <li><strong>BSc (Hons) in Computer Science</strong> - The Hong Kong Polytechnic University</li>
+        <li><strong>Higher Diploma in Software Engineering, Information Technology</strong> - Hong Kong Institute of
+          Vocational Education (Shatin)</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li>Java (Basic) Certificate - HackerRank</li>
+        <li>CSS (Basic) Certificate - HackerRank</li>
+        <li>SQL (Intermediate) Certificate - HackerRank</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Achievements</h2>
+      <ul>
+        <li>3rd place in the PolyU CTF Qualifier Competition 2024</li>
+        <li>Over 3000 points in the ICS CTF 2024 competition</li>
+      </ul>
+    </section>
   </main>
+  <footer>
+    <p>Connect with me on <a href="https://www.linkedin.com/in/steven-tse-52078121b/">LinkedIn</a></p>
+  </footer>
+</body>
 
-  <aside aria-labelledby="resources" class="container section mx-auto gradient-border">
-  <h2 id="resources" class="color-secondary text-align-center">Additional Resources</h2>
-  <ul role="list" class="column-container section equalize-headings"  style="--gap: 8vh 5vw; --section-margin: 0;">
-    <li class="flex-container">
-      <h3>Frontend Development Videos</h3>
-      <p>Learn more about various frontend development topics such as flexbox, grid, and Sass in 5 minutes or less. If you have 20 minutes available, you can create a whole landing page!</p>
-      <div class="row">
-        <a href="https://egghead.io/playlists/create-a-landing-page-with-css-grid-and-flexbox-6048?af=2s65ms" class="button button--small">20 Min. Landing Page</a>
-        <a href="https://egghead.io/instructors/stephanie-eckles?af=2s65ms"><small>View All Videos</small></a>
-      </div>
-    </li>
-    <li class="flex-container">
-      <h3>Learn Web Development</h3>
-      <p>Go from zero to website launch - no prior development experience required! Through this series of 4-14 minute videos, you will learn the essentials of web development.</p>
-      <div class="row">
-        <a href="https://dev.to/5t3ph/learn-how-to-make-a-website-set-up-your-coding-environment-2oeo" class="button button--small">Start Now</a>
-        <a href="https://learnfromsteph.dev"><small>Course Details</small></a>
-      </div>
-    </li>
-    <li class="flex-container">
-      <h3>12 Days of Web</h3>
-      <p>Get caught up with all the native web has to offer with 12 articles celebrating web fundamentals: HTML, CSS, and JavaScript.</p>
-      <div class="row">
-        <a href="https://12DaysOfWeb.dev"  class="button button--small">Read the series</a>
-      </div>
-    </li>
-  </ul>
-  </aside>
-
-<script>
-  const randomIndex=Math.floor(4*Math.random())+1,selected=document.querySelector(".index"+randomIndex+" .card__title").classList.add("peekaboo");
-</script>
-
-    <footer id="site-footer" class="background--secondary-alt">
-      <div class="row container text-align-center mx-auto">
-        <p>
-        <a href="/">ModernCSS.dev</a> 
-        &copy; 2024 <a href="https://thinkdobecreate.com">ThinkDoBeCreate - Stephanie&nbsp;Eckles</a>
-        </p>
-        <span class="row">
-        <a href="https://front-end.social/@5t3ph" class="button button-icon" aria-label="Mastodon">
-          <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-mastodon"></use></svg>
-        </a>
-        <a href="https://github.com/5t3ph/" class="button button-icon" aria-label="Github">
-          <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-github"></use></svg>
-        </a>
-        <a href="https://codepen.io/5t3ph/" class="button button-icon" aria-label="CodePen">
-          <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-codepen"></use></svg>
-        </a>
-        <a href="https://dev.to/5t3ph" class="button button-icon" aria-label="DEV">
-          <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-devto"></use></svg>
-        </a>
-        <a
-          href="https://www.youtube.com/channel/UC8qc2AyBbNmvgIky6236nHA"
-          class="button button-icon"
-          aria-label="YouTube"
-        >
-          <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-youtube"></use></svg>
-        </a>
-        <a class="button button-outlined button-outlined--inverse button--small" target="_blank" rel="noopener" href="https://www.buymeacoffee.com/moderncss"><svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-buymeacoffee"></use></svg> Buy me a coffee</a>
-        </span>
-      </div>
-    </footer>
-    
-
-    <svg aria-hidden="true" focusable="false" hidden><defs>
-<symbol viewBox="0 0 24 24" id="icon-mastodon"><path fill="currentColor" d="M20.94 14c-.28 1.41-2.44 2.96-4.97 3.26c-1.31.15-2.6.3-3.97.24c-2.25-.11-4-.54-4-.54v.62c.32 2.22 2.22 2.35 4.03 2.42c1.82.05 3.44-.46 3.44-.46l.08 1.65s-1.28.68-3.55.81c-1.25.07-2.81-.03-4.62-.5c-3.92-1.05-4.6-5.24-4.7-9.5l-.01-3.43c0-4.34 2.83-5.61 2.83-5.61C6.95 2.3 9.41 2 11.97 2h.06c2.56 0 5.02.3 6.47.96c0 0 2.83 1.27 2.83 5.61c0 0 .04 3.21-.39 5.43M18 8.91c0-1.08-.3-1.91-.85-2.56c-.56-.63-1.3-.96-2.23-.96c-1.06 0-1.87.41-2.42 1.23l-.5.88l-.5-.88c-.56-.82-1.36-1.23-2.43-1.23c-.92 0-1.66.33-2.23.96C6.29 7 6 7.83 6 8.91v5.26h2.1V9.06c0-1.06.45-1.62 1.36-1.62c1 0 1.5.65 1.5 1.93v2.79h2.07V9.37c0-1.28.5-1.93 1.51-1.93c.9 0 1.35.56 1.35 1.62v5.11H18V8.91Z"></path></symbol>
-<symbol id="icon-buymeacoffee" viewBox="0 0 24 36"><g fill="none" fill-rule="evenodd"><path fill="#FF9100" d="M11.835 7.655l-8.74-.052 4.292 27.113h10.456l4.292-27.113z"/><path fill="#FD0" d="M11.835 7.655l-8.74-.052 4.292 27.113h8.272L19.95 7.603z"/><path fill="#FFF" d="M.599 7.603h22.55v-2.5H.6z"/><path stroke="#000" stroke-width="1.17" d="M.599 7.603h22.55v-2.5H.6z"/><path fill="#FFF" d="M18.78 1.04H4.813l-1.64 3.75H20.419z"/><g stroke-width="1.17"><path stroke="#050505" d="M18.78 1.04H4.813l-1.64 3.75H20.419z"/><path stroke="#000" d="M11.835 7.655l-10.3-.052 4.292 27.113h12.016l4.292-27.113z"/></g><path fill="#FFF" d="M22.447 15.26H1.146l1.922 10.783 8.728-.094 8.728.094z"/><path stroke="#000" stroke-width="1.17" d="M22.447 15.26H1.146l1.922 10.783 8.728-.094 8.728.094z"/></g></symbol><symbol id="icon-github" viewBox="0 0 32 32"> <path d="M16 0.396c-8.84 0-16 7.164-16 16 0 7.071 4.584 13.067 10.94 15.18 0.8 0.151 1.093-0.344 1.093-0.769 0-0.38-0.013-1.387-0.020-2.72-4.451 0.965-5.389-2.147-5.389-2.147-0.728-1.847-1.78-2.34-1.78-2.34-1.449-0.992 0.112-0.972 0.112-0.972 1.607 0.112 2.451 1.648 2.451 1.648 1.427 2.447 3.745 1.74 4.66 1.331 0.144-1.035 0.556-1.74 1.013-2.14-3.553-0.4-7.288-1.776-7.288-7.907 0-1.747 0.62-3.173 1.647-4.293-0.18-0.404-0.72-2.031 0.14-4.235 0 0 1.34-0.429 4.4 1.64 1.28-0.356 2.64-0.532 4-0.54 1.36 0.008 2.72 0.184 4 0.54 3.040-2.069 4.38-1.64 4.38-1.64 0.86 2.204 0.32 3.831 0.16 4.235 1.020 1.12 1.64 2.547 1.64 4.293 0 6.147-3.74 7.5-7.3 7.893 0.56 0.48 1.080 1.461 1.080 2.96 0 2.141-0.020 3.861-0.020 4.381 0 0.42 0.28 0.92 1.1 0.76 6.401-2.099 10.981-8.099 10.981-15.159 0-8.836-7.164-16-16-16z" ></path> </symbol> <symbol id="icon-codepen" viewBox="0 0 32 32"> <path d="M32 10.909l-0.024-0.116-0.023-0.067c-0.013-0.032-0.024-0.067-0.040-0.1-0.004-0.024-0.020-0.045-0.027-0.067l-0.047-0.089-0.040-0.067-0.059-0.080-0.061-0.060-0.080-0.060-0.061-0.040-0.080-0.059-0.059-0.053-0.020-0.027-14.607-9.772c-0.463-0.309-1.061-0.309-1.523 0l-14.805 9.883-0.051 0.053-0.067 0.075-0.049 0.060-0.067 0.080c-0.027 0.023-0.040 0.040-0.040 0.061l-0.067 0.080-0.027 0.080c-0.027 0.013-0.027 0.053-0.040 0.093l-0.013 0.067c-0.025 0.041-0.025 0.081-0.025 0.121v9.996c0 0.059 0.004 0.12 0.013 0.18l0.013 0.061c0.007 0.040 0.013 0.080 0.027 0.115l0.020 0.067c0.013 0.036 0.021 0.071 0.036 0.1l0.029 0.067c0 0.013 0.020 0.053 0.040 0.080l0.040 0.053c0.020 0.013 0.040 0.053 0.060 0.080l0.040 0.053 0.053 0.053c0.013 0.017 0.013 0.040 0.040 0.040l0.080 0.056 0.053 0.040 0.013 0.019 14.627 9.773c0.219 0.16 0.5 0.217 0.76 0.217s0.52-0.080 0.76-0.24l14.877-9.875 0.069-0.077 0.044-0.060 0.053-0.080 0.040-0.067 0.040-0.093 0.021-0.069 0.040-0.103 0.020-0.060 0.040-0.107v-10c0-0.067 0-0.127-0.021-0.187l-0.019-0.060 0.059 0.004zM16.013 19.283l-4.867-3.253 4.867-3.256 4.867 3.253-4.867 3.253zM14.635 10.384l-5.964 3.987-4.817-3.221 10.781-7.187v6.424zM6.195 16.028l-3.443 2.307v-4.601l3.443 2.301zM8.671 17.695l5.964 3.987v6.427l-10.781-7.188 4.824-3.223v-0.005zM17.387 21.681l5.965-3.973 4.817 3.227-10.783 7.187v-6.427zM25.827 16.041l3.444-2.293v4.608l-3.444-2.307zM23.353 14.388l-5.964-3.988v-6.44l10.78 7.187-4.816 3.224z" ></path> </symbol> <symbol id="icon-devto" viewBox="0 0 512 512"> <path d="M188.437 221.898c-.009-18.484-11.717-46.436-46.525-46.436H95.379v162.505h45.573c36.093.06 47.496-27.934 47.496-46.408l-.011-69.661zm-27.735 69.479c0 5.705-1.907 9.978-5.716 12.826-3.81 2.846-7.632 4.271-11.443 4.271h-17.139V205.87h17.129c3.811 0 7.633 1.424 11.443 4.272 3.801 2.847 5.715 7.13 5.726 12.826v68.409z" /> <path d="M287.328 204.485H235v37.734h31.987v29.041H235v37.724h52.339v29.044h-61.071c-10.959.282-20.074-8.379-20.349-19.339V195.813c-.267-10.951 8.406-20.045 19.357-20.319h62.063l-.011 28.991z" /> <path d="M389.117 317.717c-12.965 30.201-36.191 24.189-46.594 0l-37.84-142.214h31.988l29.18 111.69 29.043-111.69h31.996l-37.773 142.214z" /> <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="20" d="M424.401 471H87.599C61.863 471 41 450.137 41 424.401V87.599C41 61.863 61.863 41 87.599 41h336.802C450.137 41 471 61.863 471 87.599v336.802C471 450.137 450.137 471 424.401 471z" /> </symbol> <symbol id="icon-youtube" viewBox="0 0 28 28"> <path d="M11.109 17.625l7.562-3.906-7.562-3.953v7.859zM14 4.156c5.891 0 9.797 0.281 9.797 0.281 0.547 0.063 1.75 0.063 2.812 1.188 0 0 0.859 0.844 1.109 2.781 0.297 2.266 0.281 4.531 0.281 4.531v2.125s0.016 2.266-0.281 4.531c-0.25 1.922-1.109 2.781-1.109 2.781-1.062 1.109-2.266 1.109-2.812 1.172 0 0-3.906 0.297-9.797 0.297v0c-7.281-0.063-9.516-0.281-9.516-0.281-0.625-0.109-2.031-0.078-3.094-1.188 0 0-0.859-0.859-1.109-2.781-0.297-2.266-0.281-4.531-0.281-4.531v-2.125s-0.016-2.266 0.281-4.531c0.25-1.937 1.109-2.781 1.109-2.781 1.062-1.125 2.266-1.125 2.812-1.188 0 0 3.906-0.281 9.797-0.281v0z" ></path> </symbol></defs></svg>
-	</body>
-	</html>
+</html>
