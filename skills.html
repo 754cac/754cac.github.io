@@ -1,0 +1,233 @@
+<!--
+Copyright (c) 2025, Steven Tse
+All rights reserved.
+
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Skills & certifications" />
+    <title>Skills — Steven Tse</title>
+    <link
+      href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="Header" id="main-header">
+      <div class="Header-item">
+        <a
+          href="index.html"
+          class="Header-link f4 d-flex flex-items-center"
+          aria-label="Steven Tse home"
+        >
+          <span class="text-bold">Steven Tse</span>
+        </a>
+      </div>
+      <div class="Header-item Header-item--full">
+        <nav class="d-none d-lg-flex" id="desktop-nav">
+          <a href="index.html" class="Header-link mr-3">Home</a>
+          <a href="about.html" class="Header-link mr-3">About</a>
+          <a href="portfolio.html" class="Header-link mr-3">Portfolio</a>
+          <a href="skills.html" class="Header-link mr-3 active">Skills</a>
+          <a href="experience.html" class="Header-link mr-3">Experience</a>
+          <a href="blog.html" class="Header-link mr-3">Blog</a>
+          <a href="contact.html" class="Header-link">Contact</a>
+        </nav>
+        <button
+          class="btn d-lg-none"
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="Header-item">
+        <button
+          class="btn"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <a id="main-content" tabindex="-1"></a>
+    <div
+      class="mobile-nav"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Primary navigation"
+      aria-hidden="true"
+    >
+      <nav class="menu">
+        <a href="index.html" class="menu-item">Home</a>
+        <a href="about.html" class="menu-item">About</a>
+        <a href="portfolio.html" class="menu-item">Portfolio</a>
+        <a href="skills.html" class="menu-item active">Skills</a>
+        <a href="experience.html" class="menu-item">Experience</a>
+        <a href="blog.html" class="menu-item">Blog</a>
+        <a href="contact.html" class="menu-item">Contact</a>
+      </nav>
+    </div>
+
+    <main class="py-6">
+      <div class="container-lg p-responsive">
+        <h1 class="h2-mktg mb-4">Technical Skills & Certifications</h1>
+        <p class="text-gray f4 mb-5">
+          Core development and cybersecurity competencies with certification
+          validation.
+        </p>
+
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="skill-item">
+            <div class="skill-header">
+              <div class="skill-name">JavaScript</div>
+              <div class="skill-level">90%</div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-level="90"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <div class="skill-name">Python</div>
+              <div class="skill-level">85%</div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-level="85"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <div class="skill-name">Java</div>
+              <div class="skill-level">82%</div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-level="82"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <div class="skill-name">SQL</div>
+              <div class="skill-level">88%</div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-level="88"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Cybersecurity</h3>
+          <div class="skill-item">
+            <div class="skill-header">
+              <div class="skill-name">Linux / Bash</div>
+              <div class="skill-level">84%</div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-level="84"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <div class="skill-name">Network / Protocols</div>
+              <div class="skill-level">72%</div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-level="72"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Data</h3>
+          <div class="skill-item">
+            <div class="skill-header">
+              <div class="skill-name">Data Modeling / SQL Optimization</div>
+              <div class="skill-level">80%</div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-level="80"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Certifications (Selected)</h3>
+          <div class="Box p-3 mb-3">
+            <strong>TryHackMe Advent of Cyber 2024</strong> — Daily security
+            challenges
+          </div>
+          <div class="Box p-3 mb-3">
+            <strong>HackerRank SQL Advanced / Intermediate / Basic</strong> —
+            Query optimization & relational design
+          </div>
+          <div class="Box p-3 mb-3">
+            <strong>HackerRank Python & Java Basic</strong> — Language
+            fundamentals validation
+          </div>
+          <div class="Box p-3 mb-3">
+            <strong>Cisco Networking Basics</strong> — Foundational networking &
+            security
+          </div>
+          <!-- Azure Fundamentals certification mention removed per request -->
+          <!-- Tableau/Power BI certification mention removed per request -->
+        </div>
+
+        <a href="index.html" class="btn btn-outline">← Back</a>
+      </div>
+    </main>
+
+    <button
+      class="back-to-top"
+      id="back-to-top"
+      aria-label="Back to top"
+      aria-hidden="true"
+    >
+      <svg class="octicon" width="16" height="16" viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M8 3.293l3.146 3.147a.5.5 0 00.708-.708l-4-4a.5.5 0 00-.708 0l-4 4a.5.5 0 10.708.708L8 3.293zm0 10l3.146-3.147a.5.5 0 01.708.708l-4 4a.5.5 0 01-.708 0l-4-4a.5.5 0 11.708-.708L8 13.293z"
+        ></path>
+      </svg>
+    </button>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

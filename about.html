@@ -1,0 +1,418 @@
+<!--
+Copyright (c) 2025, Steven Tse
+All rights reserved.
+
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="About Steven Tse - Cybersecurity-focused developer, CTF competitor, data practitioner"
+    />
+    <meta
+      name="keywords"
+      content="Steven Tse, Cybersecurity, CTF, Java, Python, SQL, Hong Kong Polytechnic University"
+    />
+    <title>About | Steven Tse</title>
+    <link
+      href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Header -->
+    <header class="Header" id="main-header">
+      <div class="Header-item">
+        <a href="index.html" class="Header-link f4 d-flex flex-items-center">
+          <span class="text-bold">Steven Tse</span>
+        </a>
+      </div>
+      <div class="Header-item Header-item--full">
+        <nav class="d-none d-lg-flex">
+          <a href="index.html" class="Header-link mr-3">Home</a>
+          <a
+            href="about.html"
+            class="Header-link mr-3 active"
+            aria-current="page"
+            >About</a
+          >
+          <a href="portfolio.html" class="Header-link mr-3">Portfolio</a>
+          <a href="skills.html" class="Header-link mr-3">Skills</a>
+          <a href="experience.html" class="Header-link mr-3">Experience</a>
+          <a href="blog.html" class="Header-link mr-3">Blog</a>
+          <a href="contact.html" class="Header-link">Contact</a>
+        </nav>
+        <button
+          class="btn d-lg-none"
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="Header-item">
+        <button
+          class="btn"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <a id="main-content" tabindex="-1"></a>
+    <div
+      class="mobile-nav"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Primary navigation"
+      aria-hidden="true"
+    >
+      <nav class="menu">
+        <a href="index.html" class="menu-item">Home</a>
+        <a href="about.html" class="menu-item active">About</a>
+        <a href="portfolio.html" class="menu-item">Portfolio</a>
+        <a href="skills.html" class="menu-item">Skills</a>
+        <a href="experience.html" class="menu-item">Experience</a>
+        <a href="blog.html" class="menu-item">Blog</a>
+        <a href="contact.html" class="menu-item">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="py-6">
+      <div class="container-lg p-responsive">
+        <!-- Page Header -->
+        <div class="text-center mb-6">
+          <h1 class="h1-mktg mb-3">About Steven Tse</h1>
+          <p class="f3-light text-gray">
+            Cybersecurity-focused software developer, CTF competitor & data
+            practitioner
+          </p>
+        </div>
+
+        <!-- Bio Section -->
+        <div class="d-flex flex-column flex-lg-row mb-6">
+          <div class="col-12 col-lg-4 mb-4 mb-lg-0 text-center">
+            <div class="profile-image-placeholder mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="250"
+                height="250"
+                viewBox="0 0 250 250"
+              >
+                <rect width="250" height="250" fill="#e1e4e8" rx="125" />
+                <text
+                  x="50%"
+                  y="50%"
+                  text-anchor="middle"
+                  dy=".3em"
+                  fill="#586069"
+                  font-size="60"
+                >
+                  ST
+                </text>
+              </svg>
+            </div>
+            <a
+              href="assets/Steven-Tse-Resume.pdf"
+              class="btn btn-primary btn-block mb-2"
+              download
+            >
+              <svg
+                class="octicon mr-2"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+                ></path>
+              </svg>
+              Download Resume
+            </a>
+          </div>
+          <div class="col-12 col-lg-8">
+            <div class="Box p-4">
+              <h2 class="h3 mb-3">Hello, I'm Steven</h2>
+              <p class="f4 mb-3">
+                I'm a Computer Science student at PolyU with a background in
+                cybersecurity and competitive CTFs. I am focusing my work toward
+                DevOps and infrastructure: system administration, network
+                engineering fundamentals, incident response, and cloud
+                operations.
+              </p>
+              <p class="f4 mb-3">
+                My practical skills include Linux system administration,
+                scripting with Python and shell, Java for software work, and
+                familiarity with SQL and networking concepts. I apply a
+                security-minded approach to automation and reliable
+                infrastructure rather than building large-scale cloud systems
+                from scratch.
+              </p>
+              <p class="f4 mb-3">
+                CTF competitions have strengthened my problem-solving under
+                pressure, particularly in forensics and web/security challenges.
+                Professional roles at Varmeego (Junior Programmer) and Code
+                Free Soft (Software Tester) helped build production-quality
+                development and QA experience.
+              </p>
+              <p class="f4 mb-3">
+                I pursue continuous learning through certifications (Advent of
+                Cyber, HackerRank) and hands-on labs for incident handling,
+                automation, and cloud fundamentals. I'm actively developing
+                skills in infrastructure automation and operational tooling.
+              </p>
+              <p class="f4">
+                Beyond technical work, I enjoy mentoring peers and translating
+                telemetry into actionable insights. I'm seeking early-career
+                roles in system administration, network engineering,
+                incident response, or cloud operations where I can grow
+                practical operational skills.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Summary -->
+        <div class="mb-6">
+          <h2 class="h2 mb-4">Snapshot Metrics</h2>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="Box p-4 h-100">
+                <h3 class="h4 mb-2 text-center">2025</h3>
+                <p class="text-gray text-center mb-0">Active CTF Season</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="Box p-4 h-100">
+                <h3 class="h4 mb-2 text-center">10+</h3>
+                <p class="text-gray text-center mb-0">Security Competitions</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="Box p-4 h-100">
+                <h3 class="h4 mb-2 text-center">12+</h3>
+                <p class="text-gray text-center mb-0">Certifications</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+              <div class="Box p-4 h-100">
+                <h3 class="h4 mb-2 text-center">4+</h3>
+                <p class="text-gray text-center mb-0">Award Placements</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Career Highlights -->
+        <div class="mb-6">
+          <h2 class="h2 mb-4">Highlights & Awards</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="Box p-4">
+                <span class="Label Label--success mr-2">2025</span>
+                <h3 class="h4 mb-2">PolyU x NuttyShell Cybersecurity CTF</h3>
+                <p class="text-gray mb-0">
+                  Organized; forensics challenges; collaborative security
+                  knowledge sharing.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="Box p-4">
+                <span class="Label Label--attention mr-2">2024</span>
+                <h3 class="h4 mb-2">Advent of Cyber 2024 Certificate</h3>
+                <p class="text-gray mb-0">
+                  Completed global daily challenges (pentesting, log analysis).
+                  Strengthened incident response mindset.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="Box p-4">
+                <span class="Label Label--info mr-2">2024</span>
+                <h3 class="h4 mb-2">CTF</h3>
+                <p class="text-gray mb-0">
+                  NuttyShell Team: Regional & international cybersecurity
+                  competitions; forensics, networking, reverse engineering,
+                  OSINT.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="Box p-4">
+                <span class="Label Label--primary mr-2">2023</span>
+                <h3 class="h4 mb-2">HKSAR Government Scholarship</h3>
+                <p class="text-gray mb-0">
+                  Outstanding Performance in academic excellence & leadership
+                  potential.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Values -->
+        <div class="mb-6">
+          <h2 class="h2 mb-4 text-center">Core Values & Approach</h2>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 mb-4">
+              <div class="Box p-4 h-100">
+                <h3 class="h4 mb-3">🎯 User-Centric Design</h3>
+                <p class="text-gray mb-0">
+                  I believe in building applications that solve real problems.
+                  Every feature should serve a clear purpose and enhance the
+                  user experience. I prioritize understanding user needs through
+                  research and feedback before implementation.
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+              <div class="Box p-4 h-100">
+                <h3 class="h4 mb-3">🚀 Performance First</h3>
+                <p class="text-gray mb-0">
+                  Performance isn't an afterthought—it's a feature. I optimize
+                  for speed at every level, from database queries to frontend
+                  rendering. Fast applications lead to better user engagement
+                  and improved business outcomes.
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+              <div class="Box p-4 h-100">
+                <h3 class="h4 mb-3">📚 Continuous Learning</h3>
+                <p class="text-gray mb-0">
+                  Technology evolves rapidly, and so do I. I dedicate time each
+                  week to learning new technologies, reading technical blogs,
+                  and contributing to open-source projects. Staying current is
+                  essential to delivering modern solutions.
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+              <div class="Box p-4 h-100">
+                <h3 class="h4 mb-3">🤝 Collaboration</h3>
+                <p class="text-gray mb-0">
+                  Great software is built by great teams. I value clear
+                  communication, code reviews, and knowledge sharing. I believe
+                  in writing clean, well-documented code that others can
+                  understand and maintain.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center py-6 bg-gray-light rounded-2">
+          <h2 class="h2 mb-3">Open to Cybersecurity & Data Projects</h2>
+          <p class="f3 text-gray mb-4">
+            Looking for secure backend development, CTF collaboration, or
+            data-driven security analytics? Let's connect.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center">
+            <a href="portfolio.html" class="btn btn-primary btn-large mr-3 mb-3"
+              >View My Work</a
+            >
+            <a href="contact.html" class="btn btn-outline btn-large mb-3"
+              >Get in Touch</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-gray-light">
+      <div class="container-lg p-responsive">
+        <div class="d-flex flex-wrap">
+          <div class="col-12 col-md-4 mb-4">
+            <h3 class="h4 mb-3">Steven Tse</h3>
+            <p class="text-gray">
+              Cybersecurity-focused developer & CTF competitor. Building secure,
+              reliable software and data insights.
+            </p>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <h4 class="h5 mb-3">Quick Links</h4>
+            <nav class="d-flex flex-column">
+              <a href="about.html" class="Link--muted mb-2">About</a>
+              <a href="portfolio.html" class="Link--muted mb-2">Portfolio</a>
+              <a href="blog.html" class="Link--muted mb-2">Blog</a>
+              <a href="contact.html" class="Link--muted">Contact</a>
+            </nav>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <h4 class="h5 mb-3">Connect</h4>
+            <div class="d-flex">
+              <a href="https://github.com/754cac" class="Link--muted mr-3"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/steven-tse-52078121b/"
+                class="Link--muted mr-3"
+                >LinkedIn</a
+              >
+              <!-- Twitter link removed -->
+            </div>
+          </div>
+        </div>
+        <div class="border-top pt-3 mt-3 text-center text-gray">
+          <p>&copy; 2025 Steven Tse. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      class="back-to-top"
+      id="back-to-top"
+      aria-label="Back to top"
+      aria-hidden="true"
+    >
+      ↑
+    </button>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

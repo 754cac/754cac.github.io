@@ -1,0 +1,226 @@
+<!--
+Copyright (c) 2025, Steven Tse
+All rights reserved.
+
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio — Featured projects and case studies"
+    />
+    <title>Portfolio — Steven Tse</title>
+    <link
+      href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="Header" id="main-header">
+      <div class="Header-item">
+        <a
+          href="index.html"
+          class="Header-link f4 d-flex flex-items-center"
+          aria-label="Steven Tse home"
+          ><span class="text-bold">Steven Tse</span></a
+        >
+      </div>
+      <div class="Header-item Header-item--full">
+        <nav class="d-none d-lg-flex" id="desktop-nav">
+          <a href="index.html" class="Header-link mr-3">Home</a>
+          <a href="about.html" class="Header-link mr-3">About</a>
+          <a href="portfolio.html" class="Header-link mr-3 active">Portfolio</a>
+          <a href="skills.html" class="Header-link mr-3">Skills</a>
+          <a href="experience.html" class="Header-link mr-3">Experience</a>
+          <a href="blog.html" class="Header-link mr-3">Blog</a>
+          <a href="contact.html" class="Header-link">Contact</a>
+        </nav>
+        <button
+          class="btn d-lg-none"
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="Header-item">
+        <button
+          class="btn"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <a id="main-content" tabindex="-1"></a>
+    <div
+      class="mobile-nav"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Primary navigation"
+      aria-hidden="true"
+    >
+      <nav class="menu">
+        <a href="index.html" class="menu-item">Home</a>
+        <a href="about.html" class="menu-item">About</a>
+        <a href="portfolio.html" class="menu-item active">Portfolio</a>
+        <a href="skills.html" class="menu-item">Skills</a>
+        <a href="experience.html" class="menu-item">Experience</a>
+        <a href="blog.html" class="menu-item">Blog</a>
+        <a href="contact.html" class="menu-item">Contact</a>
+      </nav>
+    </div>
+
+    <main class="py-6">
+      <div class="container-lg p-responsive">
+        <h1 class="h2-mktg text-center mb-4">
+          Projects, CTF & Professional Contributions
+        </h1>
+        <p class="text-gray text-center mb-5">
+          Selected security challenges, development work and learning
+          initiatives.
+        </p>
+
+        <div class="filter-buttons mb-4">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="devops">DevOps</button>
+          <button class="filter-btn" data-filter="data">Data</button>
+        </div>
+
+        <div class="d-flex flex-wrap">
+          <div
+            class="col-12 col-md-6 col-lg-4 mb-4 project-card"
+            data-category="ctf"
+          >
+            <div class="Box">
+              <div class="project-image-placeholder">
+                <div class="placeholder-content">Screenshot</div>
+              </div>
+              <div class="Box-body p-3">
+                <h3 class="h4 mb-1">PolyU x NuttyShell CTF 2025</h3>
+                <p class="text-gray">
+                  University cybersecurity competition: exploit scripting,
+                  cryptography & forensics.
+                </p>
+                <div class="mb-2">
+                  <span class="Label Label--success mr-1">Python</span>
+                  <span class="Label Label--success mr-1">Docker</span>
+                  <span class="Label Label--success">Security</span>
+                </div>
+                <a href="project-1.html" class="btn btn-sm">CTF Overview →</a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 mb-4 project-card"
+            data-category="learning"
+          >
+            <div class="Box">
+              <div class="project-image-placeholder">
+                <div class="placeholder-content">Screenshot</div>
+              </div>
+              <div class="Box-body p-3">
+                <h3 class="h4 mb-1">Advent of Cyber 2024</h3>
+                <p class="text-gray">
+                  TryHackMe daily challenges: pentesting, log analysis & DFIR
+                  labs.
+                </p>
+                <div class="mb-2">
+                  <span class="Label Label--attention mr-1">TryHackMe</span>
+                  <span class="Label Label--attention">CTF</span>
+                </div>
+                <a href="project-2.html" class="btn btn-sm"
+                  >Challenge Notes →</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 mb-4 project-card"
+            data-category="professional"
+          >
+            <div class="Box">
+              <div class="project-image-placeholder">
+                <div class="placeholder-content">Screenshot</div>
+              </div>
+              <div class="Box-body p-3">
+                <h3 class="h4 mb-1">Enterprise QA & Dev Work</h3>
+                <p class="text-gray">
+                  Professional contributions: Varmeego (Java/SQL) & Code Free
+                  Soft (Testing workflows).
+                </p>
+                <div class="mb-2">
+                  <span class="Label Label--info mr-1">Java</span>
+                  <span class="Label Label--info mr-1">SQL</span>
+                  <span class="Label Label--info">Testing</span>
+                </div>
+                <a href="project-3.html" class="btn btn-sm">Role Details →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer py-5 bg-gray-light">
+      <div class="container-lg p-responsive text-center text-gray">
+        &copy; 2025 Steven Tse. All rights reserved.
+      </div>
+    </footer>
+
+    <button
+      class="back-to-top"
+      id="back-to-top"
+      aria-label="Back to top"
+      aria-hidden="true"
+    >
+      <svg class="octicon" width="16" height="16" viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M8 3.293l3.146 3.147a.5.5 0 00.708-.708l-4-4a.5.5 0 00-.708 0l-4 4a.5.5 0 10.708.708L8 3.293zm0 10l3.146-3.147a.5.5 0 01.708.708l-4 4a.5.5 0 01-.708 0l-4-4a.5.5 0 11.708-.708L8 13.293z"
+        ></path>
+      </svg>
+    </button>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,441 @@
+<!--
+Copyright (c) 2025, Steven Tse
+All rights reserved.
+
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Steven Tse - Cybersecurity-focused Java/Python Developer, CTF competitor, data practitioner"
+    />
+    <meta
+      name="keywords"
+      content="Steven Tse, Java Developer, Python, Cybersecurity, CTF, Data Analyst, SQL, Linux, Hong Kong"
+    />
+    <meta
+      property="og:title"
+      content="Steven Tse - Cybersecurity & Software Engineering Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio showcasing cybersecurity competitions, CTF writeups, software engineering and data analytics projects"
+    />
+    <meta property="og:type" content="website" />
+    <title>Steven Tse | Cybersecurity & Software Engineering Portfolio</title>
+
+    <!-- Primer CSS -->
+    <link
+      href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Header Navigation -->
+    <header class="Header" id="main-header">
+      <div class="Header-item">
+        <a
+          href="index.html"
+          class="Header-link f4 d-flex flex-items-center"
+          aria-label="Steven Tse home"
+        >
+          <span class="text-bold">Steven Tse</span>
+        </a>
+      </div>
+      <div class="Header-item Header-item--full">
+        <nav class="d-none d-lg-flex" id="desktop-nav">
+          <a href="index.html" class="Header-link mr-3 active">Home</a>
+          <a href="about.html" class="Header-link mr-3">About</a>
+          <a href="portfolio.html" class="Header-link mr-3">Portfolio</a>
+          <a href="skills.html" class="Header-link mr-3">Skills</a>
+          <a href="experience.html" class="Header-link mr-3">Experience</a>
+          <a href="blog.html" class="Header-link mr-3">Blog</a>
+          <a href="contact.html" class="Header-link">Contact</a>
+        </nav>
+        <button
+          class="btn d-lg-none"
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="Header-item">
+        <button
+          class="btn"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <a id="main-content" tabindex="-1"></a>
+    <div
+      class="mobile-nav"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Primary navigation"
+      aria-hidden="true"
+    >
+      <nav class="menu">
+        <a href="index.html" class="menu-item active">Home</a>
+        <a href="about.html" class="menu-item">About</a>
+        <a href="portfolio.html" class="menu-item">Portfolio</a>
+        <a href="skills.html" class="menu-item">Skills</a>
+        <a href="experience.html" class="menu-item">Experience</a>
+        <a href="blog.html" class="menu-item">Blog</a>
+        <a href="contact.html" class="menu-item">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-6">
+      <div class="container-lg p-responsive">
+        <div class="d-flex flex-column flex-lg-row flex-items-center">
+          <div class="col-12 col-lg-7 mb-5 mb-lg-0">
+            <h1 class="h1-mktg mb-3">
+              Cybersecurity-Focused Developer & CTF Competitor
+            </h1>
+            <p class="f3-light text-gray mb-4">
+              I build secure, data-driven systems and compete in Capture The
+              Flag (CTF) cybersecurity events. Passionate about Java/Python
+              engineering, incident analysis, and transforming data into
+              actionable insights.
+            </p>
+            <div class="d-flex flex-wrap">
+              <a
+                href="portfolio.html"
+                class="btn btn-primary btn-large mr-3 mb-3"
+                >Explore Projects</a
+              >
+              <a href="contact.html" class="btn btn-outline btn-large mb-3"
+                >Reach Out</a
+              >
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 text-center">
+            <div class="profile-image-placeholder">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="200"
+                height="200"
+                viewBox="0 0 200 200"
+              >
+                <rect width="200" height="200" fill="#e1e4e8" rx="100" />
+                <text
+                  x="50%"
+                  y="50%"
+                  text-anchor="middle"
+                  dy=".3em"
+                  fill="#586069"
+                  font-size="48"
+                >
+                  ST
+                </text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Skills Section -->
+    <section class="py-6 bg-gray-light">
+      <div class="container-lg p-responsive">
+        <h2 class="h2-mktg text-center mb-5">Core Competencies</h2>
+        <div class="d-flex flex-wrap">
+          <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="Box p-4 text-center">
+              <div class="mb-3">
+                <svg
+                  class="octicon"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 16 16"
+                  fill="#0969da"
+                >
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="h4 mb-2">Secure Software Engineering</h3>
+              <p class="text-gray">Java, Python, JavaScript, SQL</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="Box p-4 text-center">
+              <div class="mb-3">
+                <svg
+                  class="octicon"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 16 16"
+                  fill="#0969da"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="h4 mb-2">Data</h3>
+              <p class="text-gray">Data analytics</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="Box p-4 text-center">
+              <div class="mb-3">
+                <svg
+                  class="octicon"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 16 16"
+                  fill="#0969da"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.75.75v3.19l-3.72-3.72a.75.75 0 00-.53-.22h-.5a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2l2.47 2.47a.75.75 0 001.28-.53V10h3.5A1.75 1.75 0 0011 8.25v-5.5A1.75 1.75 0 009.25 1h-8.5z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="h4 mb-2">Cybersecurity & CTF</h3>
+              <p class="text-gray">Vuln analysis, Forensics, TryHackMe</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="Box p-4 text-center">
+              <div class="mb-3">
+                <svg
+                  class="octicon"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 16 16"
+                  fill="#0969da"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zm.5 4.75a.75.75 0 00-1.5 0v3.5a.75.75 0 00.471.696l2.5 1a.75.75 0 00.557-1.392L8.5 7.742V4.75z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="h4 mb-2">Quality & Testing</h3>
+              <p class="text-gray">Test design, QA workflows, Reliability</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Preview -->
+    <section class="py-6">
+      <div class="container-lg p-responsive">
+        <h2 class="h2-mktg text-center mb-5">Featured Projects</h2>
+        <div class="d-flex flex-wrap">
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="Box">
+              <div class="project-image-placeholder">
+                <div class="placeholder-content">Project Screenshot</div>
+              </div>
+              <div class="Box-body">
+                <h3 class="h4 mb-2">PolyU x NuttyShell CTF 2025</h3>
+                <p class="text-gray mb-3">
+                  Organized & competed in large-scale university cybersecurity
+                  CTF; scripting & exploit development.
+                </p>
+                <div class="mb-3">
+                  <span class="Label Label--info mr-1">Python</span>
+                  <span class="Label Label--info mr-1">Docker</span>
+                  <span class="Label Label--info">Security</span>
+                </div>
+                <a href="project-1.html" class="btn btn-sm">View Details →</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="Box">
+              <div class="project-image-placeholder">
+                <div class="placeholder-content">Project Screenshot</div>
+              </div>
+              <div class="Box-body">
+                <h3 class="h4 mb-2">Advent of Cyber 2024</h3>
+                <p class="text-gray mb-3">
+                  Completed daily security challenges (forensics, pentesting) on
+                  TryHackMe.
+                </p>
+                <div class="mb-3">
+                  <span class="Label Label--success mr-1">TryHackMe</span>
+                  <span class="Label Label--success mr-1">Linux</span>
+                  <span class="Label Label--success">CTF</span>
+                </div>
+                <a href="project-2.html" class="btn btn-sm">View Details →</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="Box">
+              <div class="project-image-placeholder">
+                <div class="placeholder-content">Project Screenshot</div>
+              </div>
+              <div class="Box-body">
+                <h3 class="h4 mb-2">Enterprise QA & Development</h3>
+                <p class="text-gray mb-3">
+                  Professional contributions: Varmeego (Java apps), Code Free
+                  Soft (software testing).
+                </p>
+                <div class="mb-3">
+                  <span class="Label Label--attention mr-1">Java</span>
+                  <span class="Label Label--attention mr-1">SQL</span>
+                  <span class="Label Label--attention">Testing</span>
+                </div>
+                <a href="project-3.html" class="btn btn-sm">View Details →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="portfolio.html" class="btn btn-outline btn-large"
+            >View All Projects</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-gray-light">
+      <div class="container-lg p-responsive">
+        <div class="d-flex flex-wrap">
+          <div class="col-12 col-md-4 mb-4">
+            <h3 class="h4 mb-3">Steven Tse</h3>
+            <p class="text-gray">
+              Cybersecurity-focused developer, CTF competitor & data
+              practitioner. Building secure, reliable software.
+            </p>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <h4 class="h5 mb-3">Quick Links</h4>
+            <nav class="d-flex flex-column">
+              <a href="about.html" class="Link--muted mb-2">About</a>
+              <a href="portfolio.html" class="Link--muted mb-2">Portfolio</a>
+              <a href="blog.html" class="Link--muted mb-2">Blog</a>
+              <a href="contact.html" class="Link--muted">Contact</a>
+            </nav>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <h4 class="h5 mb-3">Connect</h4>
+            <div class="d-flex">
+              <a
+                href="https://github.com/754cac"
+                class="Link--muted mr-3"
+                aria-label="GitHub"
+              >
+                <svg class="octicon" width="20" height="20" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/steven-tse-52078121b/"
+                class="Link--muted mr-3"
+                aria-label="LinkedIn"
+              >
+                <svg class="octicon" width="20" height="20" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
+                  />
+                </svg>
+              </a>
+              <!-- Twitter link removed -->
+            </div>
+          </div>
+        </div>
+        <div class="border-top pt-3 mt-3 text-center text-gray">
+          <p>
+            &copy; 2025 Steven Tse. All rights reserved. |
+            <a href="#" class="Link--muted">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      <svg class="octicon" width="16" height="16" viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M8 3.293l3.146 3.147a.5.5 0 00.708-.708l-4-4a.5.5 0 00-.708 0l-4 4a.5.5 0 10.708.708L8 3.293zm0 10l3.146-3.147a.5.5 0 01.708.708l-4 4a.5.5 0 01-.708 0l-4-4a.5.5 0 11.708-.708L8 13.293z"
+        ></path>
+      </svg>
+    </button>
+
+    <!-- JavaScript -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Steven Tse",
+        "jobTitle": "Cybersecurity-Focused Developer",
+        "url": "https://your-domain.example/",
+        "sameAs": [
+          "https://github.com/754cac",
+          "https://www.linkedin.com/in/steven-tse-52078121b/"
+        ],
+        "knowsAbout": [
+          "Cybersecurity",
+          "CTF",
+          "Java",
+          "Python",
+          "SQL",
+          "Data Analysis"
+        ],
+        "alumniOf": "The Hong Kong Polytechnic University"
+      }
+    </script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
