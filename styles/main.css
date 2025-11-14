@@ -247,6 +247,11 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
+/* Add horizontal spacing for project cards (10px left/right) */
+.Box.fade-in {
+  margin: 0 10px;
+}
+
 /* Footer */
 .footer {
   margin-top: 60px;
@@ -741,6 +746,165 @@ textarea.form-control {
 
 .dark-theme .Link--muted:hover {
   color: #58a6ff !important;
+}
+
+/* ============================================
+   Study Notes Styles (for blog study pages)
+   ============================================ */
+.notes-section {
+  background: #f9fafe;
+  border: 2px solid #e1e4e8;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(9,105,218,0.08);
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notes-section p,
+.notes-section li {
+  font-size: 1.08rem;
+  color: #24292f;
+  line-height: 1.75;
+  margin-bottom: 1em;
+}
+.notes-section h2, .notes-section h3 {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: #0969da;
+  font-weight: 700;
+  margin-top: 1.6em;
+  margin-bottom: 0.8em;
+}
+
+.notes-highlight {
+  background: #d1edf8;
+  border-left: 4px solid #1f6feb;
+  padding: 0.6em 1em;
+  margin: 1em 0;
+  font-weight: 600;
+  color: #1f2328;
+  border-radius: 4px;
+}
+
+.notes-code {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 0.98em;
+  color: #06397a;
+  overflow-x: auto;
+}
+.notes-quote {
+  border-left: 4px solid #8b949e;
+  background: #eef2f6;
+  font-style: italic;
+  padding: 0.75em 1em;
+  margin: 1em 0;
+  color: #57606a;
+}
+
+.notes-section ul {
+  list-style: disc inside;
+  margin: 1em 0 1em 1em;
+}
+.notes-section ol {
+  list-style: decimal inside;
+  margin: 1em 0 1em 1em;
+}
+
+/* Improved table rendering for study notes */
+.notes-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  table-layout: auto;
+}
+.notes-section th,
+.notes-section td {
+  border: 1px solid #d0d7de;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.98rem;
+}
+.notes-section thead th {
+  background: #f1f8ff;
+  color: #032b56;
+  font-weight: 700;
+}
+.notes-section tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+.notes-section tbody tr:nth-child(even) {
+  background: #fbfdff;
+}
+.notes-section caption {
+  text-align: left;
+  font-size: 0.95rem;
+  color: #57606a;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 650px) {
+  .notes-section table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Keep tables readable in dark theme inside blog namespace */
+.dark-theme .blog-namespace table {
+  border-color: var(--border-color);
+}
+.dark-theme .blog-namespace th,
+.dark-theme .blog-namespace td {
+  border-color: var(--border-color);
+  color: #121315 !important; /* keep text dark in blog namespace */
+  background: rgba(255,255,255,0.02);
+}
+.dark-theme .blog-namespace thead th {
+  background: rgba(255,255,255,0.03);
+  color: #121315 !important;
+}
+
+/* Blog namespace: when dark theme is active, keep blog text dark
+   Useful for study-note containers that retain a light background */
+.dark-theme .blog-namespace,
+.dark-theme .blog-namespace p,
+.dark-theme .blog-namespace li,
+.dark-theme .blog-namespace h1,
+.dark-theme .blog-namespace h2,
+.dark-theme .blog-namespace h3,
+.dark-theme .blog-namespace h4,
+.dark-theme .blog-namespace h5,
+.dark-theme .blog-namespace h6,
+.dark-theme .blog-namespace td,
+.dark-theme .blog-namespace th,
+.dark-theme .blog-namespace a {
+  color: #121315 !important;
+}
+
+/* Keep code and quotes readable inside the blog namespace */
+.dark-theme .blog-namespace .notes-code {
+  color: #06397a !important;
+}
+.dark-theme .blog-namespace .notes-quote {
+  color: #57606a !important;
+}
+
+@media (max-width: 650px) {
+  .notes-section {
+    padding: 1rem 0.5rem;
+    max-width: 100%;
+  }
 }
 
 /* Print Styles */

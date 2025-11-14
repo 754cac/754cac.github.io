@@ -1,0 +1,517 @@
+<!--
+Copyright (c) 2025, Steven Tse
+All rights reserved.
+
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Security & data protection exam notes: encryption, watermarking, biometrics, pattern recognition." />
+    <title>Security & Data Protection — Exam Notes — Steven Tse</title>
+    <link href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="Header" id="main-header">
+      <div class="Header-item">
+        <a href="../index.html" class="Header-link f4 d-flex flex-items-center" aria-label="Steven Tse home">
+          <span class="text-bold">Steven Tse</span>
+        </a>
+      </div>
+      <div class="Header-item Header-item--full">
+        <nav class="d-none d-lg-flex" id="desktop-nav">
+          <a href="../index.html" class="Header-link mr-3">Home</a>
+          <a href="../about.html" class="Header-link mr-3">About</a>
+          <a href="../portfolio.html" class="Header-link mr-3">Portfolio</a>
+          <a href="../skills.html" class="Header-link mr-3">Skills</a>
+          <a href="../experience.html" class="Header-link mr-3">Experience</a>
+          <a href="../blog.html" class="Header-link mr-3 active">Blog</a>
+          <a href="../contact.html" class="Header-link">Contact</a>
+        </nav>
+        <button class="btn d-lg-none" id="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg class="octicon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path></svg>
+        </button>
+      </div>
+      <div class="Header-item">
+        <button class="btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg class="octicon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <a id="main-content" tabindex="-1"></a>
+    <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Primary navigation" aria-hidden="true">
+      <nav class="menu">
+        <a href="../index.html" class="menu-item">Home</a>
+        <a href="../about.html" class="menu-item">About</a>
+        <a href="../portfolio.html" class="menu-item">Portfolio</a>
+        <a href="../skills.html" class="menu-item">Skills</a>
+        <a href="../experience.html" class="menu-item">Experience</a>
+        <a href="../blog.html" class="menu-item active">Blog</a>
+        <a href="../contact.html" class="menu-item">Contact</a>
+      </nav>
+    </div>
+
+    <main class="py-6">
+      <div class="container-lg p-responsive">
+        <div class="notes-section blog-namespace">
+        <h1 class="h1-mktg">Security & Data Protection — Exam Notes</h1>
+        <p class="blog-meta">May 14, 2025</p>
+
+        <section>
+          <h2>1. Data Protection Plan</h2>
+          <h3>Five Key Steps</h3>
+          <ol>
+            <li><strong>Risk Assessment</strong>
+              <ul>
+                <li>Calculate risk priority: <code>Risk = Asset Value × Probability of Loss</code>.</li>
+                <li>List assets, potential losses, and vulnerabilities.</li>
+              </ul>
+            </li>
+            <li><strong>Security Policy</strong> — define roles, acceptable risks, and improvement strategies.</li>
+            <li><strong>Implementation Plan</strong> — deploy firewalls, encryption, and access controls.</li>
+            <li><strong>Security Organization</strong> — train staff and establish a dedicated security team.</li>
+            <li><strong>Security Audit</strong> — regular compliance checks and vulnerability assessments.</li>
+          </ol>
+
+          <h4>Security Considerations</h4>
+          <ul>
+            <li><strong>Factors:</strong> New tech, policies, standards, cost vs. loss, weakest link focus.</li>
+            <li><strong>Trade-offs:</strong>
+              <ul>
+                <li><em>Security vs. Ease of Use</em>: Stronger measures can slow operations (e.g., 2FA delays).</li>
+                <li><em>Security vs. Privacy</em>: Monitoring improves detection but reduces anonymity.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>2. Security Dimensions</h2>
+          <table>
+            <thead>
+              <tr><th>Dimension</th><th>Definition</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Integrity</strong></td><td>Prevents unauthorized data alteration (e.g., hashing).</td></tr>
+              <tr><td><strong>Non-repudiation</strong></td><td>Proves sender identity (e.g., digital signatures).</td></tr>
+              <tr><td><strong>Confidentiality</strong></td><td>Restricts data access (e.g., AES encryption).</td></tr>
+              <tr><td><strong>Availability</strong></td><td>Ensures resources are accessible (e.g., DDoS protection).</td></tr>
+              <tr><td><strong>Privacy</strong></td><td>Ensures data is accessible only to authorized parties.</td></tr>
+              <tr><td><strong>Authenticity</strong></td><td>Ensures the identity of message sender or system user.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>3. Encryption & Cryptography</h2>
+          <h3>Symmetric vs Asymmetric</h3>
+          <table>
+            <thead><tr><th>Feature</th><th>Symmetric</th><th>Asymmetric</th></tr></thead>
+            <tbody>
+              <tr><td>Key Usage</td><td>Single shared key</td><td>Public/private key pair</td></tr>
+              <tr><td>Speed</td><td>Faster (AES)</td><td>Slower (RSA, ECC)</td></tr>
+              <tr><td>Use Case</td><td>Bulk data encryption</td><td>Key exchange, signatures</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Digital Envelope</h4>
+          <ol>
+            <li>Encrypt data with symmetric key (AES).</li>
+            <li>Encrypt that key with recipient's public key (RSA).</li>
+            <li>Send both ciphertexts.</li>
+          </ol>
+
+          <h4>PKI (Public Key Infrastructure)</h4>
+          <ul>
+            <li><strong>CA</strong>: issues certificates.</li>
+            <li><strong>Digital certificate</strong>: binds identity to a public key.</li>
+            <li><strong>RA</strong>: registration authority verifies applicants.</li>
+          </ul>
+
+          <h4>SSL/TLS Handshake (summary)</h4>
+          <ol>
+            <li>ClientHello (algorithms + random).</li>
+            <li>ServerHello (certificate + random).</li>
+            <li>Key exchange (pre-master encrypted).</li>
+            <li>Derive session keys (symmetric).</li>
+            <li>Verify integrity (MACs / AEAD).</li>
+          </ol>
+          <p><img src="../assets/images/image-4.png" alt="SSL Handshake" style="max-width:100%" loading="eager"/></p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>4. Threats & Mitigations</h2>
+          <h4>Backdoor / Adversarial Attacks</h4>
+          <p>Poisoning or input manipulation — defend with data purification and model hardening (e.g., adversarial training, input sanitization).</p>
+
+          <h4>Bot Attacks</h4>
+          <p>Good bots (search) vs bad bots (DDoS, scrapers). Mitigations: CAPTCHA, IP/geo-blocking, Cloud WAF, rate limiting.</p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>5. Legal & Compliance</h2>
+          <ul>
+            <li><strong>Authentication</strong>: digital certificates for provenance.</li>
+            <li><strong>Report integrity</strong>: use SHA-256 hashing to detect tampering.</li>
+            <li><strong>Non-repudiation</strong>: XML signatures and timestamps where needed.</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>6. Advanced Topics</h2>
+          <h3>XML Schema &amp; Non-Repudiation</h3>
+          <div class="notes-code">&lt;Transaction&gt;
+  &lt;Context&gt;Loan Application&lt;/Context&gt;
+  &lt;Content&gt;Amount: $50,000&lt;/Content&gt;
+  &lt;Signature&gt;Digital_Signature&lt;/Signature&gt;
+&lt;/Transaction&gt;
+          </div>
+          <p>W3C Reference: <a href="http://www.w3.org/1999/05/06-xmlschema-1" target="_blank" rel="noopener">XML Schema</a></p>
+
+          <h3>Public Key Cryptography Workflow</h3>
+          <ol>
+            <li>Encrypt plaintext with recipient’s <strong>public key</strong>.</li>
+            <li>Transmit ciphertext.</li>
+            <li>Decrypt using recipient’s <strong>private key</strong>.</li>
+          </ol>
+          <p><img src="../assets/images/image-2.png" alt="Public Key Showcase" style="max-width:100%" loading="eager"/></p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Digital Watermarking (techniques focus)</h2>
+          <h3>Definition & Purpose</h3>
+          <p>A digital watermark embeds an identifier into a carrier (image/audio/video) for authentication, copyright protection, or tracking.</p>
+
+          <h3>Key Properties</h3>
+          <ul>
+            <li><strong>Imperceptibility</strong> — invisible to users</li>
+            <li><strong>Robustness</strong> — survives compression/attacks</li>
+            <li><strong>Fragile</strong> — useful for tamper detection</li>
+            <li><strong>Capacity</strong> and <strong>Speed</strong></li>
+          </ul>
+
+          <h3>Techniques — Spatial Domain</h3>
+          <h4>LSB Substitution</h4>
+          <p>Replace least-significant bits of pixels with watermark bits. Simple and fast but fragile (lossy compression destroys it).</p>
+
+          <h4>Patchwork</h4>
+          <p>Statistically alter random patch brightness pairs; more robust to simple noise but weak to geometric transforms.</p>
+
+          <h3>Techniques — Frequency Domain</h3>
+          <h4>DCT-Based</h4>
+          <p>Divide image into 8×8 blocks, embed in mid-frequency DCT coefficients — robust to JPEG compression.</p>
+
+          <h4>DWT-Based</h4>
+          <p>Decompose image into sub-bands (LL, LH, HL, HH); embed in LL for robustness or HH for invisibility.</p>
+
+          <h4>Spread Spectrum</h4>
+          <p>Embed pseudo-random noise across coefficients — very robust but more complex.</p>
+
+          <h3>Attacks & Countermeasures</h3>
+          <ul>
+            <li>Collusion: average copies — use robust frequency-domain methods.</li>
+            <li>Lossy compression: embed in mid-frequency DCT coefficients.</li>
+            <li>Geometric attacks: use DWT or registration markers.</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Pattern Recognition for Biometrics — Techniques</h2>
+          <h3>Pipeline</h3>
+          <ol>
+            <li>Segmentation — isolate the region of interest (e.g., iris, fingerprint).</li>
+            <li>Feature extraction — reduce raw data to discriminative descriptors.</li>
+            <li>Classification / matching — compare templates and decide.</li>
+          </ol>
+
+          <h3>Common Techniques (short)</h3>
+          <ul>
+            <li><strong>k-NN</strong>: distance-based, simple; good for small-scale template matching.</li>
+            <li><strong>K-Means</strong>: unsupervised clustering for grouping similar samples.</li>
+            <li><strong>Gabor filters</strong>: texture extraction (useful for iris, fingerprint enhancement).</li>
+            <li><strong>Hamming distance</strong>: common for binary codes (e.g., iris codes).</li>
+          </ul>
+
+          <h3>Bayesian Decision Theory (exam keywords)</h3>
+          <p>Posterior: <code>P(ω_i | x) = p(x | ω_i) P(ω_i) / p(x)</code>. Decision rule: choose class with highest posterior. Useful for threshold tuning (FAR / FRR trade-off).</p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Practical Notes & Examples (quick)</h2>
+          <ul>
+            <li><strong>Fingerprint</strong>: use Gabor filters → binarize → thin → extract minutiae (endings, bifurcations).</li>
+            <li><strong>Iris</strong>: normalize (rubber-sheet), apply Gabor filters, quantize phase → produce iris code → match with Hamming distance.</li>
+            <li><strong>Watermarking</strong>: for JPEG images prefer DCT mid-frequency embedding.</li>
+            <li><strong>Evaluation</strong>: ROC, FAR/FMR, FRR/FNMR, decidability index d'.</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Biometric Systems</h2>
+          <h3>Definition</h3>
+          <p>Automated identification using <strong>physiological</strong> (fingerprint, iris) or <strong>behavioral</strong> (gait, voice) traits.</p>
+          <h3>Desired Properties</h3>
+          <ul>
+            <li><strong>Universality</strong>, <strong>Distinctiveness</strong>, <strong>Permanence</strong>, <strong>Collectability</strong></li>
+            <li><strong>Performance</strong>, <strong>Acceptability</strong>, <strong>Robustness to Circumvention</strong></li>
+          </ul>
+          <h3>System Components</h3>
+          <ol>
+            <li>Acquisition</li>
+            <li>Feature Extraction</li>
+            <li>Matching</li>
+            <li>Decision</li>
+          </ol>
+          <h3>Operating Modes</h3>
+          <table>
+            <thead><tr><th>Mode</th><th>Description</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td>Verification (1:1)</td><td>Claimed ID + biometric</td><td>Phone unlock</td></tr>
+              <tr><td>Identification (1:N)</td><td>Biometric vs database</td><td>Airport checks</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Errors in Identification</h2>
+          <h3>Confusion Matrix</h3>
+          <table>
+            <thead><tr><th></th><th>Predicted +</th><th>Predicted −</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Actual +</strong></td><td>TP</td><td>FN</td></tr>
+              <tr><td><strong>Actual −</strong></td><td>FP</td><td>TN</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Biometric Modalities Notes</h2>
+          <p><strong>Accuracy ranking</strong>: DNA &gt; Retina &gt; Iris</p>
+
+          <h3>DNA</h3>
+          <ul>
+            <li>Uniqueness: only ~0.1% differs; forensic profiling.</li>
+            <li>Pros: permanent, highly accurate; Cons: privacy, slow, contamination risk.</li>
+          </ul>
+
+          <h3>Ear</h3>
+          <ul>
+            <li>Stable 3D shape; segmentation → matching.</li>
+            <li>Challenges: hair occlusion; may require IR.</li>
+          </ul>
+
+          <h3>Thermogram</h3>
+          <ul>
+            <li>Heat emission patterns; non-invasive.</li>
+            <li>Challenges: sensor cost, environment sensitivity.</li>
+          </ul>
+
+          <h3>Fingerprint</h3>
+          <ul>
+            <li>Ridges/valleys; common and accurate.</li>
+            <li>Challenges: dry fingers, sensor noise, social acceptance.</li>
+          </ul>
+
+          <h3>Gait</h3>
+          <ul>
+            <li>Distance-friendly; behavioral; low security due to variability.</li>
+          </ul>
+
+          <h3>Face</h3>
+          <ul>
+            <li>High acceptance; affected by aging, expression, accessories.</li>
+          </ul>
+
+          <h3>Keystroke</h3>
+          <ul>
+            <li>Typing rhythm; unobtrusive but variable.</li>
+          </ul>
+
+          <h3>Odor</h3>
+          <ul>
+            <li>VOC-based; experimental and environment-sensitive.</li>
+          </ul>
+
+          <h3>Voice</h3>
+          <ul>
+            <li>Convenient; noise-sensitive; lower distinctiveness at scale.</li>
+          </ul>
+
+          <h3>Retinal Scan</h3>
+          <ul>
+            <li>Unique vessel pattern; invasive; low acceptance.</li>
+          </ul>
+
+          <h3>Iris</h3>
+          <ul>
+            <li>Highly distinctive; requires cooperation; NIR illumination.</li>
+          </ul>
+
+          <h3>Hand Geometry, Vein, Signature</h3>
+          <ul>
+            <li>Hand: simple but low distinctiveness.</li>
+            <li>Vein: stable, fast, needs IR.</li>
+            <li>Signature: accepted legally; forgeable.</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Other &amp; Emerging Biometrics</h2>
+          <h3>Physiological (less common)</h3>
+          <p>Otoacoustic emissions, skin spectrum, lips movement, nailbed, knuckle creases, acoustic reflections, skin impedance, hand pressure profile, dental radiograph, bone transmission, bioelectric field, eye movement, finger wrinkles, dynamic grip, corneal topography, 3D finger, EEG.</p>
+
+          <h3>Behavioral Biometrics</h3>
+          <p>Purely behavioral (transactions), motor skills (grip), authorship (programming style), HCI (mouse/keystroke, touch patterns).</p>
+          <p><img src="../assets/images/image-7.png" alt="Behavioral biometrics chart" style="max-width:100%" loading="eager"/></p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Deployment Challenges &amp; Comparison</h2>
+          <ul>
+            <li>Application perspective; privacy and social concerns.</li>
+          </ul>
+          <p><img src="../assets/images/image-8.png" alt="Deployment concerns 1" style="max-width:100%" loading="eager"/></p>
+          <p><img src="../assets/images/image-9.png" alt="Deployment concerns 2" style="max-width:100%" loading="eager"/></p>
+          <p><img src="../assets/images/image-10.png" alt="Comparison chart 1" style="max-width:100%" loading="eager"/></p>
+          <p><img src="../assets/images/image-11.png" alt="Comparison chart 2" style="max-width:100%" loading="eager"/></p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Biometric Data Sensitivity</h2>
+          <h3>Irreversibility</h3>
+          <p>Biometric traits cannot be reset; compromise is permanent.</p>
+          <h3>Identity Theft</h3>
+          <p>Stolen iris/fingerprint may enable impersonation in high-security contexts.</p>
+          <h3>Storage &amp; Protection</h3>
+          <ul>
+            <li>Encrypt templates; strong access control; avoid raw images.</li>
+            <li>Minimize collection; anonymize; clear retention policies.</li>
+          </ul>
+          <h3>Compliance &amp; Ethics</h3>
+          <ul>
+            <li>GDPR/PIPL: consent, cross-border rules, deletion.</li>
+            <li>Risks: surveillance, discrimination; mitigate via transparency &amp; audits.</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Fingerprint — Techniques</h2>
+          <h3>Acquisition</h3>
+          <ul>
+            <li>Optical (FTIR, sheet prism), electro-optical, solid-state (capacitive/thermal/e-field), ultrasound, sweeping.</li>
+            <li>Specs: 500 dpi standard; sensing area; dynamic range.</li>
+          </ul>
+          <h3>Types &amp; Quality</h3>
+          <ul>
+            <li>Rolled, plain, latent; SNR/MTF quality metrics.</li>
+          </ul>
+          <h3>Classification</h3>
+          <ul>
+            <li>Pattern area, core, delta, type lines; classes: whorl, loops, arch.</li>
+          </ul>
+          <h3>Feature Extraction</h3>
+          <div class="notes-code">θ_ij = 90° + 1/2 arctan(2G_xy / (G_xx − G_yy))
+f_xy = 4 / (s1 + s2 + s3 + s4)</div>
+          <h3>Enhancement</h3>
+          <div class="notes-code">g(x,y:θ,f) = exp{−1/2[(x_θ^2/σ_x^2)+(y_θ^2/σ_y^2)]} · cos(2π f x_θ)</div>
+          <h3>Minutiae Extraction</h3>
+          <p>Binarization → thinning → crossing number (termination if cn(p)=1, bifurcation if cn(p)=3).</p>
+          <h3>Matching</h3>
+          <p>Correlation-based vs minutiae-based; relative minutiae representation (r, A_s, A_θ).</p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Iris Recognition — Techniques</h2>
+          <ul>
+            <li>Acquisition: NIR illumination (700–900nm), ≥200 px across iris.</li>
+            <li>Segmentation: pupil and limbic boundary detection.</li>
+            <li>Normalization: rubber-sheet model.</li>
+            <li>Feature extraction: Gabor filters → binary iris code.</li>
+            <li>Matching: Hamming distance; handle non-ideal imaging conditions.</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>Multimodal Biometrics Systems</h2>
+          <h3>Why</h3>
+          <p>Addresses noise, intra-class variation, spoofing, non-universality by combining modalities.</p>
+          <h3>Operational Modes</h3>
+          <ul>
+            <li>Serial, parallel, hierarchical.</li>
+          </ul>
+          <h3>Scenarios</h3>
+          <ul>
+            <li>Multiple sensors/biometrics/units/snapshots/matching algorithms.</li>
+          </ul>
+          <h3>Fusion Levels</h3>
+          <ul>
+            <li><strong>Feature-level</strong>: concatenate/selection (dimensionality issues).</li>
+            <li><strong>Score-level</strong>: sum/max/product/weighted; logistic/SVM.</li>
+            <li><strong>Decision-level</strong>: majority voting, rank fusion, Bayesian fusion.</li>
+          </ul>
+          <h3>Examples</h3>
+          <ul>
+            <li>Palmprint+face (touchless) score fusion → improved FAR/FRR.</li>
+            <li>Palmprint+hand geometry → counters fake hand attacks.</li>
+          </ul>
+        </section>
+
+        <section id="comments">
+          <h3>Notes & Comments</h3>
+          <p>This page is a condensed study guide focused on techniques. For the exam, memorise definitions, typical algorithms, and trade-offs (robustness vs imperceptibility, complexity vs capacity).</p>
+          <script src="https://utteranc.es/client.js" repo="YOUR-USERNAME/YOUR-REPO" issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+        </section>
+
+        </div>
+
+        <a href="../blog.html" class="btn btn-outline">← Back to Blog</a>
+      </div>
+    </main>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top" aria-hidden="true">
+      <svg class="octicon" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3.293l3.146 3.147a.5.5 0 00.708-.708l-4-4a.5.5 0 00-.708 0l-4 4a.5.5 0 10.708.708L8 3.293zm0 10l3.146-3.147a.5.5 0 01.708.708l-4 4a.5.5 0 01-.708 0l-4-4a.5.5 0 11.708-.708L8 13.293z"></path></svg>
+    </button>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>
