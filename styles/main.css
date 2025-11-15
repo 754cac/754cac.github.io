@@ -252,9 +252,16 @@ body {
   margin: 0 10px;
 }
 
+/* Remove horizontal margins for .Box.fade-in inside blog posts
+   so boxed elements align flush with the post container */
+.blog-namespace .Box.fade-in {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* Footer */
 .footer {
-  margin-top: 60px;
+  margin-top: 0;
 }
 
 /* Back to Top Button */
