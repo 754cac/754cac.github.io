@@ -755,6 +755,29 @@ textarea.form-control {
   color: #58a6ff !important;
 }
 
+/* Ensure primary links remain readable in dark mode (sufficient contrast) */
+.dark-theme .Link--primary,
+.dark-theme a.Link--primary {
+  color: #58a6ff !important;
+  text-decoration: underline;
+}
+
+.dark-theme a.Link--primary:hover {
+  color: #79b8ff !important;
+}
+
+/* Ensure primary links are clearly visible in light mode */
+.Link--primary,
+a.Link--primary {
+  color: #0969da;
+  text-decoration: underline;
+}
+
+.Link--primary:hover,
+a.Link--primary:hover {
+  color: #06397a;
+}
+
 /* ============================================
    Study Notes Styles (for blog study pages)
    ============================================ */
