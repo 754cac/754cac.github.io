@@ -254,9 +254,39 @@ body {
 
 /* Remove horizontal margins for .Box.fade-in inside blog posts
    so boxed elements align flush with the post container */
-.blog-namespace .Box.fade-in {
+.blog-post .Box.fade-in {
   margin-left: 0;
   margin-right: 0;
+}
+
+/* Remove horizontal margins for .Box.fade-in on the blog index as well
+   so article cards align flush in the grid */
+.blog-index .Box.fade-in {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Give each article card a small horizontal gutter on the blog index
+   so cards breathe from each other and the container edges */
+.blog-index .d-flex.flex-wrap {
+  gap: 20px; /* horizontal + vertical spacing between cards */
+}
+
+.blog-index .blog-card {
+  box-sizing: border-box; /* keep padding/gap inside column width */
+}
+
+/* Responsive two-column behavior for blog cards */
+.blog-index .blog-card {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .blog-index .blog-card {
+    flex: 0 0 calc(50% - 10px); /* two columns with gap compensation */
+    max-width: calc(50% - 10px);
+  }
 }
 
 /* Footer */
@@ -299,6 +329,28 @@ body {
 
 .dark-theme .back-to-top:hover {
   background-color: #1f6feb;
+}
+
+/* Keep outline-style buttons (e.g. the "← Back" button) a consistent blue
+   in both light and dark themes so text colour doesn't change unexpectedly */
+.btn.btn-outline,
+a.btn.btn-outline {
+  color: #0969da;
+}
+
+.btn.btn-outline:hover,
+a.btn.btn-outline:hover {
+  color: #06397a;
+}
+
+.dark-theme .btn.btn-outline,
+.dark-theme a.btn.btn-outline {
+  color: #0969da !important;
+}
+
+.dark-theme .btn.btn-outline:hover,
+.dark-theme a.btn.btn-outline:hover {
+  color: #06397a !important;
 }
 
 /* Skills Page */
@@ -755,6 +807,12 @@ textarea.form-control {
   color: #58a6ff !important;
 }
 
+/* Ensure Label--primary text remains readable in dark mode */
+.dark-theme .Label.Label--primary,
+.dark-theme .Label--primary {
+  color: #ffffff !important;
+}
+
 /* Ensure primary links remain readable in dark mode (sufficient contrast) */
 .dark-theme .Link--primary,
 .dark-theme a.Link--primary {
@@ -890,43 +948,43 @@ a.Link--primary:hover {
   }
 }
 
-/* Keep tables readable in dark theme inside blog namespace */
-.dark-theme .blog-namespace table {
+/* Keep tables readable in dark theme inside blog posts */
+.dark-theme .blog-post table {
   border-color: var(--border-color);
 }
-.dark-theme .blog-namespace th,
-.dark-theme .blog-namespace td {
+.dark-theme .blog-post th,
+.dark-theme .blog-post td {
   border-color: var(--border-color);
-  color: #121315 !important; /* keep text dark in blog namespace */
+  color: var(--text-primary) !important; /* match site dark-mode text color */
   background: rgba(255,255,255,0.02);
 }
-.dark-theme .blog-namespace thead th {
+.dark-theme .blog-post thead th {
   background: rgba(255,255,255,0.03);
-  color: #121315 !important;
+  color: var(--text-primary) !important;
 }
 
-/* Blog namespace: when dark theme is active, keep blog text dark
+/* Blog posts: when dark theme is active, keep post text using site dark color
    Useful for study-note containers that retain a light background */
-.dark-theme .blog-namespace,
-.dark-theme .blog-namespace p,
-.dark-theme .blog-namespace li,
-.dark-theme .blog-namespace h1,
-.dark-theme .blog-namespace h2,
-.dark-theme .blog-namespace h3,
-.dark-theme .blog-namespace h4,
-.dark-theme .blog-namespace h5,
-.dark-theme .blog-namespace h6,
-.dark-theme .blog-namespace td,
-.dark-theme .blog-namespace th,
-.dark-theme .blog-namespace a {
-  color: #121315 !important;
+.dark-theme .blog-post,
+.dark-theme .blog-post p,
+.dark-theme .blog-post li,
+.dark-theme .blog-post h1,
+.dark-theme .blog-post h2,
+.dark-theme .blog-post h3,
+.dark-theme .blog-post h4,
+.dark-theme .blog-post h5,
+.dark-theme .blog-post h6,
+.dark-theme .blog-post td,
+.dark-theme .blog-post th,
+.dark-theme .blog-post a {
+  color: var(--text-primary) !important;
 }
 
-/* Keep code and quotes readable inside the blog namespace */
-.dark-theme .blog-namespace .notes-code {
+/* Keep code and quotes readable inside the blog post */
+.dark-theme .blog-post .notes-code {
   color: #06397a !important;
 }
-.dark-theme .blog-namespace .notes-quote {
+.dark-theme .blog-post .notes-quote {
   color: #57606a !important;
 }
 
