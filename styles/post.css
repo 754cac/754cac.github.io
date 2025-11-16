@@ -1,0 +1,295 @@
+/* blog/post.css
+   Post-specific styles with cohesive light/dark color scheme.
+   Harmonizes with Primer/GitHub colors used in the main stylesheet.
+*/
+
+/* -------------------------
+   Light mode (default)
+   ------------------------- */
+
+/* Color variables (light mode defaults) */
+:root {
+  --post-bg: #ffffff;
+  --post-surface: #f9fafb; /* page background */
+  --post-heading: #1a318a;
+  --post-text: #24292f;
+  --post-meta: #6b7280;
+  --post-link: #0969da;
+  --inline-code-bg: #f6f8fa;
+  --inline-code-text: #1b1f23;
+  --block-code-bg: linear-gradient(180deg,#f6f8fa 0%,#eaeef2 100%);
+  --block-code-text: #374151;
+  --table-border: #d0d7de;
+  --table-row-even: #fbfdff;
+  --post-box-shadow: 0 2px 12px rgba(9,105,218,0.04);
+  --code-box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+}
+
+/* Page background for light mode */
+body {
+  background: var(--post-surface);
+}
+
+/* Post container */
+.blog-post {
+  --post-max-width: 78ch;
+  max-width: var(--post-max-width);
+  background: var(--post-bg);
+  color: var(--post-text);
+  border-radius: 12px;
+  box-shadow: var(--post-box-shadow);
+  margin: 2rem auto;
+  padding: 2.5rem 1.75rem;
+}
+
+.blog-post h1,
+.blog-post h2,
+.blog-post h1,
+.blog-post h2,
+.blog-post h3 {
+  color: var(--post-heading);
+}
+.blog-post a {
+  color: var(--post-link);
+  text-decoration: underline;
+}
+/* Inline code */
+.blog-post p code,
+.blog-post li code {
+  background: var(--inline-code-bg);
+  color: var(--inline-code-text);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+/* Block code (light) */
+.blog-post pre {
+  background: var(--block-code-bg);
+  color: var(--block-code-text);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  overflow: auto;
+  margin: 1rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  box-shadow: var(--code-box-shadow);
+  border: 1px solid var(--table-border);
+}
+
+.blog-post pre code {
+  display: block;
+  white-space: pre;
+}
+
+.blog-post .code-caption {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--post-meta);
+  margin-bottom: 0.35rem;
+}
+
+.blog-meta {
+  color: var(--post-meta);
+}
+
+/* Make tables and images inside posts responsive */
+.blog-post img,
+.blog-post table {
+  max-width: 100%;
+}
+
+/* -------------------------
+   Dark mode
+   (applies when `<body>` has the `dark-theme` class)
+   ------------------------- */
+
+/* Dark-mode variable overrides (applies when `body.dark-theme` is present) */
+body.dark-theme {
+  --post-bg: #22272e;
+  --post-surface: #161b22;
+  --post-heading: #539bf5;
+  --post-text: #c9d1d9;
+  --post-meta: #8b949e;
+  --post-link: #58a6ff;
+  --inline-code-bg: #23272e;
+  --inline-code-text: #eaeef2;
+  --block-code-bg: linear-gradient(180deg,#23242c 0%,#181a1c 100%);
+  --block-code-text: #d6deeb;
+  --table-border: #30363d;
+  --table-row-even: rgba(255,255,255,0.02);
+  --post-box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  --code-box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Print-friendly tweaks */
+@media print {
+  .blog-post pre { box-shadow: none; color: #111; background: #f6f6f6; }
+}
+
+/* --------------------------------------------------
+   Study Notes / Post-specific containers (moved from main.css)
+   -------------------------------------------------- */
+
+/* Use .notes-section inside posts; scoped so these styles only apply
+   to post pages that include both .blog-post and the notes markup. */
+.blog-post .notes-section {
+  background: var(--post-surface); /* elevated from post surface for clarity */
+  border: 1px solid var(--table-border);
+  border-radius: 10px;
+  padding: 1.75rem 1.25rem;
+  margin-bottom: 1.75rem;
+  box-shadow: var(--post-box-shadow);
+  max-width: 78ch;
+}
+
+.blog-post .notes-section p,
+.blog-post .notes-section li {
+  font-size: 1.05rem;
+  color: var(--post-text);
+  line-height: 1.75;
+  margin-bottom: 1em;
+}
+
+.blog-post .notes-section h2,
+.blog-post .notes-section h3 {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: var(--post-heading);
+  font-weight: 700;
+  margin-top: 1.4em;
+  margin-bottom: 0.6em;
+}
+
+.blog-post .notes-highlight {
+  background: #dff4ff;
+  border-left: 4px solid #1f6feb;
+  padding: 0.6em 1em;
+  margin: 1em 0;
+  font-weight: 600;
+  color: var(--post-text);
+  border-radius: 4px;
+}
+
+.blog-post .notes-code {
+  background: var(--block-code-bg);
+  border: 1px solid var(--table-border);
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 0.95rem;
+  color: var(--block-code-text);
+  overflow-x: auto;
+}
+
+.blog-post .notes-quote {
+  border-left: 4px solid #8b949e;
+  background: #f1f5f9;
+  font-style: italic;
+  padding: 0.75em 1em;
+  margin: 1em 0;
+  color: var(--post-meta);
+}
+
+.blog-post .notes-section ul {
+  list-style: disc inside;
+  margin: 1em 0 1em 1em;
+}
+.blog-post .notes-section ol {
+  list-style: decimal inside;
+  margin: 1em 0 1em 1em;
+}
+
+.blog-post .notes-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  table-layout: auto;
+}
+.blog-post .notes-section th,
+.blog-post .notes-section td {
+  border: 1px solid var(--table-border);
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.98rem;
+}
+.blog-post .notes-section thead th {
+  background: #f1f8ff;
+  color: #032b56;
+  font-weight: 700;
+}
+.blog-post .notes-section tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+.blog-post .notes-section tbody tr:nth-child(even) {
+  background: var(--table-row-even);
+}
+.blog-post .notes-section caption {
+  text-align: left;
+  font-size: 0.95rem;
+  color: #57606a;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 650px) {
+  .blog-post .notes-section {
+    padding: 1rem 0.75rem;
+    max-width: 100%;
+  }
+
+  .blog-post .notes-section table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Dark mode overrides for notes inside posts */
+/* Improved notes-section colors for dark mode: slightly elevated surface, clearer borders
+   and more visible highlights while keeping a low-contrast, comfortable reading tone. */
+body.dark-theme .blog-post .notes-section {
+  /* slightly lighter than post background (#22272e) to create an elevated card */
+  background: #2b3136;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+}
+
+body.dark-theme .blog-post .notes-section p,
+body.dark-theme .blog-post .notes-section li {
+  color: var(--post-text);
+}
+
+body.dark-theme .blog-post .notes-section h2,
+body.dark-theme .blog-post .notes-section h3 {
+  color: var(--post-heading);
+}
+
+body.dark-theme .blog-post .notes-code {
+  background: var(--block-code-bg);
+  color: var(--block-code-text);
+  border-color: rgba(255,255,255,0.04);
+}
+
+body.dark-theme .blog-post .notes-highlight {
+  background: rgba(88,166,255,0.08); /* subtle blue wash */
+  border-left: 4px solid #58a6ff;
+  color: var(--post-text);
+}
+
+body.dark-theme .blog-post .notes-quote {
+  color: var(--post-meta);
+  background: rgba(255,255,255,0.02);
+}
+
+body.dark-theme .blog-post .notes-section th,
+body.dark-theme .blog-post .notes-section td {
+  border-color: var(--table-border);
+  color: var(--post-text) !important;
+  background: rgba(255,255,255,0.02);
+}
+

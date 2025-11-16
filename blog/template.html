@@ -9,12 +9,13 @@ Blog Post Template
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="SHORT DESCRIPTION HERE" />
-    <title><!-- POST_TITLE --> — Steven Tse</title>
+    <title>Post Template — Steven Tse</title>
     <link
       href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/post.css" />
     <!-- Favicon (use ../ path because this file is inside /blog/) -->
     <link rel="icon" type="image/png" href="../assets/favicon.png" />
   </head>
@@ -124,6 +125,23 @@ Blog Post Template
                 style="max-width: 100%"
                 loading="eager"
               />
+            </p>
+
+            <h2>Code example</h2>
+            <p class="code-caption">A small JavaScript example (Fibonacci)</p>
+            <pre><code class="language-js">// Example: Fibonacci (recursive)
+function fib(n) {
+  if (n <= 1) return n;
+  return fib(n - 1) + fib(n - 2);
+}
+
+console.log(fib(10)); // 55
+</code></pre>
+
+            <p>
+              You can paste code blocks like the one above into your post. The
+              stylesheet <code>post.css</code> provides comfortable spacing,
+              a dark code background and responsive overflow for wide lines.
             </p>
           </section>
           <!-- POST_CONTENT_END -->
