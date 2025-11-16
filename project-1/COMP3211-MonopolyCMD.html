@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="COMP3211-MonopolyCMD — A Python command-line implementation of Monopoly for the COMP3211 course. Includes game engine, AI players, and save/load functionality." />
+    <title>COMP3211-MonopolyCMD — Steven Tse</title>
+
+    <link href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/post.css" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="Header" id="main-header">
+      <div class="Header-item">
+        <a href="index.html" class="Header-link f4 d-flex flex-items-center" aria-label="Steven Tse home">
+          <span class="text-bold">Steven Tse</span>
+        </a>
+      </div>
+      <div class="Header-item Header-item--full">
+        <nav class="d-none d-lg-flex" id="desktop-nav">
+          <a href="../index.html" class="Header-link mr-3">Home</a>
+          <a href="../about.html" class="Header-link mr-3">About</a>
+          <a href="../portfolio.html" class="Header-link mr-3 active">Portfolio</a>
+          <a href="../blog.html" class="Header-link mr-3">Blog</a>
+          <a href="../contact.html" class="Header-link">Contact</a>
+        </nav>
+        <button class="btn d-lg-none" id="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+          <!-- hamburger icon -->
+          <svg class="octicon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path></svg>
+        </button>
+      </div>
+      <div class="Header-item">
+        <button class="btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <!-- star icon -->
+          <svg class="octicon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <a id="main-content" tabindex="-1"></a>
+
+  <main class="py-6">
+    <div class="container-lg p-responsive">
+      <div class="project-detail-hero Box p-4 mb-4">
+        <h1 class="h1-mktg mb-2">COMP3211-MonopolyCMD — Command-line Monopoly</h1>
+        <p class="blog-meta mb-2">Course Project • Python • Terminal</p>
+        <p class="f4 text-gray mb-0">A terminal-based implementation of Monopoly developed for the COMP3211 curriculum. Designed for multiplayer hotseat play, with optional AI opponents, save/load, and a test suite.</p>
+      </div>
+
+      <div class="Box p-4 blog-post">
+        <h3>Overview</h3>
+        <p>COMP3211-MonopolyCMD is a Python project implementing the classic board game Monopoly as a command-line application. The implementation focuses on clear game logic, modular design, and testability — making it suitable as an educational assignment for learning object-oriented design and game state management.</p>
+
+        <h4>Features</h4>
+        <ul>
+          <li>Full Monopoly rules engine: property buying, rent, auctions, mortgages, houses/hotels.</li>
+          <li>Chance and Community Chest decks implemented with randomized draws.</li>
+          <li>Multiplayer support (hotseat) and simple AI opponents.</li>
+          <li>Save and load game state to JSON files.</li>
+          <li>Command-line UI with clear prompts and input validation.</li>
+          <li>Unit tests covering core game logic.</li>
+        </ul>
+
+        <h4>Tech</h4>
+        <ul>
+          <li>Python 3.8+</li>
+          <li>Built-in libraries: argparse, json, random</li>
+          <li>Optional: curses for enhanced terminal display (platform dependent)</li>
+          <li>Testing: unittest</li>
+        </ul>
+
+        <h4>Installation</h4>
+        <pre><code>git clone https://github.com/754cac/COMP3211-MonopolyCMD.git
+cd COMP3211-MonopolyCMD
+python3 -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install -r requirements.txt  # if present
+</code></pre>
+
+        <h4>Usage</h4>
+        <p>Run the main program to start a new game:</p>
+        <pre><code>python main.py --players 2</code></pre>
+        <p>Common options:</p>
+        <ul>
+          <li>--players N (number of human players)</li>
+          <li>--ai (add AI opponents)</li>
+          <li>--load saved_game.json (load a previous game)</li>
+        </ul>
+
+        <h4>Project Structure</h4>
+        <ul>
+          <li>src/ - game engine modules (board, player, bank, cards)</li>
+          <li>tests/ - unit tests for core components</li>
+          <li>data/ - card definitions and board configuration</li>
+          <li>main.py - CLI entrypoint</li>
+        </ul>
+
+        <h4>Example</h4>
+        <p>Gameplay is driven by text prompts. Example turn flow:</p>
+        <ol>
+          <li>Player rolls dice and moves token.</li>
+          <li>If land on unowned property, prompt to buy or auction.</li>
+          <li>Pay rent if landing on opponent property.</li>
+          <li>Handle special squares: Chance, Jail, Go To Jail, Free Parking.</li>
+        </ol>
+
+        <h4>Screenshots</h4>
+        <p>Placeholders (add screenshots to assets/projects/):</p>
+        <div class="d-flex flex-column">
+          <img src="../assets/projects/monopoly-1.png" alt="MonopolyCMD gameplay screenshot" style="max-width:420px;" />
+        </div>
+
+        <h4>Development & Testing</h4>
+        <p>Run unit tests with:</p>
+        <pre><code>python -m unittest discover -v</code></pre>
+
+        <h4>Repository</h4>
+        <p>The full source code and issue tracker are available at:</p>
+        <p><a href="https://github.com/754cac/COMP3211-MonopolyCMD" target="_blank" rel="noopener">754cac/COMP3211-MonopolyCMD</a></p>
+
+        <h4>License</h4>
+        <p>See the repository for licensing (typically MIT or course-specific).</p>
+
+        <h4>Credits</h4>
+        <p>Developed as part of COMP3211 coursework. Author: 754cac (Steven Tse).</p>
+      </div>
+    </div>
+  </main>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-gray-light">
+      <div class="container-lg p-responsive">
+        <div class="d-flex flex-wrap">
+          <div class="col-12 col-md-4 mb-4">
+            <h3 class="h4 mb-3">Steven Tse</h3>
+            <p class="text-gray">Cybersecurity-focused developer, CTF competitor & data practitioner.</p>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <h4 class="h5 mb-3">Quick Links</h4>
+            <nav class="d-flex flex-column">
+              <a href="../about.html" class="Link--muted mb-2">About</a>
+              <a href="../portfolio.html" class="Link--muted mb-2">Portfolio</a>
+              <a href="../blog.html" class="Link--muted mb-2">Blog</a>
+              <a href="../contact.html" class="Link--muted">Contact</a>
+            </nav>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <h4 class="h5 mb-3">Connect</h4>
+            <div class="d-flex">
+              <a href="https://github.com/754cac" class="Link--muted mr-3" aria-label="GitHub">GitHub</a>
+              <a href="https://www.linkedin.com/in/steven-tse-52078121b/" class="Link--muted" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div class="border-top pt-3 mt-3 text-center text-gray">
+          <p>&copy; 2025 Steven Tse. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>
