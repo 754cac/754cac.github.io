@@ -293,3 +293,18 @@ body.dark-theme .blog-post .notes-section td {
   background: rgba(255,255,255,0.02);
 }
 
+/* Ensure Boxes used as centered blog-posts with fade-in have spacing below */
+.Box.blog-post.fade-in {
+  margin-bottom: 24px;
+}
+
+/* Project hero meta: ensure metadata is readable against hero gradient
+   Light mode: show white on colorful hero; dark mode: use muted meta color. */
+.project-detail-hero .blog-meta {
+  color: #ffffff;
+}
+
+body.dark-theme .project-detail-hero .blog-meta {
+  color: var(--post-meta);
+}
+

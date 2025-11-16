@@ -1,0 +1,264 @@
+<!--
+Copyright (c) 2025, Steven Tse
+All rights reserved.
+
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="<!-- PROJECT_SHORT_DESCRIPTION -->" />
+    <title>PROJECT_TITLE — Steven Tse</title>
+
+    <link
+      href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/post.css" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="Header" id="main-header">
+      <div class="Header-item">
+        <a
+          href="../index.html"
+          class="Header-link f4 d-flex flex-items-center"
+          aria-label="Steven Tse home"
+        >
+          <span class="text-bold">Steven Tse</span>
+        </a>
+      </div>
+      <div class="Header-item Header-item--full">
+        <nav class="d-none d-lg-flex" id="desktop-nav">
+          <a href="../index.html" class="Header-link mr-3">Home</a>
+          <a href="../about.html" class="Header-link mr-3">About</a>
+          <a href="../portfolio.html" class="Header-link mr-3">Portfolio</a>
+          <a href="../skills.html" class="Header-link mr-3">Skills</a>
+          <a href="../experience.html" class="Header-link mr-3">Experience</a>
+          <a href="../blog.html" class="Header-link mr-3">Blog</a>
+          <a href="../contact.html" class="Header-link">Contact</a>
+        </nav>
+        <button
+          class="btn d-lg-none"
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div class="Header-item">
+        <button
+          class="btn"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          aria-pressed="false"
+        >
+          <svg
+            class="octicon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <a id="main-content" tabindex="-1"></a>
+    <div
+      class="mobile-nav"
+      id="mobile-nav"
+      role="navigation"
+      aria-label="Primary navigation"
+      aria-hidden="true"
+    >
+      <nav class="menu">
+        <a href="../index.html" class="menu-item">Home</a>
+        <a href="../about.html" class="menu-item">About</a>
+        <a href="../portfolio.html" class="menu-item">Portfolio</a>
+        <a href="../skills.html" class="menu-item">Skills</a>
+        <a href="../experience.html" class="menu-item">Experience</a>
+        <a href="../blog.html" class="menu-item">Blog</a>
+        <a href="../contact.html" class="menu-item">Contact</a>
+      </nav>
+    </div>
+
+    <main class="py-6">
+      <div class="container-lg p-responsive">
+        <div class="project-detail-hero Box p-4 mb-4">
+          <h1 class="h1-mktg mb-2">Project Alpha — Example Project</h1>
+          <p class="blog-meta mb-2">Demo • Example • Education</p>
+          <p class="f4 text-gray mb-0">
+            A short description of the example project that demonstrates
+            purpose, scope, and key outcomes.
+          </p>
+        </div>
+
+        <div
+          class="Box p-4 blog-post fade-in"
+          style="margin-left: auto; margin-right: auto; max-width: 900px"
+        >
+          <!-- OVERVIEW -->
+          <h3>Overview</h3>
+          <p>
+            This is a placeholder overview describing the project's goals, the
+            problems it solves, and a brief summary of the implementation.
+          </p>
+
+          <!-- FEATURES -->
+          <h4>Features</h4>
+          <ul>
+            <li>Feature A — core functionality demonstration</li>
+            <li>Feature B — example integration</li>
+            <li>Feature C — test coverage and CI</li>
+          </ul>
+
+          <!-- TECH -->
+          <h4>Tech</h4>
+          <ul>
+            <li>Python 3</li>
+            <li>Flask (example web framework)</li>
+            <li>SQLite (lightweight datastore)</li>
+          </ul>
+
+          <!-- INSTALLATION -->
+          <h4>Installation</h4>
+          <pre><code>git clone https://github.com/754cac/example-project.git
+cd example-project
+python -m venv venv
+venv\Scripts\activate    # on Windows
+pip install -r requirements.txt
+</code></pre>
+
+          <!-- USAGE -->
+          <h4>Usage</h4>
+          <p>
+            Run the application locally and open the demo URL in your browser.
+          </p>
+          <pre><code>python app.py
+# then visit http://localhost:5000
+</code></pre>
+
+          <!-- PROJECT STRUCTURE -->
+          <h4>Project Structure</h4>
+          <ul>
+            <li><code>src/</code> - source modules and entrypoints</li>
+            <li><code>tests/</code> - unit tests</li>
+            <li><code>data/</code> - example data and assets</li>
+            <li><code>README.md</code> - project documentation</li>
+          </ul>
+
+          <!-- EXAMPLE -->
+          <h4>Example</h4>
+          <p>
+            Start the server and interact with the demo UI or API endpoints as
+            shown above.
+          </p>
+
+          <!-- DEVELOPMENT -->
+          <h4>Development &amp; Testing</h4>
+          <p>Run tests with:</p>
+          <pre><code>python -m unittest discover -v
+</code></pre>
+
+          <!-- REPOSITORY -->
+          <h4>Repository</h4>
+          <p>
+            <a
+              href="https://github.com/754cac/example-project"
+              target="_blank"
+              rel="noopener"
+              >754cac/example-project</a
+            >
+          </p>
+        </div>
+        <a href="../portfolio.html" class="btn btn-outline"
+          >← Back to Portfolio</a
+        >
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-gray-light">
+      <div class="container-lg p-responsive">
+        <div class="d-flex flex-wrap">
+          <div class="col-12 col-md-4 mb-4">
+            <h3 class="h4 mb-3">Steven Tse</h3>
+            <p class="text-gray">
+              Cybersecurity-focused developer, CTF competitor &amp; data
+              practitioner.
+            </p>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <h4 class="h5 mb-3">Quick Links</h4>
+            <nav class="d-flex flex-column">
+              <a href="../about.html" class="Link--muted mb-2">About</a>
+              <a href="../portfolio.html" class="Link--muted mb-2">Portfolio</a>
+              <a href="../blog.html" class="Link--muted mb-2">Blog</a>
+              <a href="../contact.html" class="Link--muted">Contact</a>
+            </nav>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <h4 class="h5 mb-3">Connect</h4>
+            <div class="d-flex">
+              <a
+                href="https://github.com/754cac"
+                class="Link--muted mr-3"
+                aria-label="GitHub"
+              >
+                <svg class="octicon" width="20" height="20" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/steven-tse-52078121b/"
+                class="Link--muted mr-3"
+                aria-label="LinkedIn"
+              >
+                <svg class="octicon" width="20" height="20" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="border-top pt-3 mt-3 text-center text-gray">
+          <p>&copy; 2025 Steven Tse. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>
