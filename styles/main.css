@@ -799,6 +799,10 @@ textarea.form-control {
   color: var(--text-secondary) !important;
 }
 
+.dark-theme p.f3-light.text-gray.mb-4 {
+  color: #ffffff !important;
+}
+
 .dark-theme .Link--muted {
   color: var(--text-secondary) !important;
 }
