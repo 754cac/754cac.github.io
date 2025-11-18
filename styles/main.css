@@ -5,18 +5,15 @@ All rights reserved.
 This source code is licensed under the BSD-style license found in the
 LICENSE file in the root directory of this source tree.
 */
-
-/* ============================================
-   Custom Styles for IT Portfolio Website
-   Using Primer CSS as base framework
-   ============================================ */
-
 /* Root Variables */
 :root {
   --transition-speed: 0.3s;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --card-radius: 6px;
+  --border-color-light: #d0d7de;
+  --card-border: 1px solid var(--border-color-light);
 }
 
 /* Dark Theme Variables */
@@ -75,7 +72,7 @@ body {
   top: 0;
   z-index: 100;
   background: #ffffff;
-  border-bottom: 1px solid #d0d7de;
+  border-bottom: var(--card-border);
   box-shadow: var(--shadow-sm);
   padding: 16px 0;
   transition: background-color var(--transition-speed);
@@ -90,7 +87,7 @@ body {
   color: #24292f;
   text-decoration: none;
   padding: 6px 8px;
-  border-radius: 6px;
+  border-radius: var(--card-radius);
   transition: color 0.15s ease, background-color 0.15s ease;
 }
 
@@ -133,7 +130,7 @@ body {
   left: 0;
   right: 0;
   background: #ffffff;
-  border-bottom: 1px solid #d0d7de;
+  border-bottom: var(--card-border);
   z-index: 99;
   max-height: 0;
   overflow: hidden;
@@ -157,7 +154,7 @@ body {
 .mobile-nav .menu-item {
   display: block;
   padding: 12px 16px;
-  border-bottom: 1px solid #d0d7de;
+  border-bottom: var(--card-border);
   text-decoration: none;
   color: #24292f;
   transition: background-color 0.2s;
@@ -205,7 +202,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(135deg, #001080 0%, #AF00DB 100%);
+  background: linear-gradient(135deg, #001080 0%, #af00db 100%);
   color: #ffffff;
   min-height: 500px;
   display: flex;
@@ -222,17 +219,23 @@ body {
 .project-image-placeholder {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, #001080 0%, #AF00DB 100%);
+  background: linear-gradient(135deg, #001080 0%, #af00db 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px 6px 0 0;
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
 }
 
 .placeholder-content {
   color: #ffffff;
   font-size: 18px;
   font-weight: 600;
+}
+
+/* Project card layout - grouped for clarity */
+.blog-meta {
+  font-size: 14px;
+  color: #57606a;
 }
 
 /* Box Hover Effects */
@@ -247,36 +250,24 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* Add horizontal spacing for project cards (10px left/right) */
 .Box.fade-in {
   margin: 0 10px;
 }
 
-/* Remove horizontal margins for .Box.fade-in inside blog posts
-   so boxed elements align flush with the post container */
-.blog-post .Box.fade-in {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-/* Remove horizontal margins for .Box.fade-in on the blog index as well
-   so article cards align flush in the grid */
+.blog-post .Box.fade-in,
 .blog-index .Box.fade-in {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* Give each article card a small horizontal gutter on the blog index
-   so cards breathe from each other and the container edges */
 .blog-index .d-flex.flex-wrap {
-  gap: 20px; /* horizontal + vertical spacing between cards */
+  gap: 20px;
 }
 
 .blog-index .blog-card {
-  box-sizing: border-box; /* keep padding/gap inside column width */
+  box-sizing: border-box;
 }
 
-/* Responsive two-column behavior for blog cards */
 .blog-index .blog-card {
   flex: 1 1 100%;
   max-width: 100%;
@@ -284,7 +275,7 @@ body {
 
 @media (min-width: 768px) {
   .blog-index .blog-card {
-    flex: 0 0 calc(50% - 10px); /* two columns with gap compensation */
+    flex: 0 0 calc(50% - 10px);
     max-width: calc(50% - 10px);
   }
 }
@@ -331,8 +322,6 @@ body {
   background-color: #1f6feb;
 }
 
-/* Keep outline-style buttons (e.g. the "← Back" button) a consistent blue
-   in both light and dark themes so text colour doesn't change unexpectedly */
 .btn.btn-outline,
 a.btn.btn-outline {
   color: #0969da;
@@ -450,8 +439,8 @@ a.btn.btn-outline:hover {
   width: 60px;
   height: 60px;
   background-color: #f6f8fa;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
+  border: var(--card-border);
+  border-radius: var(--card-radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -477,11 +466,6 @@ a.btn.btn-outline:hover {
   box-shadow: var(--shadow-lg);
 }
 
-/* Ensure project cards align to equal height in flex-wrap grids
-   - make the column wrappers flex containers so .Box can stretch
-   - make .Box a column flex container and let .Box-body grow
-   - push the action button to the bottom using margin-top:auto
-*/
 .d-flex.flex-wrap > [class*="col-"] {
   display: flex;
   flex-direction: column;
@@ -519,8 +503,8 @@ a.btn.btn-outline:hover {
 
 .filter-btn {
   padding: 8px 16px;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
+  border: var(--card-border);
+  border-radius: var(--card-radius);
   background-color: #ffffff;
   color: #24292f;
   cursor: pointer;
@@ -569,8 +553,8 @@ a.btn.btn-outline:hover {
 .form-control {
   width: 100%;
   padding: 12px;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
+  border: var(--card-border);
+  border-radius: var(--card-radius);
   font-size: 16px;
   transition: border-color 0.2s;
 }
@@ -651,7 +635,7 @@ textarea.form-control {
   width: 100%;
   height: 200px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 6px;
+  border-radius: var(--card-radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -662,8 +646,8 @@ textarea.form-control {
 /* Code Block Styles */
 .code-block {
   background-color: #f6f8fa;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
+  border: var(--card-border);
+  border-radius: var(--card-radius);
   padding: 16px;
   margin: 24px 0;
   overflow-x: auto;
@@ -685,8 +669,8 @@ textarea.form-control {
 /* Table of Contents */
 .toc {
   background-color: #f6f8fa;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
+  border: var(--card-border);
+  border-radius: var(--card-radius);
   padding: 24px;
   margin-bottom: 32px;
 }
@@ -811,13 +795,11 @@ textarea.form-control {
   color: #58a6ff !important;
 }
 
-/* Ensure Label--primary text remains readable in dark mode */
 .dark-theme .Label.Label--primary,
 .dark-theme .Label--primary {
   color: #ffffff !important;
 }
 
-/* Ensure primary links remain readable in dark mode (sufficient contrast) */
 .dark-theme .Link--primary,
 .dark-theme a.Link--primary {
   color: #58a6ff !important;
@@ -828,7 +810,6 @@ textarea.form-control {
   color: #79b8ff !important;
 }
 
-/* Ensure primary links are clearly visible in light mode */
 .Link--primary,
 a.Link--primary {
   color: #0969da;
@@ -840,26 +821,20 @@ a.Link--primary:hover {
   color: #06397a;
 }
 
-/* Study-note/post-specific styles moved to `styles/post.css` */
-/* See `styles/post.css` for notes-section, notes-code and related rules */
-
-/* Keep tables readable in dark theme inside blog posts */
 .dark-theme .blog-post table {
   border-color: var(--border-color);
 }
 .dark-theme .blog-post th,
 .dark-theme .blog-post td {
   border-color: var(--border-color);
-  color: var(--text-primary) !important; /* match site dark-mode text color */
-  background: rgba(255,255,255,0.02);
+  color: var(--text-primary) !important;
+  background: rgba(255, 255, 255, 0.02);
 }
 .dark-theme .blog-post thead th {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text-primary) !important;
 }
 
-/* Blog posts: when dark theme is active, keep post text using site dark color
-   Useful for study-note containers that retain a light background */
 .dark-theme .blog-post,
 .dark-theme .blog-post p,
 .dark-theme .blog-post li,
@@ -875,7 +850,6 @@ a.Link--primary:hover {
   color: var(--text-primary) !important;
 }
 
-/* Keep code and quotes readable inside the blog post */
 .dark-theme .blog-post .notes-code {
   color: #06397a !important;
 }
