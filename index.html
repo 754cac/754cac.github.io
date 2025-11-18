@@ -29,23 +29,18 @@ LICENSE file in the root directory of this source tree.
     <meta property="og:type" content="website" />
     <title>Steven Tse | Cybersecurity & Software Engineering Portfolio</title>
 
-    <!-- Primer CSS -->
     <link
       href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css"
       rel="stylesheet"
     />
 
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <style>
-      /* Hero gradient overrides: place generated SVG behind hero content and
-         disable any page-level background gradients on this page. */
       .hero-section {
         position: relative;
         background: transparent !important;
@@ -62,12 +57,10 @@ LICENSE file in the root directory of this source tree.
         height: 100%;
         pointer-events: none;
       }
-      /* Ensure other page background containers don't show above the hero */
       #gradient-container {
         display: none !important;
       }
     </style>
-    <!-- Header Navigation -->
     <header class="Header" id="main-header">
       <div class="Header-item">
         <a
@@ -134,7 +127,6 @@ LICENSE file in the root directory of this source tree.
       </div>
     </header>
 
-    <!-- Mobile Navigation -->
     <a id="main-content" tabindex="-1"></a>
     <div
       class="mobile-nav"
@@ -154,7 +146,6 @@ LICENSE file in the root directory of this source tree.
       </nav>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero-section py-6">
       <div class="container-lg p-responsive">
         <div class="d-flex flex-column flex-lg-row flex-items-center">
@@ -205,7 +196,6 @@ LICENSE file in the root directory of this source tree.
       </div>
     </section>
 
-    <!-- Key Skills Section -->
     <section class="py-6 bg-gray-light">
       <div class="container-lg p-responsive">
         <h2 class="h2-mktg text-center mb-5">Core Competencies</h2>
@@ -293,7 +283,6 @@ LICENSE file in the root directory of this source tree.
       </div>
     </section>
 
-    <!-- Featured Projects Preview -->
     <section class="py-6">
       <div class="container-lg p-responsive">
         <h2 class="h2-mktg text-center mb-5">Featured Projects</h2>
@@ -301,7 +290,16 @@ LICENSE file in the root directory of this source tree.
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="Box">
               <div class="project-image-placeholder">
-                <img src="assets/images/PUNSCSCTF2025-Ceremony4.png" alt="PUCTF 2025 Ceremony" style="width:100%;height:auto;display:block;border-radius:6px;" />
+                <img
+                  src="assets/images/PUNSCSCTF2025-Ceremony4.png"
+                  alt="PUCTF 2025 Ceremony"
+                  style="
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    border-radius: 6px;
+                  "
+                />
               </div>
               <div class="Box-body">
                 <h3 class="h4 mb-2">PolyU x NuttyShell CTF 2025</h3>
@@ -309,10 +307,9 @@ LICENSE file in the root directory of this source tree.
                   University cybersecurity competition: exploit scripting,
                   cryptography & forensics.
                 </p>
-                <div class="mb-3">
-                  <!-- Tags omitted -->
-                </div>
-                <a href="project/PUCTF25.html" class="btn btn-sm">View Details →</a>
+                <a href="project/PUCTF25.html" class="btn btn-sm"
+                  >View Details →</a
+                >
               </div>
             </div>
           </div>
@@ -370,7 +367,6 @@ LICENSE file in the root directory of this source tree.
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer py-5 bg-gray-light">
       <div class="container-lg p-responsive">
         <div class="d-flex flex-wrap">
@@ -417,7 +413,6 @@ LICENSE file in the root directory of this source tree.
                   />
                 </svg>
               </a>
-              <!-- Twitter link removed -->
             </div>
           </div>
         </div>
@@ -430,7 +425,6 @@ LICENSE file in the root directory of this source tree.
       </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <button
       class="back-to-top visible"
       id="back-to-top"
@@ -444,7 +438,6 @@ LICENSE file in the root directory of this source tree.
         const hero = document.querySelector(".hero-section");
         if (!hero) return;
 
-        // Shared function: apply a generated SVG into the hero's gradient container
         function applyHeroGradient(paletteName = "p0") {
           import("./scripts/gradient-generator.esm.js")
             .then(({ generateGradientWithPalette }) => {
@@ -481,20 +474,8 @@ LICENSE file in the root directory of this source tree.
             );
         }
 
-        // Apply on first load only. Theme toggles should not re-generate the gradient.
         window.addEventListener("load", () => applyHeroGradient());
 
-        // Allow manual regeneration via the demo controls (if present)
-        const genBtn = document.getElementById("generate-gradient");
-        if (genBtn) {
-          genBtn.addEventListener("click", () => {
-            const sel = document.getElementById("palette-selector");
-            const palette = sel ? sel.value : "p0";
-            applyHeroGradient(palette);
-          });
-        }
-
-        // Keep the SVG sized to the hero on resize (debounced) by regenerating with same palette
         let resizeTimer;
         window.addEventListener("resize", () => {
           clearTimeout(resizeTimer);
