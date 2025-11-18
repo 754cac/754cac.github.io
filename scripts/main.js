@@ -6,10 +6,6 @@ This source code is licensed under the BSD-style license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// ============================================
-// Main JavaScript for IT Portfolio Website
-// ============================================
-
 // Wait for DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   initMobileMenu();
@@ -141,21 +137,25 @@ function initBackToTop() {
 
 // Smooth Scroll for Anchor Links
 function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      const href = this.getAttribute("href");
-      if (href !== "#" && href !== "") {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
+  // Ignore anchors that are plain hashes ("#") to avoid intercepting
+  // toolbar or router anchors. Scope selection to same-page anchors.
+  document
+    .querySelectorAll('a[href^="#"]:not([href="#"])')
+    .forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (href) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
         }
-      }
+      });
     });
-  });
 }
 
 // Form Validation (Contact Page)
@@ -166,11 +166,11 @@ function initFormValidation() {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Get form fields
-      const name = document.getElementById("name");
-      const email = document.getElementById("email");
-      const subject = document.getElementById("subject");
-      const message = document.getElementById("message");
+      // Scope queries to the form to minimize global DOM lookups
+      const name = contactForm.querySelector("#name");
+      const email = contactForm.querySelector("#email");
+      const subject = contactForm.querySelector("#subject");
+      const message = contactForm.querySelector("#message");
 
       // Reset previous error states
       clearErrors();
@@ -178,14 +178,14 @@ function initFormValidation() {
       let isValid = true;
 
       // Validate name
-      if (!name.value.trim()) {
-        showError(name, "Name is required");
+      if (!name || !name.value.trim()) {
+        if (name) showError(name, "Name is required");
         isValid = false;
       }
 
       // Validate email
-      if (!email.value.trim()) {
-        showError(email, "Email is required");
+      if (!email || !email.value.trim()) {
+        if (email) showError(email, "Email is required");
         isValid = false;
       } else if (!isValidEmail(email.value)) {
         showError(email, "Please enter a valid email address");
@@ -193,14 +193,14 @@ function initFormValidation() {
       }
 
       // Validate subject
-      if (!subject.value.trim()) {
-        showError(subject, "Subject is required");
+      if (!subject || !subject.value.trim()) {
+        if (subject) showError(subject, "Subject is required");
         isValid = false;
       }
 
       // Validate message
-      if (!message.value.trim()) {
-        showError(message, "Message is required");
+      if (!message || !message.value.trim()) {
+        if (message) showError(message, "Message is required");
         isValid = false;
       } else if (message.value.trim().length < 10) {
         showError(message, "Message must be at least 10 characters");
@@ -209,7 +209,7 @@ function initFormValidation() {
 
       if (isValid) {
         // Form is valid - show success message
-        showSuccessMessage();
+        showSuccessMessage(contactForm);
         contactForm.reset();
       }
     });
@@ -239,7 +239,7 @@ function isValidEmail(email) {
   return re.test(email);
 }
 
-function showSuccessMessage() {
+function showSuccessMessage(formElement) {
   const successDiv = document.createElement("div");
   successDiv.className = "flash flash-success mt-3";
   successDiv.innerHTML = `
@@ -249,8 +249,13 @@ function showSuccessMessage() {
         Thank you for your message! I'll get back to you soon.
     `;
 
-  const form = document.getElementById("contact-form");
-  form.parentElement.insertBefore(successDiv, form);
+  const form = formElement || document.getElementById("contact-form");
+  if (form && form.parentElement) {
+    form.parentElement.insertBefore(successDiv, form);
+  } else if (form) {
+    // Fallback: append to body
+    document.body.appendChild(successDiv);
+  }
 
   // Remove success message after 5 seconds
   setTimeout(() => {
