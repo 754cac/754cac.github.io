@@ -301,20 +301,18 @@ LICENSE file in the root directory of this source tree.
           <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="Box">
               <div class="project-image-placeholder">
-                <div class="placeholder-content">Project Screenshot</div>
+                <img src="assets/images/PUNSCSCTF2025-Ceremony4.png" alt="PUCTF 2025 Ceremony" style="width:100%;height:auto;display:block;border-radius:6px;" />
               </div>
               <div class="Box-body">
                 <h3 class="h4 mb-2">PolyU x NuttyShell CTF 2025</h3>
                 <p class="text-gray mb-3">
-                  Organized & competed in large-scale university cybersecurity
-                  CTF; scripting & exploit development.
+                  University cybersecurity competition: exploit scripting,
+                  cryptography & forensics.
                 </p>
                 <div class="mb-3">
-                  <span class="Label Label--info mr-1">Python</span>
-                  <span class="Label Label--info mr-1">Docker</span>
-                  <span class="Label Label--info">Security</span>
+                  <!-- Tags omitted -->
                 </div>
-                <a href="project-1.html" class="btn btn-sm">View Details →</a>
+                <a href="project/PUCTF25.html" class="btn btn-sm">View Details →</a>
               </div>
             </div>
           </div>
@@ -371,70 +369,6 @@ LICENSE file in the root directory of this source tree.
         </div>
       </div>
     </section>
-
-    <script>
-      (function () {
-        const hero = document.querySelector(".hero-section");
-        if (!hero) return;
-
-        // Shared function: apply a generated SVG into the hero's gradient container
-        function applyHeroGradient(paletteName = "p0") {
-          import("./scripts/gradient-generator.esm.js")
-            .then(({ generateGradientWithPalette }) => {
-              const rect = hero.getBoundingClientRect();
-              const w = Math.max(600, Math.ceil(rect.width));
-              const h = Math.max(400, Math.ceil(rect.height));
-              const svgContent = generateGradientWithPalette(paletteName, {
-                width: w,
-                height: h,
-                viewBox: `0 0 ${w} ${h}`,
-              });
-
-              let container = document.getElementById("gradient-hero");
-              if (!container) {
-                container = document.createElement("div");
-                container.id = "gradient-hero";
-                hero.prepend(container);
-              }
-
-              container.innerHTML = svgContent;
-              container.style.width = "100%";
-              container.style.height = "100%";
-
-              const svgEl = container.querySelector("svg");
-              if (svgEl) {
-                svgEl.setAttribute("preserveAspectRatio", "xMidYMid slice");
-                svgEl.style.width = "100%";
-                svgEl.style.height = "100%";
-                svgEl.style.display = "block";
-              }
-            })
-            .catch((err) =>
-              console.error("Failed to load gradient library:", err)
-            );
-        }
-
-        // Apply on first load only. Theme toggles should not re-generate the gradient.
-        window.addEventListener("load", () => applyHeroGradient());
-
-        // Allow manual regeneration via the demo controls (if present)
-        const genBtn = document.getElementById("generate-gradient");
-        if (genBtn) {
-          genBtn.addEventListener("click", () => {
-            const sel = document.getElementById("palette-selector");
-            const palette = sel ? sel.value : "p0";
-            applyHeroGradient(palette);
-          });
-        }
-
-        // Keep the SVG sized to the hero on resize (debounced) by regenerating with same palette
-        let resizeTimer;
-        window.addEventListener("resize", () => {
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(() => applyHeroGradient(), 220);
-        });
-      })();
-    </script>
 
     <!-- Footer -->
     <footer class="footer py-5 bg-gray-light">
@@ -505,30 +439,70 @@ LICENSE file in the root directory of this source tree.
     >
       ↑
     </button>
+    <script>
+      (function () {
+        const hero = document.querySelector(".hero-section");
+        if (!hero) return;
 
-    <!-- JavaScript -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Steven Tse",
-        "jobTitle": "Cybersecurity-Focused Developer",
-        "url": "https://your-domain.example/",
-        "sameAs": [
-          "https://github.com/754cac",
-          "https://www.linkedin.com/in/steven-tse-52078121b/"
-        ],
-        "knowsAbout": [
-          "Cybersecurity",
-          "CTF",
-          "Java",
-          "Python",
-          "SQL",
-          "Data Analysis"
-        ],
-        "alumniOf": "The Hong Kong Polytechnic University"
-      }
+        // Shared function: apply a generated SVG into the hero's gradient container
+        function applyHeroGradient(paletteName = "p0") {
+          import("./scripts/gradient-generator.esm.js")
+            .then(({ generateGradientWithPalette }) => {
+              const rect = hero.getBoundingClientRect();
+              const w = Math.max(600, Math.ceil(rect.width));
+              const h = Math.max(400, Math.ceil(rect.height));
+              const svgContent = generateGradientWithPalette(paletteName, {
+                width: w,
+                height: h,
+                viewBox: `0 0 ${w} ${h}`,
+              });
+
+              let container = document.getElementById("gradient-hero");
+              if (!container) {
+                container = document.createElement("div");
+                container.id = "gradient-hero";
+                hero.prepend(container);
+              }
+
+              container.innerHTML = svgContent;
+              container.style.width = "100%";
+              container.style.height = "100%";
+
+              const svgEl = container.querySelector("svg");
+              if (svgEl) {
+                svgEl.setAttribute("preserveAspectRatio", "xMidYMid slice");
+                svgEl.style.width = "100%";
+                svgEl.style.height = "100%";
+                svgEl.style.display = "block";
+              }
+            })
+            .catch((err) =>
+              console.error("Failed to load gradient library:", err)
+            );
+        }
+
+        // Apply on first load only. Theme toggles should not re-generate the gradient.
+        window.addEventListener("load", () => applyHeroGradient());
+
+        // Allow manual regeneration via the demo controls (if present)
+        const genBtn = document.getElementById("generate-gradient");
+        if (genBtn) {
+          genBtn.addEventListener("click", () => {
+            const sel = document.getElementById("palette-selector");
+            const palette = sel ? sel.value : "p0";
+            applyHeroGradient(palette);
+          });
+        }
+
+        // Keep the SVG sized to the hero on resize (debounced) by regenerating with same palette
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => applyHeroGradient(), 220);
+        });
+      })();
     </script>
+
     <script src="scripts/main.js"></script>
   </body>
 </html>
