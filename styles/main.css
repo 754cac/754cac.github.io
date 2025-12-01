@@ -987,8 +987,13 @@ textarea.form-control {
   color: inherit;
 }
 
-.blog-card:hover .card-title,
+.blog-card:hover .card-title {
+  color: #0969da;
+  text-decoration: none; /* remove underline on hover for cleaner look */
+}
+
 .blog-card:focus-within .card-title {
+  /* keep underline when focused for keyboard accessibility */
   color: #0969da;
   text-decoration: underline;
 }
