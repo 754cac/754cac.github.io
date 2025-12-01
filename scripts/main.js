@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initSmoothScroll();
   initFormValidation();
   initProjectFilters();
-  initBlogFilters();
+  initAdvancedBlogFilters();
   initSkillAnimations();
   initPageTransitions();
 });
@@ -323,6 +323,126 @@ function initBlogFilters() {
       });
     });
   }
+}
+
+// Advanced Blog Filters: tags, year, sort (newer/older)
+function initAdvancedBlogFilters() {
+  const blogList = document.getElementById("blog-list");
+  const blogCards = Array.from(document.querySelectorAll(".blog-card"));
+  if (!blogList || blogCards.length === 0) return;
+
+  const tagsContainer = document.getElementById("blog-filter-tags");
+  const yearSelect = document.getElementById("blog-filter-year");
+  const clearBtn = document.getElementById("blog-filter-clear");
+  const searchInput = document.getElementById("blog-search");
+
+  // Extract tags and years from articles
+  const tagSet = new Set();
+  const yearSet = new Set();
+
+  blogCards.forEach((card) => {
+    const tagsAttr = card.getAttribute("data-tags") || "";
+    const tags = tagsAttr.split(/[,\s]+/).filter(Boolean);
+    tags.forEach((t) => tagSet.add(t.trim()));
+
+    const dateAttr = card.getAttribute("data-date");
+    if (dateAttr) {
+      const year = dateAttr.split("-")[0];
+      if (year) yearSet.add(year);
+    } else {
+      // Try to parse from .blog-meta text like 'May 14, 2025'
+      const meta = card.querySelector('.blog-meta');
+      if (meta) {
+        const m = meta.textContent.match(/\b(\d{4})\b/);
+        if (m) yearSet.add(m[1]);
+      }
+    }
+  });
+
+  // Build tag checkboxes
+  const tags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
+  tags.forEach((tag) => {
+    const id = `tag-${tag}`;
+    const wrapper = document.createElement('label');
+    wrapper.className = 'mb-1';
+    wrapper.innerHTML = `<input type="checkbox" value="${tag}" id="${id}" /> ${tag}`;
+    tagsContainer.appendChild(wrapper);
+  });
+
+  // Build year select options (descending)
+  const years = Array.from(yearSet).sort((a, b) => Number(b) - Number(a));
+  years.forEach((y) => {
+    const opt = document.createElement('option');
+    opt.value = y;
+    opt.textContent = y;
+    yearSelect.appendChild(opt);
+  });
+
+  function getActiveFilters() {
+    const selectedTags = Array.from(tagsContainer.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.value);
+    const selectedYear = yearSelect.value || 'all';
+    const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    // Default chronological order: newest first
+    const order = 'desc';
+    return { selectedTags, selectedYear, searchTerm, order };
+  }
+
+  function applyFilters() {
+    const { selectedTags, selectedYear, searchTerm, order } = getActiveFilters();
+
+    // Filter
+    blogCards.forEach((card) => {
+      const cardTags = (card.getAttribute('data-tags') || '').toLowerCase().split(/[,\s]+/).filter(Boolean);
+      const cardDate = card.getAttribute('data-date') || '';
+      const cardYear = cardDate ? cardDate.split('-')[0] : (card.querySelector('.blog-meta') && (card.querySelector('.blog-meta').textContent.match(/\b(\d{4})\b/) || [])[1]);
+      const title = (card.querySelector('h3') && card.querySelector('h3').textContent.toLowerCase()) || '';
+      const excerpt = (card.querySelector('.blog-excerpt') && card.querySelector('.blog-excerpt').textContent.toLowerCase()) || '';
+
+      // Tag match: if no tags selected -> pass, else any match
+      const tagsMatch = selectedTags.length === 0 || selectedTags.some(t => cardTags.includes(t.toLowerCase()));
+      // Year match
+      const yearMatch = selectedYear === 'all' || (cardYear && cardYear === selectedYear);
+      // Search match
+      const searchMatch = !searchTerm || title.includes(searchTerm) || excerpt.includes(searchTerm) || cardTags.join(' ').includes(searchTerm);
+
+      if (tagsMatch && yearMatch && searchMatch) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Sort visible cards by date
+    const visible = blogCards.filter(c => c.style.display !== 'none');
+    visible.sort((a, b) => {
+      const da = a.getAttribute('data-date') || '';
+      const db = b.getAttribute('data-date') || '';
+      if (!da || !db) return 0;
+      if (order === 'asc') return da.localeCompare(db);
+      return db.localeCompare(da);
+    });
+
+    // Re-append in order
+    visible.forEach(c => blogList.appendChild(c));
+  }
+
+  // Hook up events
+  tagsContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener('change', applyFilters));
+  yearSelect.addEventListener('change', applyFilters);
+  if (searchInput) searchInput.addEventListener('input', debounce(applyFilters, 150));
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', function () {
+      // clear checkboxes
+      tagsContainer.querySelectorAll('input[type="checkbox"]').forEach(i => i.checked = false);
+      yearSelect.value = 'all';
+      if (searchInput) searchInput.value = '';
+      applyFilters();
+    });
+  }
+
+  // Initial apply and ensure elements are in proper layout
+  applyFilters();
 }
 
 // Skill Progress Animation (Skills Page)

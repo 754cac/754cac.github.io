@@ -109,35 +109,65 @@ LICENSE file in the root directory of this source tree.
     <main class="py-6">
       <div class="container-lg p-responsive blog-index">
         <h1 class="h2-mktg mb-4">Blog</h1>
-        <div class="d-flex flex-wrap">
-          <article class="col-12 col-md-6 mb-4 blog-card">
-            <div class="Box p-3">
-              <h3>
-                <a href="blog/COMP4136_notes.html"
-                  >Security &amp; Data Protection — Exam Notes</a
-                >
-              </h3>
-              <p class="blog-meta">May 14, 2025 • study notes</p>
-              <p class="blog-excerpt">
-                Condensed exam guide: encryption, watermarking, biometrics,
-                pattern recognition, and practical techniques.
-              </p>
+        <div class="blog-grid">
+          <aside class="blog-sidebar Box p-3 mb-4" aria-label="Filters">
+            <h4 class="h5">Filters</h4>
+            <div class="mb-3">
+              <label for="blog-search" class="form-label">Keywords</label>
+              <input id="blog-search" class="form-control" type="search" placeholder="Search titles, excerpts, tags" />
             </div>
-          </article>
 
-          <article class="col-12 col-md-6 mb-4 blog-card">
-            <div class="Box p-3">
-              <h3>
-                <a href="blog/template.html">Template</a>
-              </h3>
-              <p class="blog-meta">Nov 14, 2025 • Template</p>
-              <p class="blog-excerpt">
-                Veniam culpa commodo id exercitation nulla adipisicing anim, ad
-                commodo adipisicing consectetur exercitation ut exercitation
-                labore minim laborum ut tempor nulla.
-              </p>
+            <div class="mb-3">
+              <label class="form-label">Tags</label>
+              <div id="blog-filter-tags" class="d-flex flex-column"></div>
             </div>
-          </article>
+
+            <div class="mb-3">
+              <label for="blog-filter-year" class="form-label">Year</label>
+              <select id="blog-filter-year" class="form-control">
+                <option value="all">All years</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex">
+                <button id="blog-filter-clear" class="btn">Clear</button>
+              </div>
+            </div>
+          </aside>
+
+          <div id="blog-list" class="blog-list">
+            <article class="col-12 col-md-6 mb-4 blog-card" data-date="2025-05-14" data-tags="study">
+              <div class="Box p-3">
+                <h3 class="card-title">Security &amp; Data Protection — Exam Notes</h3>
+                <div class="mb-2">
+                  <span class="Label Label--secondary mr-1">study</span>
+                </div>
+                <p class="blog-meta">May 14, 2025 • study notes</p>
+                <p class="blog-excerpt">
+                  Condensed exam guide: encryption, watermarking, biometrics,
+                  pattern recognition, and practical techniques.
+                </p>
+                <a class="card-cover-link" href="blog/COMP4136_notes.html" aria-label="Open Security &amp; Data Protection — Exam Notes"></a>
+              </div>
+            </article>
+
+            <article class="col-12 col-md-6 mb-4 blog-card" data-date="2025-11-14" data-tags="template">
+              <div class="Box p-3">
+                <h3 class="card-title">Template</h3>
+                <div class="mb-2">
+                  <span class="Label Label--secondary mr-1">template</span>
+                </div>
+                <p class="blog-meta">Nov 14, 2025 • Template</p>
+                <p class="blog-excerpt">
+                  Veniam culpa commodo id exercitation nulla adipisicing anim, ad
+                  commodo adipisicing consectetur exercitation ut exercitation
+                  labore minim laborum ut tempor nulla.
+                </p>
+                <a class="card-cover-link" href="blog/template.html" aria-label="Open Template"></a>
+              </div>
+            </article>
+          </div>
         </div>
 
         <a href="index.html" class="btn btn-outline">← Back</a>
