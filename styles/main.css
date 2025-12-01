@@ -1037,6 +1037,73 @@ textarea.form-control {
   }
 }
 
+/* Post page: left TOC and grid layout */
+.post-grid {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.post-sidebar {
+  flex: 0 0 260px;
+  max-width: 260px;
+  width: 260px;
+  position: sticky;
+  top: 96px; /* account for header height */
+  height: calc(100vh - 120px);
+  overflow: auto;
+}
+
+.post-sidebar .toc {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.post-sidebar .toc-item {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.post-sidebar .toc-h3 {
+  margin-left: 10px;
+  font-size: 13px;
+  color: #57606a;
+}
+
+/* Heading numeric prefix style (separate visual number from heading text) */
+.hdr-num {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-weight: 700;
+  color: #6b7280; /* muted gray */
+  margin-right: 8px;
+  font-size: 0.95em;
+}
+
+@media (max-width: 820px) {
+  .post-grid {
+    flex-direction: column;
+  }
+  .post-sidebar {
+    position: relative;
+    top: auto;
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+  .post-sidebar .toc {
+    display: flex;
+    gap: 8px;
+    overflow: auto;
+    padding-bottom: 6px;
+  }
+  .post-sidebar .toc-item {
+    white-space: nowrap;
+    margin-bottom: 0;
+  }
+}
+
 /* Dark Theme Specific Adjustments */
 .dark-theme {
   background-color: var(--bg-primary);

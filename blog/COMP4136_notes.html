@@ -21,6 +21,7 @@ LICENSE file in the root directory of this source tree.
     />
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/post.css" />
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.css">
     <link rel="icon" type="image/png" href="../assets/favicon.png" />
   </head>
   <body>
@@ -112,11 +113,19 @@ LICENSE file in the root directory of this source tree.
 
     <main class="py-6">
       <div class="container-lg p-responsive">
-        <div class="notes-section blog-post">
-          <h1 class="h1-mktg">COMP4136 Security & Data Protection — Notes</h1>
-          <p class="blog-meta">May 14, 2025</p>
+        <div class="post-grid">
+          <aside id="post-toc" class="post-sidebar Box p-3 mb-4" aria-label="Table of contents">
+            <h4 class="h5">Contents</h4>
+            <nav id="post-toc-list" class="toc-list" aria-label="Post table of contents">
+              <!-- Populated by AnchorJS helper script -->
+            </nav>
+          </aside>
 
-          <section>
+          <article class="notes-section blog-post">
+            <h1 class="h1-mktg">COMP4136 Security & Data Protection — Notes</h1>
+            <p class="blog-meta">May 14, 2025</p>
+
+            <section>
             <h2>1. Data Protection Plan</h2>
             <h3>Five Key Steps</h3>
             <ol>
@@ -882,6 +891,100 @@ LICENSE file in the root directory of this source tree.
         <a href="../blog.html" class="btn btn-outline">← Back to Blog</a>
       </div>
     </main>
+
+    <script src="https://unpkg.com/anchor-js@4.2.2/anchor.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        try {
+          // Collect headings first and create stable IDs by stripping
+          // leading numeric prefixes (e.g. "1.", "1.2") so AnchorJS
+          // and the TOC use consistent ids. Exclude headings that live
+          // inside the comments section so the comments area isn't added.
+          var headings = Array.from(document.querySelectorAll('.notes-section h2, .notes-section h3, .notes-section h4'))
+            .filter(function(h){ return !h.closest('#comments'); });
+          if (!headings.length) {
+            var tocContainerEmpty = document.getElementById('post-toc-list');
+            if (tocContainerEmpty) tocContainerEmpty.innerHTML = '<p class="text-gray">No sections available</p>';
+            return;
+          }
+
+          // Helper to slugify text and remove leading numbers like '1.2 '
+          function makeSlug(text) {
+            var stripped = String(text).trim().replace(/^\s*\d+(?:\.\d+)*[\s\-\.:)]*/,'');
+            var slug = stripped.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+            if (!slug) slug = 'section';
+            return slug;
+          }
+
+          // ensure unique ids and visually separate numeric prefixes
+          var used = Object.create(null);
+          headings.forEach(function(h, idx) {
+            if (!h.id) {
+              var base = makeSlug(h.textContent || h.innerText || ('heading-' + idx));
+              var candidate = base;
+              var i = 1;
+              while (used[candidate] || document.getElementById(candidate)) {
+                candidate = base + '-' + i++;
+              }
+              used[candidate] = true;
+              h.id = candidate;
+            } else {
+              // if id exists, normalize duplicates
+              var existing = h.id;
+              if (used[existing]) {
+                var j = 1;
+                var cand = existing + '-' + j++;
+                while (used[cand] || document.getElementById(cand)) {
+                  cand = existing + '-' + j++;
+                }
+                h.id = cand;
+                used[cand] = true;
+              } else {
+                used[existing] = true;
+              }
+            }
+
+            // Extract and visually separate leading numeric prefix (e.g. "1.2 ")
+            var txt = h.textContent || h.innerText || '';
+            var prefixMatch = txt.match(/^\s*(\d+(?:\.\d+)*)[\s\-\.:)]+/);
+            if (prefixMatch) {
+              var num = prefixMatch[1];
+              var rest = txt.replace(prefixMatch[0], '').trim();
+              // Small helper to escape text for innerHTML
+              function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+              h.innerHTML = '<span class="hdr-num">' + esc(num) + '</span> ' + esc(rest);
+            }
+          });
+
+          // Now initialize AnchorJS (after ids are stable)
+          var anchor = new AnchorJS();
+          anchor.options = { placement: 'left', visible: false };
+          anchor.add('.notes-section h2, .notes-section h3, .notes-section h4');
+
+          // Build the TOC
+          var tocContainer = document.getElementById('post-toc-list');
+          if (!tocContainer) return;
+          var ul = document.createElement('ul');
+          ul.className = 'toc';
+          headings.forEach(function(h) {
+            var li = document.createElement('li');
+            li.className = 'toc-item toc-' + h.tagName.toLowerCase();
+            var a = document.createElement('a');
+            a.href = '#' + h.id;
+            // Use heading text (keep numbering visible for readers)
+            a.textContent = h.textContent;
+            a.className = 'Link--primary';
+            li.appendChild(a);
+            ul.appendChild(li);
+          });
+          tocContainer.appendChild(ul);
+
+        } catch (e) {
+          console.warn('AnchorJS init failed', e);
+        }
+      });
+    </script>
+
     <footer class="footer py-5 bg-gray-light">
       <div class="container-lg p-responsive">
         <div class="d-flex flex-wrap">
@@ -950,5 +1053,6 @@ LICENSE file in the root directory of this source tree.
     </button>
 
     <script src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/post-lightbox.js"></script>
   </body>
 </html>
