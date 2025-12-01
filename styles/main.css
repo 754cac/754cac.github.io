@@ -943,6 +943,17 @@ textarea.form-control {
   cursor: pointer;
 }
 
+/* Make project cards clickable like blog cards */
+.project-card {
+  position: relative;
+}
+.project-card .Box {
+  position: relative;
+  z-index: 1;
+}
+.project-card:hover {
+  cursor: pointer;
+}
 /* Tag label tweaks for readability on cards */
 .blog-card .Label {
   font-size: 12px;
@@ -985,6 +996,31 @@ textarea.form-control {
 /* Slight lift on hover to make card feel interactive */
 .blog-card:hover {
   transform: translateY(-4px);
+}
+
+/* Make project card titles 'light up' when the card is hovered or focused */
+.project-card .Box-body h3,
+.project-card .Box-body .h4 {
+  transition: color 180ms ease, transform 180ms ease;
+  color: inherit;
+  margin-bottom: 0.5rem;
+}
+
+.project-card:hover .Box-body h3,
+.project-card:focus-within .Box-body h3,
+.project-card:hover .Box-body .h4,
+.project-card:focus-within .Box-body .h4 {
+  color: #0969da; /* primary blue */
+  transform: translateY(-2px);
+}
+
+/* Slight lift on project-card hover to match visual affordance */
+.project-card .Box {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.project-card:hover .Box {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(13, 26, 38, 0.08);
 }
 
 /* Ensure transitions are smooth */
