@@ -268,6 +268,13 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
+/* Do not apply hover lift/shadow to the blog sidebar Box (filters panel) */
+.blog-sidebar.Box:hover,
+.blog-sidebar.Box:focus-within {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 .Box.fade-in {
   margin: 0 10px;
 }
