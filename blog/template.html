@@ -181,8 +181,10 @@ console.log(fib(10)); // 55
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         try {
-          var headings = Array.from(document.querySelectorAll('.notes-section h2, .notes-section h3, .notes-section h4'))
+          // Collect all headings to ensure stable ids and numeric prefix styling, but TOC will only list h2
+          var allHeadings = Array.from(document.querySelectorAll('.notes-section h2, .notes-section h3, .notes-section h4'))
             .filter(function(h){ return !h.closest('#comments'); });
+          var headings = allHeadings.filter(function(h){ return h.tagName.toLowerCase() === 'h2'; });
           if (!headings.length) {
             var tocContainerEmpty = document.getElementById('post-toc-list');
             if (tocContainerEmpty) tocContainerEmpty.innerHTML = '<p class="text-gray">No sections available</p>';
@@ -197,7 +199,7 @@ console.log(fib(10)); // 55
           }
 
           var used = Object.create(null);
-          headings.forEach(function(h, idx) {
+          allHeadings.forEach(function(h, idx) {
             if (!h.id) {
               var base = makeSlug(h.textContent || h.innerText || ('heading-' + idx));
               var candidate = base;
@@ -234,7 +236,8 @@ console.log(fib(10)); // 55
 
           var anchor = new AnchorJS();
           anchor.options = { placement: 'left', visible: false };
-          anchor.add('.notes-section h2, .notes-section h3, .notes-section h4');
+          // Only add visible anchor glyphs for major section headings (h2). Subheaders do not get anchor icons.
+          anchor.add('.notes-section h2');
 
           var tocContainer = document.getElementById('post-toc-list');
           if (!tocContainer) return;
@@ -296,8 +299,8 @@ console.log(fib(10)); // 55
               // compute header offset to respect fixed navbar; use a sensible fallback
               var headerEl = document.getElementById('main-header');
               var headerHeight = headerEl ? headerEl.offsetHeight : 96;
-              // set per-heading scroll-margin so anchor jumps don't hide headings behind the fixed header
-              headings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
+              // set per-heading scroll-margin for ALL headings to avoid hiding targets under fixed header
+              allHeadings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
               var obs = new IntersectionObserver(function(entries) {
                 var visible = entries.filter(function(e){ return e.isIntersecting; });
                 if (visible.length) {

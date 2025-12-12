@@ -900,8 +900,10 @@ LICENSE file in the root directory of this source tree.
           // leading numeric prefixes (e.g. "1.", "1.2") so AnchorJS
           // and the TOC use consistent ids. Exclude headings that live
           // inside the comments section so the comments area isn't added.
-          var headings = Array.from(document.querySelectorAll('.notes-section h2, .notes-section h3, .notes-section h4'))
+          // Limit the TOC to h2 entries so it’s concise and readable.
+          var allHeadings = Array.from(document.querySelectorAll('.notes-section h2, .notes-section h3, .notes-section h4'))
             .filter(function(h){ return !h.closest('#comments'); });
+          var headings = allHeadings.filter(function(h){ return h.tagName.toLowerCase() === 'h2'; });
           if (!headings.length) {
             var tocContainerEmpty = document.getElementById('post-toc-list');
             if (tocContainerEmpty) tocContainerEmpty.innerHTML = '<p class="text-gray">No sections available</p>';
@@ -918,7 +920,7 @@ LICENSE file in the root directory of this source tree.
 
           // ensure unique ids and visually separate numeric prefixes
           var used = Object.create(null);
-          headings.forEach(function(h, idx) {
+          allHeadings.forEach(function(h, idx) {
             if (!h.id) {
               var base = makeSlug(h.textContent || h.innerText || ('heading-' + idx));
               var candidate = base;
@@ -959,7 +961,8 @@ LICENSE file in the root directory of this source tree.
           // Now initialize AnchorJS (after ids are stable)
           var anchor = new AnchorJS();
           anchor.options = { placement: 'left', visible: false };
-          anchor.add('.notes-section h2, .notes-section h3, .notes-section h4');
+          // Only show the AnchorJS glyph for h2 (major sections); leave subheaders anchor-free
+          anchor.add('.notes-section h2');
 
           // Build the TOC
           var tocContainer = document.getElementById('post-toc-list');
@@ -1021,7 +1024,7 @@ LICENSE file in the root directory of this source tree.
             if ('IntersectionObserver' in window) {
               var headerEl = document.getElementById('main-header');
               var headerHeight = headerEl ? headerEl.offsetHeight : 96;
-              headings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
+              allHeadings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
               var obs = new IntersectionObserver(function(entries) {
                 var visible = entries.filter(function(e){ return e.isIntersecting; });
                 if (visible.length) {

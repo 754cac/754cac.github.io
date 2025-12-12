@@ -109,7 +109,7 @@ body {
 }
 
 .dark-theme .Header-link {
-  color: var(--text-primary);
+  color: var(--text-  primary);
 }
 
 .dark-theme .Header-link:hover,
