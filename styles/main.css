@@ -161,7 +161,7 @@ body {
 }
 
 .dark-theme .mobile-nav .menu-item {
-  color: var(--text-primary);
+  color: #000;
   border-bottom-color: var(--border-color);
 }
 
@@ -187,6 +187,7 @@ body {
 
 .dark-theme .mobile-nav .menu-item:hover {
   background-color: #161b22;
+  color: var(--text-primary);
 }
 
 .mobile-nav .menu-item.active {
@@ -860,7 +861,8 @@ textarea.form-control {
 
 /* Distinct typography for the filter sidebar to separate it visually */
 .blog-sidebar {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif;
 }
 
 .blog-sidebar .h5,
@@ -972,7 +974,7 @@ textarea.form-control {
   color: #fff !important;
   border: none !important;
   background: linear-gradient(90deg, #ff7a18 0%, #ffb86b 100%);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 /* Tag-specific accents (matches common tag names) */
@@ -1122,7 +1124,8 @@ textarea.form-control {
 /* Heading numeric prefix style (separate visual number from heading text) */
 .hdr-num {
   display: inline-block;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    monospace;
   font-weight: 700;
   color: #6b7280; /* muted gray */
   margin-right: 8px;
