@@ -979,6 +979,69 @@ LICENSE file in the root directory of this source tree.
           });
           tocContainer.appendChild(ul);
 
+          // Map heading ids to TOC links and observe heading visibility
+          (function () {
+            var linkMap = {};
+            var links = ul.querySelectorAll('a');
+            var currentSectionId = null;
+
+            function setCurrentSectionId(id) {
+              if (!id) return;
+              if (currentSectionId === id) return;
+              currentSectionId = id;
+              links.forEach(function(x){ x.classList.remove('active'); x.removeAttribute('aria-current'); });
+              var link = linkMap[id];
+              if (link) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'true');
+                try { link.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' }); } catch (err) {}
+              }
+            }
+            links.forEach(function(a){ linkMap[a.getAttribute('href').substring(1)] = a; });
+
+            // Clicks should immediately set the active state and trigger scroll for TOC
+            links.forEach(function(a){
+              a.setAttribute('role','link');
+              a.addEventListener('click', function(e){
+                e.preventDefault();
+                var id = a.getAttribute('href').substring(1);
+                setCurrentSectionId(id);
+                var target = document.getElementById(id);
+                if (target) {
+                  try { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (err) {}
+                  if (history && history.replaceState) {
+                    history.replaceState(null, '', '#' + id);
+                  } else {
+                    location.hash = id;
+                  }
+                }
+              });
+            });
+
+            if ('IntersectionObserver' in window) {
+              var headerEl = document.getElementById('main-header');
+              var headerHeight = headerEl ? headerEl.offsetHeight : 96;
+              headings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
+              var obs = new IntersectionObserver(function(entries) {
+                var visible = entries.filter(function(e){ return e.isIntersecting; });
+                if (visible.length) {
+                  visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+                  var id = visible[0].target.id;
+                  setCurrentSectionId(id);
+                }
+              }, { root: null, rootMargin: '-' + headerHeight + 'px 0px -60% 0px', threshold: [0.15, 0.5, 0.85] });
+
+              headings.forEach(function(h){ obs.observe(h); });
+              if (location.hash) {
+                var hId = location.hash.substring(1);
+                if (linkMap[hId]) { setCurrentSectionId(hId); }
+              }
+              if (!Array.from(links).some(function(a){ return a.classList.contains('active'); })) {
+                if (links[0]) { setCurrentSectionId(links[0].getAttribute('href').substring(1)); }
+              }
+            }
+          })();
+
         } catch (e) {
           console.warn('AnchorJS init failed', e);
         }

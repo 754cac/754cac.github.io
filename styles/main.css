@@ -276,6 +276,20 @@ body {
   box-shadow: none !important;
 }
 
+/* Also do not apply hover lift/shadow to the post page sidebar (TOC) */
+.post-sidebar.Box:hover,
+.post-sidebar.Box:focus-within {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove transitions for TOC links so there's no hover fade-in */
+.post-sidebar .toc a,
+.post-sidebar .toc a:link,
+.post-sidebar .toc a:visited {
+  transition: none !important;
+}
+
 .Box.fade-in {
   margin: 0 10px;
 }
@@ -1094,14 +1108,46 @@ textarea.form-control {
   align-items: flex-start;
 }
 
+@media (min-width: 900px) {
+  .post-grid {
+    gap: 40px; /* more space between TOC and main content on large screens */
+  }
+}
+
 .post-sidebar {
-  flex: 0 0 260px;
-  max-width: 260px;
-  width: 260px;
+  flex: 0 0 280px; /* slightly wider sidebar for larger TOC */
+  max-width: 280px;
+  width: 280px;
   position: sticky;
   top: 96px; /* account for header height */
   height: calc(100vh - 120px);
-  overflow: auto;
+  overflow: visible; /* outer sidebar should not create a second scrollbar */
+}
+
+/* Make the post-sidebar padding align with the post container padding so
+   the TOC heading aligns with the top of the blog post title */
+#post-toc {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  #post-toc {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .post-sidebar .toc {
+    font-size: 1rem; /* slightly larger for desktop */
+  }
+
+  .post-sidebar .toc a {
+    padding: 12px 12px; /* taller clickable target on desktop */
+  }
+
+  .post-sidebar .toc-item {
+    margin-bottom: 14px;
+  }
 }
 
 .post-sidebar .toc {
@@ -1113,6 +1159,69 @@ textarea.form-control {
 .post-sidebar .toc-item {
   margin-bottom: 10px;
   font-size: 14px;
+}
+
+.post-sidebar h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+/* Slightly increase TOC heading size to match the visual weight of the reduced H1 */
+.post-sidebar h4 {
+  font-size: 1.05rem;
+}
+
+.post-sidebar {
+  /* reduce height so it's not a giant empty box */
+  height: auto;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+}
+
+.post-sidebar .toc {
+  /* subtle background and soft shadow */
+  background-color: #f6f8fa;
+  border: var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(2,6,23,0.04);
+  padding: 12px;
+  /* keep visual surface here; the actual scrolling container is the inner nav `.toc-list` */
+}
+
+/* Inner TOC list should be the single scroll container */
+#post-toc-list {
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}
+
+.post-sidebar .toc a {
+  display: block;
+  padding: 10px 10px; /* taller list items */
+  line-height: 1.75; /* comfortable list height */
+  font-size: 0.95rem; /* slightly larger font in the TOC */
+  color: inherit;
+  text-decoration: none;
+  border-left: 4px solid transparent; /* reserve space for active left border */
+  border-radius: 6px;
+}
+
+.post-sidebar .toc a:hover {
+  color: #0969da;
+}
+
+.post-sidebar .toc a:focus,
+.post-sidebar .toc a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(9,105,218,0.08);
+  border-left-color: #0969da;
+}
+
+/* Active TOC item: highlight using left border */
+.post-sidebar .toc a.active {
+  color: #0969da;
+  border-left-color: #0969da;
+  background: rgba(9,105,218,0.04);
 }
 
 .post-sidebar .toc-h3 {

@@ -251,6 +251,75 @@ console.log(fib(10)); // 55
             ul.appendChild(li);
           });
           tocContainer.appendChild(ul);
+
+          // Map heading ids to TOC links and observe heading visibility
+          (function () {
+            var linkMap = {};
+            var links = ul.querySelectorAll('a');
+            var currentSectionId = null;
+
+            function setCurrentSectionId(id) {
+              if (!id) return;
+              if (currentSectionId === id) return;
+              currentSectionId = id;
+              links.forEach(function(x){ x.classList.remove('active'); x.removeAttribute('aria-current'); });
+              var link = linkMap[id];
+              if (link) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'true');
+                try { link.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' }); } catch (err) {}
+              }
+            }
+            links.forEach(function(a){ linkMap[a.getAttribute('href').substring(1)] = a; });
+
+            // Clicks should immediately set the active state and trigger scroll for TOC
+            links.forEach(function(a){
+              a.setAttribute('role','link');
+              a.addEventListener('click', function(e){
+                e.preventDefault();
+                var id = a.getAttribute('href').substring(1);
+                setCurrentSectionId(id);
+                var target = document.getElementById(id);
+                if (target) {
+                  try { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (err) {}
+                  // update the URL fragment without causing a jump
+                  if (history && history.replaceState) {
+                    history.replaceState(null, '', '#' + id);
+                  } else {
+                    location.hash = id;
+                  }
+                }
+              });
+            });
+
+            if ('IntersectionObserver' in window) {
+              // compute header offset to respect fixed navbar; use a sensible fallback
+              var headerEl = document.getElementById('main-header');
+              var headerHeight = headerEl ? headerEl.offsetHeight : 96;
+              // set per-heading scroll-margin so anchor jumps don't hide headings behind the fixed header
+              headings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
+              var obs = new IntersectionObserver(function(entries) {
+                var visible = entries.filter(function(e){ return e.isIntersecting; });
+                if (visible.length) {
+                  // prefer the heading closest to the top of the viewport
+                  visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+                  var id = visible[0].target.id;
+                  setCurrentSectionId(id);
+                }
+              }, { root: null, rootMargin: '-' + headerHeight + 'px 0px -60% 0px', threshold: [0.15, 0.5, 0.85] });
+
+              headings.forEach(function(h){ obs.observe(h); });
+              // mark initial fragment if present via setCurrentSectionId for consistency
+              if (location.hash) {
+                var hId = location.hash.substring(1);
+                if (linkMap[hId]) { setCurrentSectionId(hId); }
+              }
+              // fallback: mark first link active if none is active
+              if (!Array.from(links).some(function(a){ return a.classList.contains('active'); })) {
+                if (links[0]) { setCurrentSectionId(links[0].getAttribute('href').substring(1)); }
+              }
+            }
+          })();
         } catch (e) {
           console.warn('AnchorJS init failed', e);
         }
