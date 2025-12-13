@@ -217,6 +217,86 @@ body.dark-theme {
   max-width: 100%;
 }
 
+/* Comments card: visually matches the main post boxes but with smaller typography */
+.comments-card {
+  background: var(--post-surface);
+  border: 1px solid var(--table-border);
+  border-radius: 10px;
+  /* Reduce the top padding a touch so the heading sits closer to the edge */
+  padding: 0.75rem 1.25rem 1.25rem;
+  margin-top: 3rem; /* extra spacing from article */
+  /* Slightly stronger shadow than notes to visually separate the module */
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+  max-width: 100%;
+  font-size: 0.95rem; /* slightly smaller text inside comments */
+  min-height: 220px; /* ensure primary actions are visible */
+  overflow: visible; /* ensure full embed remains visible and the card expands */
+}
+
+.comments-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem; /* slightly smaller than typical H2/H3 in content */
+  font-weight: 700;
+}
+
+.comments-card .no-comments {
+  padding: 0.75rem 0.75rem;
+  background: rgba(246, 248, 250, 0.6);
+  color: var(--post-meta);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.comment-invite {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--post-meta);
+  font-style: italic; /* lighter, inviting tone */
+  opacity: 0.9;
+}
+
+/* Style local comment inputs if used (utterances uses iframe and cannot be styled here) */
+.comments-card .comment-form textarea,
+.comments-card .comment-form input[type='text'],
+.comments-card .comment-form input[type='email'] {
+  width: 100%;
+  border: 1px solid var(--table-border);
+  border-radius: 6px;
+  padding: 0.8rem 0.9rem;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+/* Ensure embedded comment widget is tall enough so primary actions are not hidden */
+.comments-card iframe,
+.comments-card .utterances {
+  min-height: 240px;
+  width: 100%;
+  border: 0;
+}
+
+/* Constrain embedded comments width so it visually matches the post body */
+.comments-card .utterances,
+.comments-card iframe {
+  max-width: 78ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 900px) {
+  .comments-card {
+    padding: 1.5rem 2rem 2rem; /* keep top padding slightly smaller for compact header */
+    margin-top: 3.5rem;
+  }
+}
+
+/* Smaller meta text inside comments */
+.comments-card .comment-meta {
+  color: var(--post-meta);
+  font-size: 0.92rem;
+}
+
 .blog-post .notes-section p,
 .blog-post .notes-section li {
   font-size: 1.05rem;

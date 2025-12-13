@@ -1185,14 +1185,48 @@ textarea.form-control {
   border: var(--card-border);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(2,6,23,0.04);
-  padding: 12px;
+  padding: 12px 12px 28px; /* keep some bottom padding so the list doesn't feel cut off */
   /* keep visual surface here; the actual scrolling container is the inner nav `.toc-list` */
 }
 
 /* Inner TOC list should be the single scroll container */
 #post-toc-list {
-  max-height: calc(100vh - 220px);
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#post-toc-list .toc-scroll {
+  max-height: calc(100vh - 280px);
+  overflow-y: auto; /* only the inner list scrolls */
+}
+
+#post-toc-list .toc-footer {
+  padding-top: 8px;
+  /* keep the comments link visible at the bottom */
+  position: sticky;
+  bottom: 0;
+  background: transparent;
+}
+
+/* Ensure the footer link has similar layout and active visuals as the list anchors */
+#post-toc-list .toc-footer a {
+  display: block;
+  padding: 10px 10px;
+  line-height: 1.75;
+  border-left: 4px solid transparent;
+  border-radius: 6px;
+  color: inherit;
+}
+#post-toc-list .toc-footer a:hover { color: #0969da; }
+#post-toc-list .toc-footer a:focus, #post-toc-list .toc-footer a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(9,105,218,0.08);
+  border-left-color: #0969da;
+}
+#post-toc-list .toc-footer a.active {
+  color: #0969da;
+  border-left-color: #0969da;
+  background: rgba(9,105,218,0.04);
 }
 
 .post-sidebar .toc a {

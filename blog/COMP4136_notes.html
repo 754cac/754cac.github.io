@@ -875,8 +875,10 @@ LICENSE file in the root directory of this source tree.
             </ul>
           </section>
 
-          <section id="comments">
-            <h3>Comments</h3>
+          <section id="comments" class="comments-card" aria-labelledby="comments-heading">
+            <h3 id="comments-heading">Comments</h3>
+            <p class="comment-invite">Join the discussion — Have a question about this post?</p>
+            <div class="no-comments">No comments yet — be the first to comment</div>
             <script
               src="https://utteranc.es/client.js"
               repo="754cac/754cac.github.io"
@@ -885,6 +887,24 @@ LICENSE file in the root directory of this source tree.
               crossorigin="anonymous"
               async
             ></script>
+            <script>
+              (function(){
+                var commentsEl = document.getElementById('comments');
+                var placeholder = commentsEl && commentsEl.querySelector('.no-comments');
+                function checkAndHide(){
+                  if (!placeholder || !commentsEl) return;
+                  if (commentsEl.querySelector('iframe') || commentsEl.querySelector('.utterances')) {
+                    placeholder.style.display = 'none';
+                    return true;
+                  }
+                  return false;
+                }
+                if (!checkAndHide()) {
+                  var mo = new MutationObserver(function(){ if (checkAndHide()) mo.disconnect(); });
+                  mo.observe(commentsEl, { childList: true, subtree: true });
+                }
+              })();
+            </script>
           </section>
         </div>
 
@@ -980,12 +1000,24 @@ LICENSE file in the root directory of this source tree.
             li.appendChild(a);
             ul.appendChild(li);
           });
-          tocContainer.appendChild(ul);
+          var scrollDiv = document.createElement('div');
+          scrollDiv.className = 'toc-scroll';
+          scrollDiv.appendChild(ul);
+          tocContainer.appendChild(scrollDiv);
+
+          var footer = document.createElement('div');
+          footer.className = 'toc-footer';
+          var commentsLink = document.createElement('a');
+          commentsLink.href = '#comments';
+          commentsLink.textContent = 'Comments';
+          commentsLink.className = 'Link--primary';
+          footer.appendChild(commentsLink);
+          tocContainer.appendChild(footer);
 
           // Map heading ids to TOC links and observe heading visibility
           (function () {
             var linkMap = {};
-            var links = ul.querySelectorAll('a');
+            var links = tocContainer.querySelectorAll('a');
             var currentSectionId = null;
 
             function setCurrentSectionId(id) {
@@ -1001,6 +1033,7 @@ LICENSE file in the root directory of this source tree.
               }
             }
             links.forEach(function(a){ linkMap[a.getAttribute('href').substring(1)] = a; });
+            if (commentsLink) { linkMap['comments'] = commentsLink; }
 
             // Clicks should immediately set the active state and trigger scroll for TOC
             links.forEach(function(a){
@@ -1025,6 +1058,8 @@ LICENSE file in the root directory of this source tree.
               var headerEl = document.getElementById('main-header');
               var headerHeight = headerEl ? headerEl.offsetHeight : 96;
               allHeadings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
+              var commentsEl = document.getElementById('comments');
+              if (commentsEl) { commentsEl.style.scrollMarginTop = headerHeight + 'px'; }
               var obs = new IntersectionObserver(function(entries) {
                 var visible = entries.filter(function(e){ return e.isIntersecting; });
                 if (visible.length) {
@@ -1035,6 +1070,8 @@ LICENSE file in the root directory of this source tree.
               }, { root: null, rootMargin: '-' + headerHeight + 'px 0px -60% 0px', threshold: [0.15, 0.5, 0.85] });
 
               headings.forEach(function(h){ obs.observe(h); });
+              var commentsEl = document.getElementById('comments');
+              if (commentsEl) { obs.observe(commentsEl); }
               if (location.hash) {
                 var hId = location.hash.substring(1);
                 if (linkMap[hId]) { setCurrentSectionId(hId); }

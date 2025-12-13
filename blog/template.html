@@ -160,8 +160,10 @@ console.log(fib(10)); // 55
 
           <hr />
 
-          <section id="comments">
-            <h3>Comments</h3>
+          <section id="comments" class="comments-card" aria-labelledby="comments-heading">
+            <h3 id="comments-heading">Comments</h3>
+            <p class="comment-invite">Join the discussion — Have a question about this post?</p>
+            <div class="no-comments">No comments yet — be the first to comment</div>
             <script
               src="https://utteranc.es/client.js"
               repo="754cac/754cac.github.io"
@@ -170,6 +172,25 @@ console.log(fib(10)); // 55
               crossorigin="anonymous"
               async
             ></script>
+            <script>
+              // Hide the placeholder when utterances iframe loads (embed uses iframe or .utterances node)
+              (function(){
+                var commentsEl = document.getElementById('comments');
+                var placeholder = commentsEl && commentsEl.querySelector('.no-comments');
+                function checkAndHide(){
+                  if (!placeholder || !commentsEl) return;
+                  if (commentsEl.querySelector('iframe') || commentsEl.querySelector('.utterances')) {
+                    placeholder.style.display = 'none';
+                    return true;
+                  }
+                  return false;
+                }
+                if (!checkAndHide()) {
+                  var mo = new MutationObserver(function(){ if (checkAndHide()) mo.disconnect(); });
+                  mo.observe(commentsEl, { childList: true, subtree: true });
+                }
+              })();
+            </script>
           </section>
         </div>
 
@@ -253,12 +274,27 @@ console.log(fib(10)); // 55
             li.appendChild(a);
             ul.appendChild(li);
           });
-          tocContainer.appendChild(ul);
+          // Put the list in a scrollable container so we can keep the Comments link visible
+          var scrollDiv = document.createElement('div');
+          scrollDiv.className = 'toc-scroll';
+          scrollDiv.appendChild(ul);
+          tocContainer.appendChild(scrollDiv);
+
+          // Add a sticky footer for the Comments link so users can always get to it
+          var footer = document.createElement('div');
+          footer.className = 'toc-footer';
+          var commentsLink = document.createElement('a');
+          commentsLink.href = '#comments';
+          commentsLink.textContent = 'Comments';
+          commentsLink.className = 'Link--primary';
+          footer.appendChild(commentsLink);
+          tocContainer.appendChild(footer);
 
           // Map heading ids to TOC links and observe heading visibility
           (function () {
             var linkMap = {};
-            var links = ul.querySelectorAll('a');
+            // Collect links from both the scrollable list and the footer
+            var links = tocContainer.querySelectorAll('a');
             var currentSectionId = null;
 
             function setCurrentSectionId(id) {
@@ -274,6 +310,8 @@ console.log(fib(10)); // 55
               }
             }
             links.forEach(function(a){ linkMap[a.getAttribute('href').substring(1)] = a; });
+            // Also ensure the comments link in the footer is included in linkMap
+            if (commentsLink) { linkMap['comments'] = commentsLink; }
 
             // Clicks should immediately set the active state and trigger scroll for TOC
             links.forEach(function(a){
@@ -301,6 +339,9 @@ console.log(fib(10)); // 55
               var headerHeight = headerEl ? headerEl.offsetHeight : 96;
               // set per-heading scroll-margin for ALL headings to avoid hiding targets under fixed header
               allHeadings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
+              // ensure the comments section is also protected from being hidden under the fixed header
+              var commentsEl = document.getElementById('comments');
+              if (commentsEl) { commentsEl.style.scrollMarginTop = headerHeight + 'px'; }
               var obs = new IntersectionObserver(function(entries) {
                 var visible = entries.filter(function(e){ return e.isIntersecting; });
                 if (visible.length) {
@@ -312,6 +353,9 @@ console.log(fib(10)); // 55
               }, { root: null, rootMargin: '-' + headerHeight + 'px 0px -60% 0px', threshold: [0.15, 0.5, 0.85] });
 
               headings.forEach(function(h){ obs.observe(h); });
+              // also observe the comments card/section so the TOC updates when user scrolls there
+              var commentsEl = document.getElementById('comments');
+              if (commentsEl) { obs.observe(commentsEl); }
               // mark initial fragment if present via setCurrentSectionId for consistency
               if (location.hash) {
                 var hId = location.hash.substring(1);
