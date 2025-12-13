@@ -1,8 +1,4 @@
-<!--
-Blog Post Template
-- Copy this file to create a new post (e.g. `my-post.html`) and replace placeholders.
-- Keep the relative paths as-is so assets and styles load correctly from `/blog/`.
--->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +13,7 @@ Blog Post Template
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/post.css" />
     <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.3/dist/photoswipe.css">
-    <!-- Favicon (use ../ path because this file is inside /blog/) -->
+    
     <link rel="icon" type="image/png" href="../assets/favicon.png" />
   </head>
   <body>
@@ -113,16 +109,16 @@ Blog Post Template
           <aside id="post-toc" class="post-sidebar Box p-3 mb-4" aria-label="Table of contents">
             <h4 class="h5">Contents</h4>
             <nav id="post-toc-list" class="toc-list" aria-label="Post table of contents">
-              <!-- Populated by AnchorJS helper script -->
+              
             </nav>
           </aside>
 
-          <!-- Post wrapper: use `blog-post` for post-specific styles -->
+          
           <article class="notes-section blog-post">
             <h1 class="h1-mktg">Template</h1>
             <p class="blog-meta">Nov 14, 2025</p>
 
-          <!-- POST_CONTENT_START -->
+          
           <section>
             <p>
               Lorem ipsum dolor sit amet voluptate labore non. Nisi
@@ -156,7 +152,7 @@ console.log(fib(10)); // 55
               sint labore excepteur veniam esse.
             </p>
           </section>
-          <!-- POST_CONTENT_END -->
+          
 
           <hr />
 
@@ -173,7 +169,7 @@ console.log(fib(10)); // 55
               async
             ></script>
             <script>
-              // Hide the placeholder when utterances iframe loads (embed uses iframe or .utterances node)
+              
               (function(){
                 var commentsEl = document.getElementById('comments');
                 var placeholder = commentsEl && commentsEl.querySelector('.no-comments');
@@ -202,7 +198,7 @@ console.log(fib(10)); // 55
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         try {
-          // Collect all headings to ensure stable ids and numeric prefix styling, but TOC will only list h2
+          
           var allHeadings = Array.from(document.querySelectorAll('.notes-section h2, .notes-section h3, .notes-section h4'))
             .filter(function(h){ return !h.closest('#comments'); });
           var headings = allHeadings.filter(function(h){ return h.tagName.toLowerCase() === 'h2'; });
@@ -257,7 +253,7 @@ console.log(fib(10)); // 55
 
           var anchor = new AnchorJS();
           anchor.options = { placement: 'left', visible: false };
-          // Only add visible anchor glyphs for major section headings (h2). Subheaders do not get anchor icons.
+
           anchor.add('.notes-section h2');
 
           var tocContainer = document.getElementById('post-toc-list');
@@ -274,13 +270,13 @@ console.log(fib(10)); // 55
             li.appendChild(a);
             ul.appendChild(li);
           });
-          // Put the list in a scrollable container so we can keep the Comments link visible
+
           var scrollDiv = document.createElement('div');
           scrollDiv.className = 'toc-scroll';
           scrollDiv.appendChild(ul);
           tocContainer.appendChild(scrollDiv);
 
-          // Add a sticky footer for the Comments link so users can always get to it
+
           var footer = document.createElement('div');
           footer.className = 'toc-footer';
           var commentsLink = document.createElement('a');
@@ -290,10 +286,10 @@ console.log(fib(10)); // 55
           footer.appendChild(commentsLink);
           tocContainer.appendChild(footer);
 
-          // Map heading ids to TOC links and observe heading visibility
+
           (function () {
             var linkMap = {};
-            // Collect links from both the scrollable list and the footer
+
             var links = tocContainer.querySelectorAll('a');
             var currentSectionId = null;
 
@@ -310,10 +306,10 @@ console.log(fib(10)); // 55
               }
             }
             links.forEach(function(a){ linkMap[a.getAttribute('href').substring(1)] = a; });
-            // Also ensure the comments link in the footer is included in linkMap
+
             if (commentsLink) { linkMap['comments'] = commentsLink; }
 
-            // Clicks should immediately set the active state and trigger scroll for TOC
+
             links.forEach(function(a){
               a.setAttribute('role','link');
               a.addEventListener('click', function(e){
@@ -323,7 +319,7 @@ console.log(fib(10)); // 55
                 var target = document.getElementById(id);
                 if (target) {
                   try { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (err) {}
-                  // update the URL fragment without causing a jump
+
                   if (history && history.replaceState) {
                     history.replaceState(null, '', '#' + id);
                   } else {
@@ -334,18 +330,18 @@ console.log(fib(10)); // 55
             });
 
             if ('IntersectionObserver' in window) {
-              // compute header offset to respect fixed navbar; use a sensible fallback
+
               var headerEl = document.getElementById('main-header');
               var headerHeight = headerEl ? headerEl.offsetHeight : 96;
-              // set per-heading scroll-margin for ALL headings to avoid hiding targets under fixed header
+
               allHeadings.forEach(function(h){ h.style.scrollMarginTop = headerHeight + 'px'; });
-              // ensure the comments section is also protected from being hidden under the fixed header
+
               var commentsEl = document.getElementById('comments');
               if (commentsEl) { commentsEl.style.scrollMarginTop = headerHeight + 'px'; }
               var obs = new IntersectionObserver(function(entries) {
                 var visible = entries.filter(function(e){ return e.isIntersecting; });
                 if (visible.length) {
-                  // prefer the heading closest to the top of the viewport
+
                   visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
                   var id = visible[0].target.id;
                   setCurrentSectionId(id);
@@ -353,15 +349,15 @@ console.log(fib(10)); // 55
               }, { root: null, rootMargin: '-' + headerHeight + 'px 0px -60% 0px', threshold: [0.15, 0.5, 0.85] });
 
               headings.forEach(function(h){ obs.observe(h); });
-              // also observe the comments card/section so the TOC updates when user scrolls there
+
               var commentsEl = document.getElementById('comments');
               if (commentsEl) { obs.observe(commentsEl); }
-              // mark initial fragment if present via setCurrentSectionId for consistency
+
               if (location.hash) {
                 var hId = location.hash.substring(1);
                 if (linkMap[hId]) { setCurrentSectionId(hId); }
               }
-              // fallback: mark first link active if none is active
+
               if (!Array.from(links).some(function(a){ return a.classList.contains('active'); })) {
                 if (links[0]) { setCurrentSectionId(links[0].getAttribute('href').substring(1)); }
               }
@@ -381,7 +377,7 @@ console.log(fib(10)); // 55
     >
       ↑
     </button>
-    <!-- Canonical Footer (blog template: use ../ relative paths) -->
+    
     <footer class="footer py-5 bg-gray-light">
       <div class="container-lg p-responsive">
         <div class="d-flex flex-wrap">

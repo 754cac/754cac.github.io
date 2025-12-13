@@ -7,11 +7,6 @@ const DEFAULT_COLOR_PALETTES = {
   p5: ["#11998e", "#38ef7d", "#2575fc", "#6a11cb"],
 };
 
-/**
- * Generate a random ellipse descriptor for composing the SVG.
- * @param {string[]} palette - Array of color strings to pick from.
- * @returns {{color:string,fx:number,scale:number[],skew:number,rotation:number,translation:number[]}}
- */
 function generateRandomEllipse(palette) {
   return {
     color: palette[Math.floor(Math.random() * palette.length)],
@@ -23,19 +18,6 @@ function generateRandomEllipse(palette) {
   };
 }
 
-/**
- * Create an SVG string containing layered radial gradients.
- * @param {string[]} palette - Array of color strings
- * @param {object} [options]
- * @param {number} [options.width]
- * @param {number} [options.height]
- * @param {string} [options.viewBox]
- * @param {number} [options.ellipseCount]
- * @param {number} [options.saturation]
- * @param {string} [options.backgroundColor]
- * @param {string} [options.preserveAspectRatio]
- * @returns {string} SVG markup
- */
 function generateGradientSVG(palette, options = {}) {
   const {
     width = 600,
@@ -71,20 +53,11 @@ function generateGradientSVG(palette, options = {}) {
   ${rects}
 </svg>`;
 }
-/**
- * Convenience: generate SVG by palette key from the bundled palettes.
- * @param {string} paletteName
- * @param {object} options
- */
+
 function generateGradientWithPalette(paletteName, options) {
   return generateGradientSVG(DEFAULT_COLOR_PALETTES[paletteName], options);
 }
 
-/**
- * Trigger a download of an SVG string as a .svg file.
- * @param {string} svgContent
- * @param {string} [filename]
- */
 function downloadSVG(svgContent, filename) {
   const blob = new Blob([svgContent], { type: "image/svg+xml" });
   const url = URL.createObjectURL(blob);
@@ -97,15 +70,6 @@ function downloadSVG(svgContent, filename) {
   URL.revokeObjectURL(url);
 }
 
-/**
- * Convert an SVG string to a PNG and trigger a download. Defaults to
- * using the SVG viewBox (if present) scaled by the device pixel ratio.
- * @param {string} svgContent
- * @param {string} [filename]
- * @param {number} [width] - optional explicit pixel width
- * @param {number} [height] - optional explicit pixel height
- * @returns {Promise<void>}
- */
 function downloadPNG(svgContent, filename, width, height) {
   return new Promise((resolve, reject) => {
     const canvas = document.createElement("canvas");
@@ -116,19 +80,24 @@ function downloadPNG(svgContent, filename, width, height) {
       return;
     }
 
-    // Determine DPR-aware dimensions when width/height not explicitly provided
-    const dpr = typeof window !== "undefined" && window.devicePixelRatio ? window.devicePixelRatio : 1;
+    const dpr =
+      typeof window !== "undefined" && window.devicePixelRatio
+        ? window.devicePixelRatio
+        : 1;
     if (typeof width === "undefined" || typeof height === "undefined") {
-      // Try to parse viewBox from the SVG to infer base dimensions
       const vbMatch = svgContent.match(/viewBox=["']?([\d\.\-\s]+)["']?/i);
       if (vbMatch && vbMatch[1]) {
         const parts = vbMatch[1].trim().split(/\s+/).map(Number);
-        if (parts.length === 4 && Number.isFinite(parts[2]) && Number.isFinite(parts[3])) {
+        if (
+          parts.length === 4 &&
+          Number.isFinite(parts[2]) &&
+          Number.isFinite(parts[3])
+        ) {
           width = Math.max(1, Math.round(parts[2] * dpr));
           height = Math.max(1, Math.round(parts[3] * dpr));
         }
       }
-      // Fallback to sensible defaults
+
       if (typeof width === "undefined") width = Math.round(600 * dpr);
       if (typeof height === "undefined") height = Math.round(400 * dpr);
     }
@@ -156,12 +125,18 @@ function downloadPNG(svgContent, filename, width, height) {
       } catch (err) {
         reject(err);
       } finally {
-        // Revoke the temporary SVG URL used as image src
-        if (svgUrl) try { URL.revokeObjectURL(svgUrl); } catch (e) {}
+
+        if (svgUrl)
+          try {
+            URL.revokeObjectURL(svgUrl);
+          } catch (e) {}
       }
     };
     img.onerror = () => {
-      if (svgUrl) try { URL.revokeObjectURL(svgUrl); } catch (e) {}
+      if (svgUrl)
+        try {
+          URL.revokeObjectURL(svgUrl);
+        } catch (e) {}
       reject(new Error("Failed to load SVG"));
     };
     const svgBlob = new Blob([svgContent], { type: "image/svg+xml" });

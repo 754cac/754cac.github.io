@@ -6,7 +6,6 @@ This source code is licensed under the BSD-style license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// Wait for DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   initMobileMenu();
   initThemeToggle();
@@ -19,13 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
   initPageTransitions();
 });
 
-// Mobile Menu Toggle
 function initMobileMenu() {
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileNav = document.getElementById("mobile-nav");
 
   if (mobileMenuBtn && mobileNav) {
-    // Ensure ARIA attributes are present
     mobileMenuBtn.setAttribute("aria-expanded", "false");
     mobileMenuBtn.setAttribute("aria-controls", "mobile-nav");
     mobileNav.setAttribute("aria-hidden", "true");
@@ -40,16 +37,13 @@ function initMobileMenu() {
       mobileNav.setAttribute("aria-hidden", isOpen ? "false" : "true");
 
       if (isOpen) {
-        // Focus first focusable item in mobile nav
         const firstItem = mobileNav.querySelector(".menu-item");
         if (firstItem) firstItem.focus();
       } else {
-        // Return focus to the menu button
         mobileMenuBtn.focus();
       }
     });
 
-    // Close mobile menu when clicking outside
     document.addEventListener("click", function (event) {
       if (
         !mobileMenuBtn.contains(event.target) &&
@@ -63,7 +57,6 @@ function initMobileMenu() {
       }
     });
 
-    // Close mobile menu on Escape key
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && mobileNav.classList.contains("active")) {
         mobileNav.classList.remove("active");
@@ -75,34 +68,28 @@ function initMobileMenu() {
   }
 }
 
-// Dark Theme Toggle
 function initThemeToggle() {
   const themeToggle = document.getElementById("theme-toggle");
   const body = document.body;
 
-  // Check for saved theme preference or default to light mode
   const currentTheme = localStorage.getItem("theme") || "light";
   if (currentTheme === "dark") {
     body.classList.add("dark-theme");
   }
 
   if (themeToggle) {
-    // expose state to assistive tech
     const isDark = body.classList.contains("dark-theme");
     themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
 
     themeToggle.addEventListener("click", function () {
       body.classList.toggle("dark-theme");
 
-      // Save theme preference
       const theme = body.classList.contains("dark-theme") ? "dark" : "light";
       localStorage.setItem("theme", theme);
 
-      // Update aria state
       const pressed = body.classList.contains("dark-theme");
       themeToggle.setAttribute("aria-pressed", pressed ? "true" : "false");
 
-      // Optional: Add visual feedback
       this.style.transform = "rotate(360deg)";
       setTimeout(() => {
         this.style.transform = "rotate(0deg)";
@@ -111,7 +98,6 @@ function initThemeToggle() {
   }
 }
 
-// Back to Top Button
 function initBackToTop() {
   const backToTopBtn = document.getElementById("back-to-top");
 
@@ -135,10 +121,7 @@ function initBackToTop() {
   }
 }
 
-// Smooth Scroll for Anchor Links
 function initSmoothScroll() {
-  // Ignore anchors that are plain hashes ("#") to avoid intercepting
-  // toolbar or router anchors. Scope selection to same-page anchors.
   document
     .querySelectorAll('a[href^="#"]:not([href="#"])')
     .forEach((anchor) => {
@@ -158,7 +141,6 @@ function initSmoothScroll() {
     });
 }
 
-// Form Validation (Contact Page)
 function initFormValidation() {
   const contactForm = document.getElementById("contact-form");
 
@@ -166,24 +148,20 @@ function initFormValidation() {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Scope queries to the form to minimize global DOM lookups
       const name = contactForm.querySelector("#name");
       const email = contactForm.querySelector("#email");
       const subject = contactForm.querySelector("#subject");
       const message = contactForm.querySelector("#message");
 
-      // Reset previous error states
       clearErrors();
 
       let isValid = true;
 
-      // Validate name
       if (!name || !name.value.trim()) {
         if (name) showError(name, "Name is required");
         isValid = false;
       }
 
-      // Validate email
       if (!email || !email.value.trim()) {
         if (email) showError(email, "Email is required");
         isValid = false;
@@ -192,13 +170,11 @@ function initFormValidation() {
         isValid = false;
       }
 
-      // Validate subject
       if (!subject || !subject.value.trim()) {
         if (subject) showError(subject, "Subject is required");
         isValid = false;
       }
 
-      // Validate message
       if (!message || !message.value.trim()) {
         if (message) showError(message, "Message is required");
         isValid = false;
@@ -208,7 +184,6 @@ function initFormValidation() {
       }
 
       if (isValid) {
-        // Form is valid - show success message
         showSuccessMessage(contactForm);
         contactForm.reset();
       }
@@ -253,17 +228,14 @@ function showSuccessMessage(formElement) {
   if (form && form.parentElement) {
     form.parentElement.insertBefore(successDiv, form);
   } else if (form) {
-    // Fallback: append to body
     document.body.appendChild(successDiv);
   }
 
-  // Remove success message after 5 seconds
   setTimeout(() => {
     successDiv.remove();
   }, 5000);
 }
 
-// Project Filter (Portfolio Page)
 function initProjectFilters() {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projectCards = document.querySelectorAll(".project-card");
@@ -273,11 +245,9 @@ function initProjectFilters() {
       button.addEventListener("click", function () {
         const filter = this.getAttribute("data-filter");
 
-        // Update active button
         filterButtons.forEach((btn) => btn.classList.remove("active"));
         this.classList.add("active");
 
-        // Filter projects
         projectCards.forEach((card) => {
           if (
             filter === "all" ||
@@ -294,7 +264,6 @@ function initProjectFilters() {
   }
 }
 
-// Blog Filter (Blog Page)
 function initBlogFilters() {
   const filterButtons = document.querySelectorAll(".blog-filter-btn");
   const blogCards = document.querySelectorAll(".blog-card");
@@ -304,11 +273,9 @@ function initBlogFilters() {
       button.addEventListener("click", function () {
         const filter = this.getAttribute("data-filter");
 
-        // Update active button
         filterButtons.forEach((btn) => btn.classList.remove("active"));
         this.classList.add("active");
 
-        // Filter blog posts
         blogCards.forEach((card) => {
           if (
             filter === "all" ||
@@ -325,7 +292,6 @@ function initBlogFilters() {
   }
 }
 
-// Advanced Blog Filters: tags, year, sort (newer/older)
 function initAdvancedBlogFilters() {
   const blogList = document.getElementById("blog-list");
   const blogCards = Array.from(document.querySelectorAll(".blog-card"));
@@ -336,7 +302,6 @@ function initAdvancedBlogFilters() {
   const clearBtn = document.getElementById("blog-filter-clear");
   const searchInput = document.getElementById("blog-search");
 
-  // Extract tags and years from articles
   const tagSet = new Set();
   const yearSet = new Set();
 
@@ -350,8 +315,7 @@ function initAdvancedBlogFilters() {
       const year = dateAttr.split("-")[0];
       if (year) yearSet.add(year);
     } else {
-      // Try to parse from .blog-meta text like 'May 14, 2025'
-      const meta = card.querySelector('.blog-meta');
+      const meta = card.querySelector(".blog-meta");
       if (meta) {
         const m = meta.textContent.match(/\b(\d{4})\b/);
         if (m) yearSet.add(m[1]);
@@ -359,93 +323,113 @@ function initAdvancedBlogFilters() {
     }
   });
 
-  // Build tag checkboxes
   const tags = Array.from(tagSet).sort((a, b) => a.localeCompare(b));
   tags.forEach((tag) => {
     const id = `tag-${tag}`;
-    const wrapper = document.createElement('label');
-    wrapper.className = 'mb-1';
+    const wrapper = document.createElement("label");
+    wrapper.className = "mb-1";
     wrapper.innerHTML = `<input type="checkbox" value="${tag}" id="${id}" /> ${tag}`;
     tagsContainer.appendChild(wrapper);
   });
 
-  // Build year select options (descending)
   const years = Array.from(yearSet).sort((a, b) => Number(b) - Number(a));
   years.forEach((y) => {
-    const opt = document.createElement('option');
+    const opt = document.createElement("option");
     opt.value = y;
     opt.textContent = y;
     yearSelect.appendChild(opt);
   });
 
   function getActiveFilters() {
-    const selectedTags = Array.from(tagsContainer.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.value);
-    const selectedYear = yearSelect.value || 'all';
-    const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : '';
-    // Default chronological order: newest first
-    const order = 'desc';
+    const selectedTags = Array.from(
+      tagsContainer.querySelectorAll('input[type="checkbox"]:checked')
+    ).map((i) => i.value);
+    const selectedYear = yearSelect.value || "all";
+    const searchTerm = searchInput
+      ? searchInput.value.trim().toLowerCase()
+      : "";
+
+    const order = "desc";
     return { selectedTags, selectedYear, searchTerm, order };
   }
 
   function applyFilters() {
-    const { selectedTags, selectedYear, searchTerm, order } = getActiveFilters();
+    const { selectedTags, selectedYear, searchTerm, order } =
+      getActiveFilters();
 
-    // Filter
     blogCards.forEach((card) => {
-      const cardTags = (card.getAttribute('data-tags') || '').toLowerCase().split(/[,\s]+/).filter(Boolean);
-      const cardDate = card.getAttribute('data-date') || '';
-      const cardYear = cardDate ? cardDate.split('-')[0] : (card.querySelector('.blog-meta') && (card.querySelector('.blog-meta').textContent.match(/\b(\d{4})\b/) || [])[1]);
-      const title = (card.querySelector('h3') && card.querySelector('h3').textContent.toLowerCase()) || '';
-      const excerpt = (card.querySelector('.blog-excerpt') && card.querySelector('.blog-excerpt').textContent.toLowerCase()) || '';
+      const cardTags = (card.getAttribute("data-tags") || "")
+        .toLowerCase()
+        .split(/[,\s]+/)
+        .filter(Boolean);
+      const cardDate = card.getAttribute("data-date") || "";
+      const cardYear = cardDate
+        ? cardDate.split("-")[0]
+        : card.querySelector(".blog-meta") &&
+          (card.querySelector(".blog-meta").textContent.match(/\b(\d{4})\b/) ||
+            [])[1];
+      const title =
+        (card.querySelector("h3") &&
+          card.querySelector("h3").textContent.toLowerCase()) ||
+        "";
+      const excerpt =
+        (card.querySelector(".blog-excerpt") &&
+          card.querySelector(".blog-excerpt").textContent.toLowerCase()) ||
+        "";
 
-      // Tag match: if no tags selected -> pass, else any match
-      const tagsMatch = selectedTags.length === 0 || selectedTags.some(t => cardTags.includes(t.toLowerCase()));
-      // Year match
-      const yearMatch = selectedYear === 'all' || (cardYear && cardYear === selectedYear);
-      // Search match
-      const searchMatch = !searchTerm || title.includes(searchTerm) || excerpt.includes(searchTerm) || cardTags.join(' ').includes(searchTerm);
+      const tagsMatch =
+        selectedTags.length === 0 ||
+        selectedTags.some((t) => cardTags.includes(t.toLowerCase()));
+
+      const yearMatch =
+        selectedYear === "all" || (cardYear && cardYear === selectedYear);
+
+      const searchMatch =
+        !searchTerm ||
+        title.includes(searchTerm) ||
+        excerpt.includes(searchTerm) ||
+        cardTags.join(" ").includes(searchTerm);
 
       if (tagsMatch && yearMatch && searchMatch) {
-        card.style.display = 'block';
+        card.style.display = "block";
       } else {
-        card.style.display = 'none';
+        card.style.display = "none";
       }
     });
 
-    // Sort visible cards by date
-    const visible = blogCards.filter(c => c.style.display !== 'none');
+    const visible = blogCards.filter((c) => c.style.display !== "none");
     visible.sort((a, b) => {
-      const da = a.getAttribute('data-date') || '';
-      const db = b.getAttribute('data-date') || '';
+      const da = a.getAttribute("data-date") || "";
+      const db = b.getAttribute("data-date") || "";
       if (!da || !db) return 0;
-      if (order === 'asc') return da.localeCompare(db);
+      if (order === "asc") return da.localeCompare(db);
       return db.localeCompare(da);
     });
 
-    // Re-append in order
-    visible.forEach(c => blogList.appendChild(c));
+    visible.forEach((c) => blogList.appendChild(c));
   }
 
-  // Hook up events
-  tagsContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener('change', applyFilters));
-  yearSelect.addEventListener('change', applyFilters);
-  if (searchInput) searchInput.addEventListener('input', debounce(applyFilters, 150));
+  tagsContainer
+    .querySelectorAll('input[type="checkbox"]')
+    .forEach((cb) => cb.addEventListener("change", applyFilters));
+  yearSelect.addEventListener("change", applyFilters);
+  if (searchInput)
+    searchInput.addEventListener("input", debounce(applyFilters, 150));
 
   if (clearBtn) {
-    clearBtn.addEventListener('click', function () {
-      // clear checkboxes
-      tagsContainer.querySelectorAll('input[type="checkbox"]').forEach(i => i.checked = false);
-      yearSelect.value = 'all';
-      if (searchInput) searchInput.value = '';
+    clearBtn.addEventListener("click", function () {
+      tagsContainer
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((i) => (i.checked = false));
+      yearSelect.value = "all";
+      if (searchInput) searchInput.value = "";
       applyFilters();
     });
   }
 
-  // Initial apply and ensure elements are in proper layout
   applyFilters();
 }
 
-// Skill Progress Animation (Skills Page)
 function initSkillAnimations() {
   const skillBars = document.querySelectorAll(".skill-progress");
 
@@ -473,9 +457,7 @@ function initSkillAnimations() {
   }
 }
 
-// Page Transition Effects
 function initPageTransitions() {
-  // Add fade-in effect to main sections
   const sections = document.querySelectorAll("section, .Box, .timeline-item");
 
   if (sections.length > 0) {
@@ -499,7 +481,6 @@ function initPageTransitions() {
   }
 }
 
-// Blog Search Functionality
 function initBlogSearch() {
   const searchInput = document.getElementById("blog-search");
   const blogCards = document.querySelectorAll(".blog-card");
@@ -531,18 +512,15 @@ function initBlogSearch() {
   }
 }
 
-// Initialize search if on blog page
 if (window.location.pathname.includes("blog.html")) {
   initBlogSearch();
 }
 
-// Add active state to current page in navigation
 function setActiveNavLink() {
   const currentPath = window.location.pathname.split("/").pop() || "index.html";
   const navLinks = document.querySelectorAll(".Header-link, .menu-item");
 
   navLinks.forEach((link) => {
-    // Normalize link href to a filename (handles absolute URLs and hash links)
     const href = link.getAttribute("href") || "";
     const urlParts = href.split("/");
     const linkPath = urlParts.pop() || urlParts.pop() || "";
@@ -556,14 +534,12 @@ function setActiveNavLink() {
       link.classList.remove("active");
     }
 
-    // Ensure clicks update active state (useful for SPA-like nav behavior)
     link.addEventListener("click", function () {
       document
         .querySelectorAll(".Header-link, .menu-item")
         .forEach((n) => n.classList.remove("active"));
       this.classList.add("active");
 
-      // Close mobile nav after selecting an item (small screens)
       const mobileNav = document.getElementById("mobile-nav");
       if (mobileNav && mobileNav.classList.contains("active")) {
         mobileNav.classList.remove("active");
@@ -574,7 +550,6 @@ function setActiveNavLink() {
 
 setActiveNavLink();
 
-// Utility function to debounce events
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -587,14 +562,10 @@ function debounce(func, wait) {
   };
 }
 
-// Performance optimization for scroll events
-const optimizedScroll = debounce(function () {
-  // Additional scroll-based functionality can be added here
-}, 100);
+const optimizedScroll = debounce(function () {}, 100);
 
 window.addEventListener("scroll", optimizedScroll);
 
-// Log page load performance (for development)
 window.addEventListener("load", function () {
   const perfData = window.performance.timing;
   const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;

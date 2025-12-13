@@ -1,16 +1,6 @@
-/* blog/post.css
-   Post-specific styles with cohesive light/dark color scheme.
-   Harmonizes with Primer/GitHub colors used in the main stylesheet.
-*/
-
-/* -------------------------
-   Light mode (default)
-   ------------------------- */
-
-/* Color variables (light mode defaults) */
 :root {
   --post-bg: #ffffff;
-  --post-surface: #f9fafb; /* page background */
+  --post-surface: #f9fafb;
   --post-heading: #1a318a;
   --post-text: #24292f;
   --post-meta: #6b7280;
@@ -25,12 +15,10 @@
   --code-box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
 }
 
-/* Page background for light mode */
 body {
   background: var(--post-surface);
 }
 
-/* Post container */
 .blog-post {
   --post-max-width: 78ch;
   max-width: var(--post-max-width);
@@ -39,7 +27,7 @@ body {
   border-radius: 12px;
   box-shadow: var(--post-box-shadow);
   margin: 2rem auto;
-  /* Reduce top/bottom padding and slightly reduce horizontal padding */
+
   padding: 1.25rem 1.25rem;
 }
 
@@ -55,14 +43,13 @@ body {
   text-decoration: underline;
 }
 
-/* Slightly reduce the main heading visual weight and ensure consistent spacing */
 .blog-post h1 {
-  font-size: 2rem; /* slightly smaller than default for a better balance with TOC */
+  font-size: 2rem;
   line-height: 1.2;
   margin-top: 0;
   margin-bottom: 0.25rem;
 }
-/* Inline code */
+
 .blog-post p code,
 .blog-post li code {
   background: var(--inline-code-bg);
@@ -74,7 +61,6 @@ body {
   font-size: 0.95em;
 }
 
-/* Block code (light) */
 .blog-post pre {
   background: var(--block-code-bg);
   color: var(--block-code-text);
@@ -115,7 +101,6 @@ body {
   max-width: 100%;
 }
 
-/* Center images and make them respect the content width */
 .blog-post img {
   display: block;
   margin: 1rem auto;
@@ -125,58 +110,48 @@ body {
   object-fit: contain;
 }
 
-/* Desktop: two-column comfortable reading adjustments */
 @media (min-width: 900px) {
   .blog-post {
-    --post-max-width: 90ch; /* increase max width for comfortable reading on large screens */
+    --post-max-width: 90ch;
     max-width: var(--post-max-width);
-    padding: 2.25rem 2rem; /* bigger inner padding */
-    margin: 3rem auto; /* more vertical space */
+    padding: 2.25rem 2rem;
+    margin: 3rem auto;
   }
 
   .blog-post h1 {
-    font-size: 2.5rem; /* larger heading size for normal/desktop view */
+    font-size: 2.5rem;
     line-height: 1.15;
     margin-bottom: 0.5rem;
   }
 
   .blog-post .notes-section {
-    padding: 2rem 1.75rem; /* allow more interior space for long reading */
+    padding: 2rem 1.75rem;
     margin-bottom: 2rem;
   }
 
-  /* Slightly increase H2/H3 spacing for reading comfort */
   .blog-post .notes-section h2,
   .blog-post .notes-section h3 {
     margin-top: 1.6em;
     margin-bottom: 0.65em;
   }
 
-  /* Images should fill more of the content width on desktop */
   .blog-post img {
     width: 100%;
     max-width: 100%;
     margin: 1.25rem auto;
   }
 
-  /* Make inline max height of figures/diagrams a touch taller when filling content */
   .blog-post .notes-section img {
-    max-height: 72vh; /* ensure diagrams can be taller but not exceed viewport too much */
+    max-height: 72vh;
     object-fit: contain;
   }
 
-  /* Comfortable line-height for longer reading on desktop */
   .blog-post .notes-section p,
   .blog-post .notes-section li {
     line-height: 1.9;
   }
 }
 
-/* -------------------------
-   Dark mode
-   ------------------------- */
-
-/* Dark-mode variable overrides (applies when `body.dark-theme` is present) */
 body.dark-theme {
   --post-bg: #22272e;
   --post-surface: #161b22;
@@ -194,7 +169,6 @@ body.dark-theme {
   --code-box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
 }
 
-/* Print-friendly tweaks */
 @media print {
   .blog-post pre {
     box-shadow: none;
@@ -202,10 +176,6 @@ body.dark-theme {
     background: #f6f6f6;
   }
 }
-
-/* --------------------------------------------------
-   Study Notes / Post-specific containers (moved from main.css)
-   -------------------------------------------------- */
 
 .blog-post .notes-section {
   background: var(--post-surface);
@@ -217,26 +187,25 @@ body.dark-theme {
   max-width: 100%;
 }
 
-/* Comments card: visually matches the main post boxes but with smaller typography */
 .comments-card {
   background: var(--post-surface);
   border: 1px solid var(--table-border);
   border-radius: 10px;
-  /* Reduce the top padding a touch so the heading sits closer to the edge */
+
   padding: 0.75rem 1.25rem 1.25rem;
-  margin-top: 3rem; /* extra spacing from article */
-  /* Slightly stronger shadow than notes to visually separate the module */
+  margin-top: 3rem;
+
   box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
   max-width: 100%;
-  font-size: 0.95rem; /* slightly smaller text inside comments */
-  min-height: 220px; /* ensure primary actions are visible */
-  overflow: visible; /* ensure full embed remains visible and the card expands */
+  font-size: 0.95rem;
+  min-height: 220px;
+  overflow: visible;
 }
 
 .comments-card h3 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-size: 1.05rem; /* slightly smaller than typical H2/H3 in content */
+  font-size: 1.05rem;
   font-weight: 700;
 }
 
@@ -252,14 +221,13 @@ body.dark-theme {
   margin-bottom: 0.5rem;
   font-weight: 600;
   color: var(--post-meta);
-  font-style: italic; /* lighter, inviting tone */
+  font-style: italic;
   opacity: 0.9;
 }
 
-/* Style local comment inputs if used (utterances uses iframe and cannot be styled here) */
 .comments-card .comment-form textarea,
-.comments-card .comment-form input[type='text'],
-.comments-card .comment-form input[type='email'] {
+.comments-card .comment-form input[type="text"],
+.comments-card .comment-form input[type="email"] {
   width: 100%;
   border: 1px solid var(--table-border);
   border-radius: 6px;
@@ -268,7 +236,6 @@ body.dark-theme {
   box-sizing: border-box;
 }
 
-/* Ensure embedded comment widget is tall enough so primary actions are not hidden */
 .comments-card iframe,
 .comments-card .utterances {
   min-height: 240px;
@@ -276,7 +243,6 @@ body.dark-theme {
   border: 0;
 }
 
-/* Constrain embedded comments width so it visually matches the post body */
 .comments-card .utterances,
 .comments-card iframe {
   max-width: 78ch;
@@ -286,12 +252,11 @@ body.dark-theme {
 
 @media (min-width: 900px) {
   .comments-card {
-    padding: 1.5rem 2rem 2rem; /* keep top padding slightly smaller for compact header */
+    padding: 1.5rem 2rem 2rem;
     margin-top: 3.5rem;
   }
 }
 
-/* Smaller meta text inside comments */
 .comments-card .comment-meta {
   color: var(--post-meta);
   font-size: 0.92rem;
@@ -314,15 +279,12 @@ body.dark-theme {
   margin-bottom: 0.5em;
 }
 
-/* Make headings respect the fixed header and avoid being hidden on anchor jump.
-   Default header height (96px) used as a sensible fallback. */
 .blog-post .notes-section h2,
 .blog-post .notes-section h3,
 .blog-post .notes-section h4 {
   scroll-margin-top: 96px;
 }
 
-/* Lower scroll-margin on small screens where header is typically shorter */
 @media (max-width: 820px) {
   .blog-post .notes-section h2,
   .blog-post .notes-section h3,
@@ -331,13 +293,14 @@ body.dark-theme {
   }
 }
 
-/* Also apply scroll-margin to the main title where anchors may target it */
 .blog-post h1 {
   scroll-margin-top: 96px;
 }
 
 @media (max-width: 820px) {
-  .blog-post h1 { scroll-margin-top: 72px; }
+  .blog-post h1 {
+    scroll-margin-top: 72px;
+  }
 }
 
 .blog-post .notes-highlight {
@@ -427,7 +390,6 @@ body.dark-theme {
   }
 }
 
-/* Dark mode overrides for notes inside posts */
 body.dark-theme .blog-post .notes-section {
   background: #2b3136;
   border: 1px solid rgba(255, 255, 255, 0.04);

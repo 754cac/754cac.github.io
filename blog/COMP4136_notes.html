@@ -117,7 +117,7 @@ LICENSE file in the root directory of this source tree.
           <aside id="post-toc" class="post-sidebar Box p-3 mb-4" aria-label="Table of contents">
             <h4 class="h5">Contents</h4>
             <nav id="post-toc-list" class="toc-list" aria-label="Post table of contents">
-              <!-- Populated by AnchorJS helper script -->
+              
             </nav>
           </aside>
 
@@ -916,11 +916,11 @@ LICENSE file in the root directory of this source tree.
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         try {
-          // Collect headings first and create stable IDs by stripping
-          // leading numeric prefixes (e.g. "1.", "1.2") so AnchorJS
-          // and the TOC use consistent ids. Exclude headings that live
-          // inside the comments section so the comments area isn't added.
-          // Limit the TOC to h2 entries so it’s concise and readable.
+          
+          
+          
+          
+          
           var allHeadings = Array.from(document.querySelectorAll('.notes-section h2, .notes-section h3, .notes-section h4'))
             .filter(function(h){ return !h.closest('#comments'); });
           var headings = allHeadings.filter(function(h){ return h.tagName.toLowerCase() === 'h2'; });
@@ -930,7 +930,7 @@ LICENSE file in the root directory of this source tree.
             return;
           }
 
-          // Helper to slugify text and remove leading numbers like '1.2 '
+          
           function makeSlug(text) {
             var stripped = String(text).trim().replace(/^\s*\d+(?:\.\d+)*[\s\-\.:)]*/,'');
             var slug = stripped.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
@@ -938,7 +938,7 @@ LICENSE file in the root directory of this source tree.
             return slug;
           }
 
-          // ensure unique ids and visually separate numeric prefixes
+          
           var used = Object.create(null);
           allHeadings.forEach(function(h, idx) {
             if (!h.id) {
@@ -951,7 +951,7 @@ LICENSE file in the root directory of this source tree.
               used[candidate] = true;
               h.id = candidate;
             } else {
-              // if id exists, normalize duplicates
+              
               var existing = h.id;
               if (used[existing]) {
                 var j = 1;
@@ -966,25 +966,25 @@ LICENSE file in the root directory of this source tree.
               }
             }
 
-            // Extract and visually separate leading numeric prefix (e.g. "1.2 ")
+            
             var txt = h.textContent || h.innerText || '';
             var prefixMatch = txt.match(/^\s*(\d+(?:\.\d+)*)[\s\-\.:)]+/);
             if (prefixMatch) {
               var num = prefixMatch[1];
               var rest = txt.replace(prefixMatch[0], '').trim();
-              // Small helper to escape text for innerHTML
+              
               function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
               h.innerHTML = '<span class="hdr-num">' + esc(num) + '</span> ' + esc(rest);
             }
           });
 
-          // Now initialize AnchorJS (after ids are stable)
+
           var anchor = new AnchorJS();
           anchor.options = { placement: 'left', visible: false };
-          // Only show the AnchorJS glyph for h2 (major sections); leave subheaders anchor-free
+
           anchor.add('.notes-section h2');
 
-          // Build the TOC
+
           var tocContainer = document.getElementById('post-toc-list');
           if (!tocContainer) return;
           var ul = document.createElement('ul');
@@ -994,7 +994,7 @@ LICENSE file in the root directory of this source tree.
             li.className = 'toc-item toc-' + h.tagName.toLowerCase();
             var a = document.createElement('a');
             a.href = '#' + h.id;
-            // Use heading text (keep numbering visible for readers)
+
             a.textContent = h.textContent;
             a.className = 'Link--primary';
             li.appendChild(a);
@@ -1014,7 +1014,7 @@ LICENSE file in the root directory of this source tree.
           footer.appendChild(commentsLink);
           tocContainer.appendChild(footer);
 
-          // Map heading ids to TOC links and observe heading visibility
+
           (function () {
             var linkMap = {};
             var links = tocContainer.querySelectorAll('a');
@@ -1035,7 +1035,7 @@ LICENSE file in the root directory of this source tree.
             links.forEach(function(a){ linkMap[a.getAttribute('href').substring(1)] = a; });
             if (commentsLink) { linkMap['comments'] = commentsLink; }
 
-            // Clicks should immediately set the active state and trigger scroll for TOC
+
             links.forEach(function(a){
               a.setAttribute('role','link');
               a.addEventListener('click', function(e){
